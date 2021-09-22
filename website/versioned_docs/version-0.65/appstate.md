@@ -5,24 +5,24 @@ title: AppState
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-`AppState` can tell you if the app is in the foreground or background, and notify you when the state changes.
+`AppState` pode dizer se o aplicativo está em primeiro plano ou em segundo plano e notificá-lo quando o estado mudar.
 
-AppState is frequently used to determine the intent and proper behavior when handling push notifications.
+O AppState é frequentemente usado para determinar a intenção e o comportamento adequado ao lidar com notificações push.
 
 ### App States
 
-- `active` - The app is running in the foreground
-- `background` - The app is running in the background. The user is either:
-  - in another app
-  - on the home screen
-  - [Android] on another `Activity` (even if it was launched by your app)
-- [iOS] `inactive` - This is a state that occurs when transitioning between foreground & background, and during periods of inactivity such as entering the Multitasking view or in the event of an incoming call
+- `ativo` - O aplicativo está sendo executado em primeiro plano
+- `background` - O aplicativo está sendo executado em segundo plano. O usuário é:
+  - em outro aplicativo
+  - na tela inicial
+  - [Android] em outra `Atividade` (mesmo que tenha sido iniciada pelo seu aplicativo)
+- [iOS] `inativo` - Este é um estado que ocorre ao fazer a transição entre o primeiro plano e o segundo plano e durante períodos de inatividade, como entrar na visualização Multitarefa ou no caso de uma chamada recebida
 
 For more information, see [Apple's documentation](https://developer.apple.com/documentation/uikit/app_and_scenes/managing_your_app_s_life_cycle)
 
-## Basic Usage
+## Uso básico
 
-To see the current state, you can check `AppState.currentState`, which will be kept up-to-date. However, `currentState` will be null at launch while `AppState` retrieves it over the bridge.
+Para ver o estado atual, você pode verificar `AppState.currentState`, que será mantido atualizado. No entanto, `currentState` será nulo no lançamento enquanto `AppState` o recupera pela ponte.
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -72,87 +72,87 @@ const styles = StyleSheet.create({
 export default AppStateExample;
 ```
 
-If you don't want to see the AppState update from `active` to `inactive` on iOS you can remove the state variable and use the `appState.current` value.
+Se você não quiser ver a atualização do AppState de `ativo` para `inativo` no iOS, você pode remover a variável de estado e usar o valor `AppState.current`.
 
-</TabItem>
-<TabItem value="classical">
+ </TabItem> 
+ <TabItem value="classical"> 
 
-```SnackPlayer name=AppState%20Class%20Component%20Example
-import React, { Component } from "react";
-import { AppState, StyleSheet, Text, View } from "react-native";
+```SnackPlayer Name=AppState%20Class%20Component%20EXample
+importar React, {Component} de “react”;
+import {appState, StyleSheet, Text, View} de “react-native”;
 
-class AppStateExample extends Component {
-  state = {
-    appState: AppState.currentState
-  };
+classe AppStateExample estende o componente {
+ estado = {
+ AppState: appState.currentState
+ };
 
-  componentDidMount() {
-    this.appStateSubscription = AppState.addEventListener(
-      "change",
-      nextAppState => {
-        if (
-          this.state.appState.match(/inactive|background/) &&
-          nextAppState === "active"
-        ) {
-          console.log("App has come to the foreground!");
-        }
-        this.setState({ appState: nextAppState });
-      }
-    );
-  }
+ componentDidMount () {
+ this.appStateSubscription = AppState.addEventListener (
+ “mudança”,
+ NextAppState => {
+ se (
+ this.state.appstate.match (/inativo|background/) &&
+ NextAppState === “ativo”
+ ) {
+ console.log (“O aplicativo chegou ao primeiro plano!”) ;
+ }
+ this.setState ({appState: nextAppState});
+ }
+ );
+ }
 
-  componentWillUnmount() {
-    this.appStateSubscription.remove();
-  }
+ Componente desmontará () {
+ this.appstatesubscription.remove ();
+ }
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Current state is: {this.state.appState}</Text>
-      </View>
-    );
-  }
+ render () {
+ retorno (
+ <View style={styles.container}> 
+ <Text> O estado atual é: {this.state.AppState} </Text> 
+ </View> 
+ );
+ }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
+const styles = StyleSheet.create ({
+ recipiente: {
+ flex: 1,
+ Justificar conteúdo: “centro”,
+ AlignItens: “centro”
+ }
 });
 
-export default AppStateExample;
+exportar AppStateExample padrão;
 ```
 
 </TabItem>
 </Tabs>
 
-This example will only ever appear to say "Current state is: active" because the app is only visible to the user when in the `active` state, and the null state will happen only momentarily. If you want to experiment with the code we recommend to use your own device instead of embedded preview.
+Este exemplo só parecerá dizer “O estado atual é: ativo” porque o aplicativo só é visível para o usuário quando está no estado `ativo`, e o estado nulo acontecerá apenas momentaneamente. Se você quiser experimentar o código, recomendamos usar seu próprio dispositivo em vez da visualização incorporada.
 
 ---
 
-# Reference
+# Referência
 
-## Events
+## Eventos
 
 ### `change`
 
-This event is received when the app state has changed. The listener is called with one of [the current app state values](appstate#app-states).
+Esse evento é recebido quando o estado do aplicativo é alterado. O ouvinte é chamado com um dos [valores atuais do estado do aplicativo] (appstate #app -states).
 
 ### `memoryWarning`
 
-This event is used in the need of throwing memory warning or releasing it.
+Este evento é usado na necessidade de lançar um aviso de memória ou liberá-lo.
 
 ### `focus` <div class="label android">Android</div>
 
-Received when the app gains focus (the user is interacting with the app).
+Recebido quando o aplicativo ganha foco (o usuário está interagindo com o aplicativo).
 
 ### `blur` <div class="label android">Android</div>
 
-Received when the user is not actively interacting with the app. Useful in situations when the user pulls down the [notification drawer](https://developer.android.com/guide/topics/ui/notifiers/notifications#bar-and-drawer). `AppState` won't change but the `blur` event will get fired.
+Recebido quando o usuário não está interagindo ativamente com o aplicativo. Útil em situações em que o usuário puxa para baixo a [gaveta de notificações] (https://developer.android.com/guide/topics/ui/notifiers/notifications#bar-and-drawer). `AppState` não mudará, mas o evento `blur` será disparado.
 
-## Methods
+## Métodos
 
 ### `addEventListener()`
 
@@ -160,7 +160,7 @@ Received when the user is not actively interacting with the app. Useful in situa
 addEventListener(type, handler);
 ```
 
-Add a handler to AppState changes by listening to the `change` event type and providing the handler
+Adicione um manipulador às alterações do AppState ouvindo o tipo de evento `change` e fornecendo o manipulador
 
 ---
 
@@ -170,7 +170,7 @@ Add a handler to AppState changes by listening to the `change` event type and pr
 removeEventListener(type, handler);
 ```
 
-> **Deprecated.** Use the `remove()` method on the event subscription returned by [`addEventListener()`](#addeventlistener).
+> **Descontinuado.** Use o método `remove () `na assinatura de evento retornada por [`addEventListener ()`](#addeventlistener).
 
 ## Properties
 

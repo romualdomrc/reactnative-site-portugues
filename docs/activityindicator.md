@@ -5,9 +5,9 @@ title: ActivityIndicator
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-Displays a circular loading indicator.
+Exibe um indicador circular de carregamento.
 
-## Example
+## Examplo
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -78,31 +78,31 @@ export default App;
 </TabItem>
 </Tabs>
 
-# Reference
+# Referencia
 
 ## Props
 
 ### [View Props](view#props)
 
-Inherits [View Props](view#props).
+Herda de [View Props](view#props).
 
 ---
 
 ### `animating`
 
-Whether to show the indicator (`true`) or hide it (`false`).
+Mostra o indicador (`true`) ou esconde (`false`).
 
-| Type | Default |
-| ---- | ------- |
-| bool | `true`  |
+TIPO | PADRÃO
+-----|-------
+bool | `true`
 
 ---
 
 ### `color`
 
-The foreground color of the spinner.
+A cor do indicador.
 
-| Type            | Default                                                                                                                                                                                     |
+| TIPO            | PADRÃO                                                                                                                                                                                     |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [color](colors) | `null` (system accent default color)<div class="label android">Android</div><hr/><ins style={{background: '#999'}} className="color-box" />`'#999999'` <div className="label ios">iOS</div> |
 
@@ -110,7 +110,7 @@ The foreground color of the spinner.
 
 ### `hidesWhenStopped` <div class="label ios">iOS</div>
 
-Whether the indicator should hide when not animating.
+Oculta o indicador se não estiver animado.
 
 | Type | Default |
 | ---- | ------- |
@@ -120,7 +120,7 @@ Whether the indicator should hide when not animating.
 
 ### `size`
 
-Size of the indicator.
+Tamanho do indicador.
 
 | Type                                                                           | Default   |
 | ------------------------------------------------------------------------------ | --------- |

@@ -3,7 +3,7 @@ id: refreshcontrol
 title: RefreshControl
 ---
 
-Este componente é usado dentro de um ScrollView ou ListView para adicionar pull para atualizar a funcionalidade. Quando o ScrollView está em `scrollY: 0`, swiping down triggers andeslizar para baixo aciona um evento `onRefresh`.
+This component is used inside a ScrollView or ListView to add pull to refresh functionality. When the ScrollView is at `scrollY: 0`, swiping down triggers an `onRefresh` event.
 
 ## Example
 
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-> Nota: `refreshing` é um prop controlado, é por isso que precisa ser definido como` true` na função `onRefresh`, caso contrário o indicador de atualização irá parar imediatamente.
+> Note: `refreshing` is a controlled prop, this is why it needs to be set to `true` in the `onRefresh` function otherwise the refresh indicator will stop immediately.
 
 ---
 
@@ -71,7 +71,7 @@ Inherits [View Props](view.md#props).
 
 ### <div class="label required basic">Required</div>**`refreshing`**
 
-Se a visualização deve indicar uma atualização ativa.
+Whether the view should be indicating an active refresh.
 
 | Type    |
 | ------- |
@@ -81,7 +81,7 @@ Se a visualização deve indicar uma atualização ativa.
 
 ### `colors` <div class="label android">Android</div>
 
-As cores (pelo menos uma) que serão usadas para desenhar o indicador de atualização.
+The colors (at least one) that will be used to draw the refresh indicator.
 
 | Type                         |
 | ---------------------------- |
@@ -91,7 +91,7 @@ As cores (pelo menos uma) que serão usadas para desenhar o indicador de atualiz
 
 ### `enabled` <div class="label android">Android</div>
 
-Se a funcionalidade puxar para atualizar está habilitada.
+Whether the pull to refresh functionality is enabled.
 
 | Type    | Default |
 | ------- | ------- |
@@ -101,7 +101,7 @@ Se a funcionalidade puxar para atualizar está habilitada.
 
 ### `onRefresh`
 
-Chamado quando a visualização começa a ser atualizada.
+Called when the view starts refreshing.
 
 | Type     |
 | -------- |
@@ -111,7 +111,7 @@ Chamado quando a visualização começa a ser atualizada.
 
 ### `progressBackgroundColor` <div class="label android">Android</div>
 
-A cor de fundo do indicador de atualização.
+The background color of the refresh indicator.
 
 | Type               |
 | ------------------ |
@@ -121,7 +121,7 @@ A cor de fundo do indicador de atualização.
 
 ### `progressViewOffset`
 
-Deslocamento superior da vista de progresso.
+Progress view top offset.
 
 | Type   | Default |
 | ------ | ------- |
@@ -131,7 +131,7 @@ Deslocamento superior da vista de progresso.
 
 ### `size` <div class="label android">Android</div>
 
-Tamanho do indicador de atualização.
+Size of the refresh indicator.
 
 | Type                                                             | Default                          |
 | ---------------------------------------------------------------- | -------------------------------- |
@@ -141,7 +141,7 @@ Tamanho do indicador de atualização.
 
 ### `tintColor` <div class="label ios">iOS</div>
 
-A cor do indicador de atualização.
+The color of the refresh indicator.
 
 | Type               |
 | ------------------ |
@@ -151,7 +151,7 @@ A cor do indicador de atualização.
 
 ### `title` <div class="label ios">iOS</div>
 
-O título exibido sob o indicador de atualização.
+The title displayed under the refresh indicator.
 
 | Type   |
 | ------ |
@@ -161,7 +161,7 @@ O título exibido sob o indicador de atualização.
 
 ### `titleColor` <div class="label ios">iOS</div>
 
-A cor do título do indicador de atualização.
+The color of the refresh indicator title.
 
 | Type               |
 | ------------------ |
@@ -171,7 +171,7 @@ A cor do título do indicador de atualização.
 
 ### RefreshLayoutConsts.SIZE
 
-As constantes do componente Android SwipeRefreshLayout. O tamanho real do componente pode variar entre os dispositivos. Você pode ler mais sobre o componente nativo na documentação [Android documentation](https://developer.android.com/reference/androidx/swiperefreshlayout/widget/SwipeRefreshLayout).
+The SwipeRefreshLayout Android component constants. The actual component size may vary between devices. You can read more about the native component in the [Android documentation](https://developer.android.com/reference/androidx/swiperefreshlayout/widget/SwipeRefreshLayout).
 
 | Type |
 | ---- |

@@ -3,9 +3,9 @@ id: switch
 title: Switch
 ---
 
-Renderiza uma entrada booleana.
+Renders a boolean input.
 
-Este é um componente controlado que requer um onValueChangeretorno de chamada que atualiza o value prop para que o componente reflita as ações do usuário. Se o valueprop não for atualizado, o componente continuará a renderizar o value prop fornecido em vez do resultado esperado de quaisquer ações do usuário.
+This is a controlled component that requires an `onValueChange` callback that updates the `value` prop in order for the component to reflect user actions. If the `value` prop is not updated, the component will continue to render the supplied `value` prop instead of the expected result of any user actions.
 
 ## Example
 
@@ -55,7 +55,7 @@ Inherits [View Props](view.md#props).
 
 ### `disabled`
 
-Se verdadeiro, o usuário não será capaz de alternar a chave.
+If true the user won't be able to toggle the switch.
 
 | Type | Default |
 | ---- | ------- |
@@ -65,7 +65,7 @@ Se verdadeiro, o usuário não será capaz de alternar a chave.
 
 ### `ios_backgroundColor` <div class="label ios">iOS</div>
 
-No iOS, cor personalizada para o plano de fundo. Essa cor de fundo pode ser vista quando o valor da chave é falseou quando a chave está desabilitada (e a chave é translúcida).
+On iOS, custom color for the background. This background color can be seen either when the switch value is `false` or when the switch is disabled (and the switch is translucent).
 
 | Type               |
 | ------------------ |
@@ -75,7 +75,7 @@ No iOS, cor personalizada para o plano de fundo. Essa cor de fundo pode ser vist
 
 ### `onChange`
 
-Chamado quando o usuário tenta alterar o valor da chave. Recebe o evento de mudança como um argumento. Se você deseja receber apenas o novo valor, use onValueChange.
+Invoked when the user tries to change the value of the switch. Receives the change event as an argument. If you want to only receive the new value, use `onValueChange` instead.
 
 | Type     |
 | -------- |
@@ -85,7 +85,7 @@ Chamado quando o usuário tenta alterar o valor da chave. Recebe o evento de mud
 
 ### `onValueChange`
 
-Chamado quando o usuário tenta alterar o valor da chave. Recebe o novo valor como argumento. Se, em vez disso, quiser receber um evento, use onChange.
+Invoked when the user tries to change the value of the switch. Receives the new value as an argument. If you want to instead receive an event, use `onChange`.
 
 | Type     |
 | -------- |
@@ -95,7 +95,7 @@ Chamado quando o usuário tenta alterar o valor da chave. Recebe o novo valor co
 
 ### `thumbColor`
 
-Cor do punho do interruptor de primeiro plano. Se estiver definido no iOS, o controle do interruptor perderá sua sombra projetada.
+Color of the foreground switch grip. If this is set on iOS, the switch grip will lose its drop shadow.
 
 | Type               |
 | ------------------ |
@@ -105,9 +105,9 @@ Cor do punho do interruptor de primeiro plano. Se estiver definido no iOS, o con
 
 ### `trackColor`
 
-Cores personalizadas para a trilha do switch.
+Custom colors for the switch track.
 
-_iOS_: quando o valor de troca é`false`, a trilha encolhe até a borda. Se você quiser alterar a cor do fundo exposto pela trilha reduzida, use [`ios_backgroundColor`](switch.md#ios_backgroundColor).
+_iOS_: When the switch value is `false`, the track shrinks into the border. If you want to change the color of the background exposed by the shrunken track, use [`ios_backgroundColor`](switch.md#ios_backgroundColor).
 
 | Type                                                            |
 | --------------------------------------------------------------- |
@@ -117,7 +117,7 @@ _iOS_: quando o valor de troca é`false`, a trilha encolhe até a borda. Se voc�
 
 ### `value`
 
-O valor do switch. Se verdadeiro, a chave será ligada. O valor padrão é falso.
+The value of the switch. If true the switch will be turned on. Default value is false.
 
 | Type |
 | ---- |

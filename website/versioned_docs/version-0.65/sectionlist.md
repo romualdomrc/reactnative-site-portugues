@@ -3,22 +3,22 @@ id: sectionlist
 title: SectionList
 ---
 
-import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
+importar guias de '@ theme / Tabs'; importar TabItem de '@ theme / TabItem'; importar constantes de '@ site / core / TabsConstants';
 
-A performant interface for rendering sectioned lists, supporting the most handy features:
+Uma interface de alto desempenho para renderizar listas seccionadas, suportando os recursos mais úteis:
 
-- Fully cross-platform.
-- Configurable viewability callbacks.
-- List header support.
-- List footer support.
-- Item separator support.
-- Section header support.
-- Section separator support.
-- Heterogeneous data and item rendering support.
-- Pull to Refresh.
-- Scroll loading.
+- Totalmente multiplataforma.
+- Callbacks de visibilidade configuráveis.
+- Suporte ao cabeçalho da lista.
+- Suporte de rodapé de lista.
+- Suporte para separador de itens.
+- Suporte ao cabeçalho da seção.
+- Suporte do separador de seção.
+- Suporte de renderização de dados e itens heterogêneos.
+- Puxe para atualizar.
+- Carregamento de rolagem.
 
-If you don't need section support and want a simpler interface, use [`<FlatList>`](flatlist.md).
+Se você não precisa de suporte de seção e deseja uma interface mais simples, use [`<FlatList>`] (flatlist.md). 
 
 ## Example
 
@@ -165,50 +165,50 @@ export default App;
 </TabItem>
 </Tabs>
 
-This is a convenience wrapper around [`<VirtualizedList>`](virtualizedlist.md), and thus inherits its props (as well as those of [`<ScrollView>`](scrollview.md)) that aren't explicitly listed here, along with the following caveats:
+Este é um wrapper de conveniência em torno de [`<VirtualizedList>`] (virtualizedlist.md) e, portanto, herda seus props (bem como aqueles de [`<ScrollView>`] (scrollview.md)) que não estão explicitamente listados aqui , junto com as seguintes advertências:
 
-- Internal state is not preserved when content scrolls out of the render window. Make sure all your data is captured in the item data or external stores like Flux, Redux, or Relay.
-- This is a `PureComponent` which means that it will not re-render if `props` remain shallow-equal. Make sure that everything your `renderItem` function depends on is passed as a prop (e.g. `extraData`) that is not `===` after updates, otherwise your UI may not update on changes. This includes the `data` prop and parent component state.
-- In order to constrain memory and enable smooth scrolling, content is rendered asynchronously offscreen. This means it's possible to scroll faster than the fill rate and momentarily see blank content. This is a tradeoff that can be adjusted to suit the needs of each application, and we are working on improving it behind the scenes.
-- By default, the list looks for a `key` prop on each item and uses that for the React key. Alternatively, you can provide a custom `keyExtractor` prop.
+- O estado interno não é preservado quando o conteúdo rola para fora da janela de renderização. Certifique-se de que todos os seus dados sejam capturados nos dados do item ou armazenamentos externos como Flux, Redux ou Relay.
+- Este é um `PureComponent`, o que significa que não será renderizado novamente se` props` permanecer raso igual. Certifique-se de que tudo de que sua função `renderItem` depende seja passado como um prop (por exemplo,` extraData`) que não é `===` após as atualizações, caso contrário, sua IU pode não ser atualizada nas mudanças. Isso inclui a propriedade `data` e o estado do componente pai.
+- Para restringir a memória e permitir a rolagem suave, o conteúdo é renderizado de forma assíncrona fora da tela. Isso significa que é possível rolar mais rápido do que a taxa de preenchimento e ver momentaneamente o conteúdo em branco. Essa é uma troca que pode ser ajustada para atender às necessidades de cada aplicativo e estamos trabalhando para melhorá-la nos bastidores.
+- Por padrão, a lista procura por uma propriedade `chave` em cada item e a usa para a chave React. Alternativamente, você pode fornecer uma prop `keyExtractor` personalizada.
 
 ---
 
-# Reference
+# Referência
 
 ## Props
 
-### [ScrollView Props](scrollview.md#props)
+### [ScrollView Props] (scrollview.md # props)
 
-Inherits [ScrollView Props](scrollview.md#props).
+Herda [ScrollView Props] (scrollview.md # props).
 
 ---
 
-### <div class="label required basic">Required</div>**`renderItem`**
+### <div class = "label required basic"> Obrigatório </div> ** `renderItem` **
 
-Default renderer for every item in every section. Can be over-ridden on a per-section basis. Should return a React element.
+Representante padrão para cada item em cada seção. Pode ser anulado em uma base por seção. Deve retornar um elemento React.
 
-| Type     |
+| Tipo |
 | -------- |
-| function |
+| função |
 
-The render function will be passed an object with the following keys:
+A função de renderização receberá um objeto com as seguintes chaves:
 
-- 'item' (object) - the item object as specified in this section's `data` key
-- 'index' (number) - Item's index within the section.
-- 'section' (object) - The full section object as specified in `sections`.
-- 'separators' (object) - An object with the following keys:
-  - 'highlight' (function) - `() => void`
-  - 'unhighlight' (function) - `() => void`
-  - 'updateProps' (function) - `(select, newProps) => void`
-    - 'select' (enum) - possible values are 'leading', 'trailing'
-    - 'newProps' (object)
+- 'item' (objeto) - o objeto do item conforme especificado na chave `data` desta seção
+- 'índice' (número) - Índice do item dentro da seção.
+- 'seção' (objeto) - O objeto de seção completa conforme especificado em `seções`.
+- 'separadores' (objeto) - Um objeto com as seguintes chaves:
+  - 'destaque' (função) - `() => void`
+  - 'unhighlight' (função) - `() => void`
+  - 'updateProps' (função) - `(selecionar, newProps) => void`
+    - 'select' (enum) - os valores possíveis são 'inicial', 'final'
+    - 'newProps' (objeto) 
 
 ---
 
 ### <div class="label required basic">Required</div>**`sections`**
 
-The actual data to render, akin to the `data` prop in [`FlatList`](flatlist.md).
+Os dados reais a serem renderizados, semelhantes ao prop `data` em [` FlatList`] (flatlist.md). 
 
 | Type                                        |
 | ------------------------------------------- |
@@ -218,97 +218,97 @@ The actual data to render, akin to the `data` prop in [`FlatList`](flatlist.md).
 
 ### `extraData`
 
-A marker property for telling the list to re-render (since it implements `PureComponent`). If any of your `renderItem`, Header, Footer, etc. functions depend on anything outside of the `data` prop, stick it here and treat it immutably.
+Uma propriedade de marcador para informar a lista para renderizar novamente (uma vez que implementa `PureComponent`). Se qualquer uma de suas funções `renderItem`, Header, Footer, etc. depender de qualquer coisa fora do prop` data`, coloque-o aqui e trate-o de forma imutável.
 
-| Type |
+| Tipo |
 | ---- |
-| any  |
+| qualquer |
 
 ---
 
 ### `initialNumToRender`
 
-How many items to render in the initial batch. This should be enough to fill the screen but not much more. Note these items will never be unmounted as part of the windowed rendering in order to improve perceived performance of scroll-to-top actions.
+Quantos itens renderizar no lote inicial. Isso deve ser suficiente para preencher a tela, mas não muito mais. Observe que esses itens nunca serão desmontados como parte da renderização em janela para melhorar o desempenho percebido das ações de rolar para cima.
 
-| Type   | Default |
+| Tipo | Padrão |
 | ------ | ------- |
-| number | `10`    |
+| número | `10` |
 
 ---
 
-### `inverted`
+### `invertido`
 
-Reverses the direction of scroll. Uses scale transforms of -1.
+Inverte a direção da rolagem. Usa transformações de escala de -1.
 
-| Type    | Default |
+| Tipo | Padrão |
 | ------- | ------- |
-| boolean | `false` |
+| booleano | `false` |
 
 ---
 
 ### `ItemSeparatorComponent`
 
-Rendered in between each item, but not at the top or bottom. By default, `highlighted`, `section`, and `[leading/trailing][Item/Section]` props are provided. `renderItem` provides `separators.highlight`/`unhighlight` which will update the `highlighted` prop, but you can also add custom props with `separators.updateProps`.
+Renderizado entre cada item, mas não na parte superior ou inferior. Por padrão, os adereços `realçados`,` seção` e `[à esquerda / à direita] [Item / Seção]` são fornecidos. `renderItem` fornece` separators.highlight` / `unhighlight` que irá atualizar o prop` realçado`, mas você também pode adicionar props personalizados com `separators.updateProps`.
 
-| Type               |
+| Tipo |
 | ------------------ |
-| component, element |
+| componente, elemento |
 
 ---
 
 ### `keyExtractor`
 
-Used to extract a unique key for a given item at the specified index. Key is used for caching and as the React key to track item re-ordering. The default extractor checks `item.key`, then falls back to using the index, like React does. Note that this sets keys for each item, but each overall section still needs its own key.
+Usado para extrair uma chave exclusiva para um determinado item no índice especificado. A chave é usada para armazenamento em cache e como a chave React para rastrear o reordenamento de itens. O extrator padrão verifica `item.key` e, em seguida, volta a usar o índice, como o React faz. Observe que isso define chaves para cada item, mas cada seção geral ainda precisa de sua própria chave.
 
-| Type                                    |
+| Tipo |
 | --------------------------------------- |
-| (item: object, index: number) => string |
+| (item: objeto, índice: número) => string |
 
 ---
 
 ### `ListEmptyComponent`
 
-Rendered when the list is empty. Can be a React Component (e.g. `SomeComponent`), or a React element (e.g. `<SomeComponent />`).
+Renderizado quando a lista está vazia. Pode ser um componente React (por exemplo, `SomeComponent`) ou um elemento React (por exemplo,` <SomeComponent /> `).
 
-| Type               |
+| Tipo |
 | ------------------ |
-| component, element |
+| componente, elemento |
 
 ---
 
 ### `ListFooterComponent`
 
-Rendered at the very end of the list. Can be a React Component (e.g. `SomeComponent`), or a React element (e.g. `<SomeComponent />`).
+Renderizado no final da lista. Pode ser um componente React (por exemplo, `SomeComponent`) ou um elemento React (por exemplo,` <SomeComponent /> `).
 
-| Type               |
+| Tipo |
 | ------------------ |
-| component, element |
+| componente, elemento |
 
 ---
 
 ### `ListHeaderComponent`
 
-Rendered at the very beginning of the list. Can be a React Component (e.g. `SomeComponent`), or a React element (e.g. `<SomeComponent />`).
+Renderizado no início da lista. Pode ser um componente React (por exemplo, `SomeComponent`) ou um elemento React (por exemplo,` <SomeComponent /> `).
 
-| Type               |
+| Tipo |
 | ------------------ |
-| component, element |
+| componente, elemento |
 
 ---
 
 ### `onEndReached`
 
-Called once when the scroll position gets within `onEndReachedThreshold` of the rendered content.
+Chamado uma vez quando a posição de rolagem fica dentro de `onEndReachedThreshold` do conteúdo renderizado.
 
-| Type                                        |
+| Tipo |
 | ------------------------------------------- |
-| (info: { distanceFromEnd: number }) => void |
+| (info: {distanceFromEnd: number}) => void |
 
 ---
 
 ### `onEndReachedThreshold`
 
-How far from the end (in units of visible length of the list) the bottom edge of the list must be from the end of the content to trigger the `onEndReached` callback. Thus a value of 0.5 will trigger `onEndReached` when the end of the content is within half the visible length of the list.
+A que distância do final (em unidades de comprimento visível da lista) a borda inferior da lista deve estar do final do conteúdo para acionar o retorno de chamada `onEndReached`. Assim, um valor de 0,5 irá disparar `onEndReached` quando o final do conteúdo estiver na metade do comprimento visível da lista. 
 
 | Type   | Default |
 | ------ | ------- |
@@ -318,103 +318,103 @@ How far from the end (in units of visible length of the list) the bottom edge of
 
 ### `onRefresh`
 
-If provided, a standard RefreshControl will be added for "Pull to Refresh" functionality. Make sure to also set the `refreshing` prop correctly. To offset the RefreshControl from the top (e.g. by 100 pts), use `progressViewOffset={100}`.
+Se fornecido, um RefreshControl padrão será adicionado para a funcionalidade "Pull to Refresh". Certifique-se também de definir o prop `refreshing` corretamente. Para deslocar o RefreshControl do topo (por exemplo, em 100 pontos), use `progressViewOffset = {100}`.
 
-| Type     |
+| Tipo |
 | -------- |
-| function |
+| função |
 
 ---
 
 ### `onViewableItemsChanged`
 
-Called when the viewability of rows changes, as defined by the `viewabilityConfig` prop.
+Chamado quando a visibilidade das linhas muda, conforme definido pela propriedade `viewabilityConfig`.
 
-| Type                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------ |
-| (callback: { changed: array of [ViewToken](viewtoken)s, viewableItems: array of [ViewToken](viewtoken)s }) => void |
+| Tipo |
+| -------------------------------------------------- -------------------------------------------------- -------------- |
+| (retorno de chamada: {alterado: matriz de [ViewToken] (viewtoken) s, viewableItems: matriz de [ViewToken] (viewtoken) s}) => void |
 
 ---
 
 ### `refreshing`
 
-Set this true while waiting for new data from a refresh.
+Defina isso como verdadeiro enquanto espera por novos dados de uma atualização.
 
-| Type    | Default |
+| Tipo | Padrão |
 | ------- | ------- |
-| boolean | `false` |
+| booleano | `false` |
 
 ---
 
 ### `removeClippedSubviews`
 
-> Note: may have bugs (missing content) in some circumstances - use at your own risk.
+> Nota: pode haver bugs (conteúdo ausente) em algumas circunstâncias - use por sua própria conta e risco.
 
-This may improve scroll performance for large lists.
+Isso pode melhorar o desempenho de rolagem para listas grandes.
 
-| Type    | Default |
+| Tipo | Padrão |
 | ------- | ------- |
-| boolean | `false` |
+| booleano | `false` |
 
 ---
 
 ### `renderSectionFooter`
 
-Rendered at the bottom of each section.
+Renderizado na parte inferior de cada seção.
 
-| Type                                                                   |
-| ---------------------------------------------------------------------- |
-| (info: { section: [Section](sectionlist#section) }) => element, `null` |
+| Tipo |
+| -------------------------------------------------- -------------------- |
+| (info: {section: [Section] (sectionlist # section)}) => elemento, `null` |
 
 ---
 
 ### `renderSectionHeader`
 
-Rendered at the top of each section. These stick to the top of the `ScrollView` by default on iOS. See `stickySectionHeadersEnabled`.
+Renderizado no topo de cada seção. Eles ficam na parte superior do `ScrollView` por padrão no iOS. Veja `stickySectionHeadersEnabled`.
 
-| Type                                                                   |
-| ---------------------------------------------------------------------- |
-| (info: { section: [Section](sectionlist#section) }) => element, `null` |
+| Tipo |
+| -------------------------------------------------- -------------------- |
+| (info: {section: [Section] (sectionlist # section)}) => elemento, `null` |
 
 ---
 
 ### `SectionSeparatorComponent`
 
-Rendered at the top and bottom of each section (note this is different from `ItemSeparatorComponent` which is only rendered between items). These are intended to separate sections from the headers above and below and typically have the same highlight response as `ItemSeparatorComponent`. Also receives `highlighted`, `[leading/trailing][Item/Section]`, and any custom props from `separators.updateProps`.
+Renderizado nas partes superior e inferior de cada seção (observe que isso é diferente de `ItemSeparatorComponent`, que só é renderizado entre itens). Eles têm como objetivo separar as seções dos cabeçalhos acima e abaixo e normalmente têm a mesma resposta de realce que `ItemSeparatorComponent`. Também recebe `realçado`,` [à esquerda / à direita] [Item / Seção] `, e quaisquer adereços personalizados de` separators.updateProps`.
 
-| Type               |
+| Tipo |
 | ------------------ |
-| component, element |
+| componente, elemento |
 
 ---
 
 ### `stickySectionHeadersEnabled`
 
-Makes section headers stick to the top of the screen until the next one pushes it off. Only enabled by default on iOS because that is the platform standard there.
+Faz com que os cabeçalhos de seção fiquem presos na parte superior da tela até que o próximo o empurre. Só habilitado por padrão no iOS porque esse é o padrão da plataforma lá.
 
-| Type    | Default                                                                                          |
-| ------- | ------------------------------------------------------------------------------------------------ |
-| boolean | `false` <div class="label android">Android</div><hr/>`true` <div className="label ios">iOS</div> |
+| Tipo | Padrão |
+| ------- | -------------------------------------------------- ---------------------------------------------- |
+| booleano | `false` <div class =" label android "> Android </div> <hr />` true` <div className = "label ios"> iOS </div> |
 
-## Methods
+## Métodos
 
-### `flashScrollIndicators()` <div class="label ios">iOS</div>
+### `flashScrollIndicators ()` <div class = "label ios"> iOS </div>
 
-```jsx
-flashScrollIndicators();
-```
+`` `jsx
+flashScrollIndicators ();
+`` `
 
-Displays the scroll indicators momentarily.
+Exibe os indicadores de rolagem momentaneamente.
 
 ---
 
-### `recordInteraction()`
+### `recordInteraction ()`
 
-```jsx
-recordInteraction();
-```
+`` `jsx
+recordInteraction ();
+`` `
 
-Tells the list an interaction has occurred, which should trigger viewability calculations, e.g. if `waitForInteractions` is true and the user has not scrolled. This is typically called by taps on items or by navigation actions.
+Informa à lista que ocorreu uma interação, o que deve acionar cálculos de visibilidade, por exemplo, se `waitForInteractions` for verdadeiro e o usuário não tiver rolado. Isso normalmente é chamado por toques em itens ou por ações de navegação. 
 
 ---
 
@@ -424,40 +424,40 @@ Tells the list an interaction has occurred, which should trigger viewability cal
 scrollToLocation(params);
 ```
 
-Scrolls to the item at the specified `sectionIndex` and `itemIndex` (within the section) positioned in the viewable area such that `viewPosition` 0 places it at the top (and may be covered by a sticky header), 1 at the bottom, and 0.5 centered in the middle.
+Rola até o item no `sectionIndex` e` itemIndex` especificados (dentro da seção) posicionado na área visível de modo que `viewPosition` 0 o coloque no topo (e pode ser coberto por um cabeçalho aderente), 1 no final e 0,5 centralizado no meio.
 
-> Note: Cannot scroll to locations outside the render window without specifying the `getItemLayout` or `onScrollToIndexFailed` prop.
+> Nota: Não é possível rolar para locais fora da janela de renderização sem especificar a propriedade `getItemLayout` ou` onScrollToIndexFailed`.
 
-**Parameters:**
+** Parâmetros: **
 
-| Name                                                    | Type   |
-| ------------------------------------------------------- | ------ |
-| params <div class="label basic required">Required</div> | object |
+| Nome Tipo |
+| -------------------------------------------------- ----- | ------ |
+| params <div class = "label basic required"> Obrigatório </div> | objeto |
 
-Valid `params` keys are:
+As chaves `params` válidas são:
 
-- 'animated' (boolean) - Whether the list should do an animation while scrolling. Defaults to `true`.
-- 'itemIndex' (number) - Index within section for the item to scroll to. Required.
-- 'sectionIndex' (number) - Index for section that contains the item to scroll to. Required.
-- 'viewOffset' (number) - A fixed number of pixels to offset the final target position, e.g. to compensate for sticky headers.
-- 'viewPosition' (number) - A value of `0` places the item specified by index at the top, `1` at the bottom, and `0.5` centered in the middle.
+- 'animado' (booleano) - Se a lista deve fazer uma animação durante a rolagem. O padrão é `true`.
+- 'itemIndex' (número) - Índice dentro da seção para o item a ser rolado. Obrigatório.
+- 'sectionIndex' (número) - Índice da seção que contém o item para o qual rolar. Obrigatório.
+- 'viewOffset' (número) - Um número fixo de pixels para compensar a posição de destino final, por exemplo, para compensar cabeçalhos fixos.
+- 'viewPosition' (número) - Um valor de `0` coloca o item especificado pelo índice no topo,` 1` na parte inferior e `0,5` centralizado no meio.
 
-## Type Definitions
+## Definições de tipo
 
-### Section
+### Seção
 
-An object that identifies the data to be rendered for a given section.
+Um objeto que identifica os dados a serem renderizados para uma determinada seção.
 
-| Type |
+| Tipo |
 | ---- |
-| any  |
+| qualquer |
 
-**Properties:**
+** Propriedades: **
 
-| Name                                                  | Type               | Description                                                                                                                                                         |
-| ----------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| data <div class="label basic required">Required</div> | array              | The data for rendering items in this section. Array of objects, much like [`FlatList`'s data prop](flatlist#data).                                                  |
-| key                                                   | string             | Optional key to keep track of section re-ordering. If you don't plan on re-ordering sections, the array index will be used by default.                              |
-| renderItem                                            | function           | Optionally define an arbitrary item renderer for this section, overriding the default [`renderItem`](sectionlist#renderitem) for the list.                          |
-| ItemSeparatorComponent                                | component, element | Optionally define an arbitrary item separator for this section, overriding the default [`ItemSeparatorComponent`](sectionlist#itemseparatorcomponent) for the list. |
-| keyExtractor                                          | function           | Optionally define an arbitrary key extractor for this section, overriding the default [`keyExtractor`](sectionlist#keyextractor).                                   |
+| Nome Tipo | Descrição
+| -------------------------------------------------- --- | ------------------ | -------------------------------------------------- -------------------------------------------------- -------------------------------------------------- ------------- |
+| data <div class = "label basic required"> Obrigatório </div> | matriz | Os dados para renderizar itens nesta seção. Array de objetos, muito parecido com a [propriedade de dados de `FlatList`] (flatlist # data). |
+| chave | string | Tecla opcional para controlar o reordenamento da seção. Se você não planeja reordenar as seções, o índice do array será usado por padrão. |
+| renderItem | função | Opcionalmente, defina um representante de item arbitrário para esta seção, sobrescrevendo o [`renderItem`] padrão (sectionlist # renderitem) para a lista. |
+| ItemSeparatorComponent | componente, elemento | Opcionalmente, defina um separador de item arbitrário para esta seção, substituindo o padrão [`ItemSeparatorComponent`] (sectionlist # itemseparatorcomponent) para a lista. |
+| keyExtractor | função | Opcionalmente, defina um extrator de chave arbitrário para esta seção, substituindo o padrão [`keyExtractor`] (lista de seção # keyextractor). | 

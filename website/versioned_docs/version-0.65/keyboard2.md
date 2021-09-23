@@ -5,11 +5,11 @@ title: Keyboard
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-Módulo `Keyboard` para controlar eventos do teclado.
+`Keyboard` module to control keyboard events.
 
-### Uso
+### Usage
 
-O módulo Teclado permite que você ouça eventos nativos e reaja a eles, além de fazer alterações no teclado, como dispensá-lo.
+The Keyboard module allows you to listen for native events and react to them, as well as make changes to the keyboard, like dismissing it.
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -138,9 +138,9 @@ export default Example;
 
 ---
 
-# Referência
+# Reference
 
-## Métodos
+## Methods
 
 ### `addListener()`
 
@@ -152,16 +152,16 @@ The `addListener` function connects a JavaScript function to an identified nativ
 
 This function then returns the reference to the listener.
 
-**Parâmetros: **
+**Parameters:**
 
-| Nome                                                                     | Tipo     | Descrição                                                                    |
+| Name                                                                     | Type     | Description                                                                    |
 | ------------------------------------------------------------------------ | -------- | ------------------------------------------------------------------------------ |
-| eventName <div className="label basic two-lines required">Required</div> | string   | A string que identifica o evento que você está ouvindo. Veja a lista abaixo. |
-| callback <div className="label basic two-lines required">Required</div>  | function | A função a ser chamada quando o evento for acionado                                 |
+| eventName <div className="label basic two-lines required">Required</div> | string   | The string that identifies the event you're listening for. See the list below. |
+| callback <div className="label basic two-lines required">Required</div>  | function | The function to be called when the event fires                                 |
 
 **`eventName`**
 
-Isso pode ser qualquer um dos seguintes:
+This can be any of the following:
 
 - `keyboardWillShow`
 - `keyboardDidShow`
@@ -170,7 +170,7 @@ Isso pode ser qualquer um dos seguintes:
 - `keyboardWillChangeFrame`
 - `keyboardDidChangeFrame`
 
-> Observe que se você definir `Android:WindowSoftInputMode` para `AdjustSize` ou `AdjustPan`, apenas os eventos `KeyboardDidShow` e `KeyboardDidHide` estarão disponíveis no Android. Se você definir `Android:WindowSoftInputMode` como `AdjustNothing`, nenhum evento estará disponível no Android. `KeyboardWillShow` assim como `KeyboardWillHide` geralmente não estão disponíveis no Android, pois não há nenhum evento nativo correspondente.
+> Note that if you set `android:windowSoftInputMode` to `adjustResize` or `adjustPan`, only `keyboardDidShow` and `keyboardDidHide` events will be available on Android. If you set `android:windowSoftInputMode` to `adjustNothing`, no events will be available on Android. `keyboardWillShow` as well as `keyboardWillHide` are generally not available on Android since there is no native corresponding event.
 
 ---
 
@@ -180,14 +180,14 @@ Isso pode ser qualquer um dos seguintes:
 static removeListener(eventName, callback)
 ```
 
-> **Descontinuado.** Use o método `remove () `na assinatura de evento retornada por [`addListener ()`] (#addlistener).
+> **Deprecated.** Use the `remove()` method on the event subscription returned by [`addListener()`](#addlistener).
 
-**Parâmetros: **
+**Parameters:**
 
-| Nome      | Tipo     | Obrigatório | Descrição                                                                    |
+| Name      | Type     | Required | Description                                                                    |
 | --------- | -------- | -------- | ------------------------------------------------------------------------------ |
-| eventName | string   | sim      | O `NativeEvent` é a string que identifica o evento que você está ouvindo |
-| callback  | function | sim      | A função a ser chamada quando o evento for acionado                                 |
+| eventName | string   | Yes      | The `nativeEvent` is the string that identifies the event you're listening for |
+| callback  | function | Yes      | The function to be called when the event fires                                 |
 
 ---
 
@@ -197,13 +197,13 @@ static removeListener(eventName, callback)
 static removeAllListeners(eventName)
 ```
 
-Remove todos os ouvintes de um tipo de evento específico.
+Removes all listeners for a specific event type.
 
-**Parâmetros: **
+**Parameters:**
 
-| Nome      | Tipo   | Obrigatório | Descrição                                                          |
+| Name      | Type   | Required | Description                                                          |
 | --------- | ------ | -------- | -------------------------------------------------------------------- |
-| eventType | string | sim      | Os ouvintes de string de eventos nativos estão observando, o que será removido. |
+| eventType | string | Yes      | The native event string listeners are watching which will be removed |
 
 ---
 
@@ -213,7 +213,7 @@ Remove todos os ouvintes de um tipo de evento específico.
 static dismiss()
 ```
 
-Descarta o teclado ativo e remove o foco.
+Dismisses the active keyboard and removes focus.
 
 ---
 
@@ -223,4 +223,4 @@ Descarta o teclado ativo e remove o foco.
 static scheduleLayoutAnimation(event)
 ```
 
-Útil para sincronizar o TextInput (ou outro acessório de teclado), o tamanho das mudanças de posição com os movimentos do teclado.
+Useful for syncing TextInput (or other keyboard accessory view) size of position changes with keyboard movements.

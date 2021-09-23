@@ -3,9 +3,9 @@ id: interactionmanager
 title: InteractionManager
 ---
 
-O InteractionManager permite que o trabalho de longa duração seja agendado após a conclusão de quaisquer interações/animações. Em particular, isso permite que as animações JavaScript sejam executadas sem problemas.
+InteractionManager allows long-running work to be scheduled after any interactions/animations have completed. In particular, this allows JavaScript animations to run smoothly.
 
-Os aplicativos podem agendar tarefas para serem executadas após interações com o seguinte:
+Applications can schedule tasks to run after interactions with the following:
 
 ```jsx
 InteractionManager.runAfterInteractions(() => {
@@ -13,15 +13,15 @@ InteractionManager.runAfterInteractions(() => {
 });
 ```
 
-Compare isso com outras alternativas de agendamento:
+Compare this to other scheduling alternatives:
 
-- requestAnimationFrame (): para código que anima uma exibição ao longo do tempo.
-- setImmediate/setTimeout (): execute o código mais tarde, observe que isso pode atrasar as animações.
-- runAfterInteractions (): execute o código mais tarde, sem atrasar as animações ativas.
+- requestAnimationFrame(): for code that animates a view over time.
+- setImmediate/setTimeout(): run code later, note this may delay animations.
+- runAfterInteractions(): run code later, without delaying active animations.
 
-O sistema de tratamento de toque considera um ou mais toques ativos como uma 'interação' e atrasará os retornos de chamada `runAfterInteractions () `até que todos os toques tenham terminado ou sejam cancelados.
+The touch handling system considers one or more active touches to be an 'interaction' and will delay `runAfterInteractions()` callbacks until all touches have ended or been cancelled.
 
-O InteractionManager também permite que os aplicativos registrem animações criando um “identificador” de interação no início da animação e limpe-o após a conclusão:
+InteractionManager also allows applications to register animations by creating an interaction 'handle' on animation start, and clearing it upon completion:
 
 ```jsx
 var handle = InteractionManager.createInteractionHandle();
@@ -31,15 +31,15 @@ InteractionManager.clearInteractionHandle(handle);
 // queued tasks run if all handles were cleared
 ```
 
-`RunAfterInteractions` usa uma função de retorno de chamada simples ou um objeto `PromiseTask` com um método` gen` que retorna um `Promise`. Se um `PromiseTask` for fornecido, ele será totalmente resolvido (incluindo dependências assíncronas que também programam mais tarefas via `RunAfterInteractions`) antes de iniciar a próxima tarefa que pode ter sido enfileirada de forma síncrona anteriormente.
+`runAfterInteractions` takes either a plain callback function, or a `PromiseTask` object with a `gen` method that returns a `Promise`. If a `PromiseTask` is supplied, then it is fully resolved (including asynchronous dependencies that also schedule more tasks via `runAfterInteractions`) before starting on the next task that might have been queued up synchronously earlier.
 
-Por padrão, as tarefas enfileiradas são executadas juntas em um loop em um lote `setImmediate`. Se `setDeadline` for chamado com um número positivo, as tarefas só serão executadas até que o prazo (em termos de tempo de execução do loop de eventos js) se aproxime, momento em que a execução será produzida via setTimeout, permitindo que eventos como toques iniciem interações e bloqueiem a execução de tarefas em fila, tornando os aplicativos mais responsivo.
+By default, queued tasks are executed together in a loop in one `setImmediate` batch. If `setDeadline` is called with a positive number, then tasks will only be executed until the deadline (in terms of js event loop run time) approaches, at which point execution will yield via setTimeout, allowing events such as touches to start interactions and block queued tasks from executing, making apps more responsive.
 
 ---
 
-## Exemplo
+## Example
 
-### Básico
+### Basic
 
 ```SnackPlayer name=InteractionManager%20Function%20Component%20Basic%20Example&supportedPlatforms=ios,android
 import React, { useState, useEffect } from "react";
@@ -185,9 +185,9 @@ export default App;
 
 > **Note**: `InteractionManager.runAfterInteractions()` is not working properly on web. It triggers immediately without waiting until the interaction is finished.
 
-# Referência
+# Reference
 
-## Métodos
+## Methods
 
 ### `runAfterInteractions()`
 
@@ -195,7 +195,7 @@ export default App;
 static runAfterInteractions(task)
 ```
 
-Agende uma função para ser executada após a conclusão de todas as interações. Retorna uma “promessa” cancelável.
+Schedule a function to run after all interactions have completed. Returns a cancellable "promise".
 
 ---
 
@@ -205,7 +205,7 @@ Agende uma função para ser executada após a conclusão de todas as interaçõ
 static createInteractionHandle()
 ```
 
-Notifique o gerente de que uma interação foi iniciada.
+Notify manager that an interaction has started.
 
 ---
 
@@ -215,7 +215,7 @@ Notifique o gerente de que uma interação foi iniciada.
 static clearInteractionHandle(handle)
 ```
 
-Notifique o gerente de que uma interação foi concluída.
+Notify manager that an interaction has completed.
 
 ---
 
@@ -225,4 +225,4 @@ Notifique o gerente de que uma interação foi concluída.
 static setDeadline(deadline)
 ```
 
-Um número positivo usará setTimeout para agendar quaisquer tarefas após o EventLoopRunningTime atingir o valor do prazo, caso contrário, todas as tarefas serão executadas em um lote setImmediate (padrão).
+A positive number will use setTimeout to schedule any tasks after the eventLoopRunningTime hits the deadline value, otherwise all tasks will be executed in one setImmediate batch (default).

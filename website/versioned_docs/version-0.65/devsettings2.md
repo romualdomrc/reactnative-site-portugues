@@ -3,13 +3,13 @@ id: devsettings
 title: DevSettings
 ---
 
-O módulo `DevSettings` expõe métodos para personalizar configurações para desenvolvedores em desenvolvimento.
+The `DevSettings` module exposes methods for customizing settings for developers in development.
 
 ---
 
-# Referência
+# Reference
 
-## Métodos
+## Methods
 
 ### `addMenuItem()`
 
@@ -17,16 +17,16 @@ O módulo `DevSettings` expõe métodos para personalizar configurações para d
 static addMenuItem(title, handler)
 ```
 
-Adicione um item de menu personalizado ao menu do desenvolvedor.
+Add a custom menu item to the developer menu.
 
-**Parâmetros: **
+**Parameters:**
 
-| Nome                                                         | Tipo     |
+| Name                                                         | Type     |
 | ------------------------------------------------------------ | -------- |
 | title <div className="label basic required">Required</div>   | string   |
 | handler <div className="label basic required">Required</div> | function |
 
-**Exemplo: **
+**Example:**
 
 ```jsx
 DevSettings.addMenuItem('Show Secret Dev Screen', () => {
@@ -42,9 +42,9 @@ DevSettings.addMenuItem('Show Secret Dev Screen', () => {
 static reload()
 ```
 
-Recarregue o aplicativo. Pode ser invocado diretamente ou na interação do usuário.
+Reload the application. Can be invoked directly or on user interaction.
 
-**Exemplo: **
+**Example:**
 
 ```jsx
 <Button title="Reload" onPress={() => DevSettings.reload()} />

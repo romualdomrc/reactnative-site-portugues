@@ -3,32 +3,32 @@ id: easing
 title: Easing
 ---
 
-O módulo `Easing` implementa funções de atenuação comuns. Este módulo é usado por [Animated.Timing ()] (animated.md #timing) para transmitir movimentos fisicamente críveis em animações.
+The `Easing` module implements common easing functions. This module is used by [Animated.timing()](animated.md#timing) to convey physically believable motion in animations.
 
-Você pode encontrar uma visualização de algumas funções de atenuação comuns em http://easings.net/
+You can find a visualization of some common easing functions at http://easings.net/
 
-### Animações predefinidas
+### Predefined animations
 
 The `Easing` module provides several predefined animations through the following methods:
 
-- [`back`] (easing.md #back) fornece uma animação básica em que o objeto volta um pouco antes de avançar
-- [`bounce`] (easing.md #bounce) fornece uma animação saltitante
-- [`ease`] (easing.md #ease) fornece uma animação inercial básica
-- [`elastic`] (easing.md #elastic) fornece uma interação básica de mola
+- [`back`](easing.md#back) provides a basic animation where the object goes slightly back before moving forward
+- [`bounce`](easing.md#bounce) provides a bouncing animation
+- [`ease`](easing.md#ease) provides a basic inertial animation
+- [`elastic`](easing.md#elastic) provides a basic spring interaction
 
-### Funções padrão
+### Standard functions
 
-Três funções de atenuação padrão são fornecidas:
+Three standard easing functions are provided:
 
 - [`linear`](easing.md#linear)
 - [`quad`](easing.md#quad)
 - [`cubic`](easing.md#cubic)
 
-A função [`poly`] (easing.md #poly) pode ser usada para implementar funções quárticas, quínticas e outras funções de potência superior.
+The [`poly`](easing.md#poly) function can be used to implement quartic, quintic, and other higher power functions.
 
-### Funções adicionais
+### Additional functions
 
-Funções matemáticas adicionais são fornecidas pelos seguintes métodos:
+Additional mathematical functions are provided by the following methods:
 
 - [`bezier`](easing.md#bezier) provides a cubic bezier curve
 - [`circle`](easing.md#circle) provides a circular function

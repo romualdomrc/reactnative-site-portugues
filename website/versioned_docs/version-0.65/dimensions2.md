@@ -5,24 +5,24 @@ title: Dimensions
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-> [`UseWindowDimensions`] (usewindowdimensions) é a API preferida para componentes React. Ao contrário de `Dimensões`, ele é atualizado à medida que as dimensões da janela são atualizadas. Isso funciona bem com o paradigma React.
+> [`useWindowDimensions`](usewindowdimensions) is the preferred API for React components. Unlike `Dimensions`, it updates as the window's dimensions update. This works nicely with the React paradigm.
 
 ```jsx
 import { Dimensions } from 'react-native';
 ```
 
-Você pode obter a largura e a altura da janela do aplicativo usando o seguinte código:
+You can get the application window's width and height using the following code:
 
 ```jsx
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 ```
 
-> Embora as dimensões estejam disponíveis imediatamente, elas podem mudar (por exemplo, devido à rotação do dispositivo, dispositivos dobráveis, etc.), portanto, qualquer lógica de renderização ou estilos que dependam dessas constantes deve tentar chamar essa função em cada renderização, em vez de armazenar em cache o valor (por exemplo, usando estilos embutidos em vez de definir um valor em uma `StyleSheet`).
+> Although dimensions are available immediately, they may change (e.g due to device rotation, foldable devices etc) so any rendering logic or styles that depend on these constants should try to call this function on every render, rather than caching the value (for example, using inline styles rather than setting a value in a `StyleSheet`).
 
-Se você estiver direcionando dispositivos dobráveis ou dispositivos que podem alterar o tamanho da tela ou o tamanho da janela do aplicativo, você pode usar o ouvinte de eventos disponível no módulo Dimensões, conforme mostrado no exemplo abaixo.
+If you are targeting foldable devices or devices which can change the screen size or app window size, you can use the event listener available in the Dimensions module as shown in the below example.
 
-## Exemplo
+## Example
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -142,9 +142,9 @@ export default App;
 </TabItem>
 </Tabs>
 
-# Referência
+# Reference
 
-## Métodos
+## Methods
 
 ### `addEventListener()`
 
@@ -152,9 +152,9 @@ export default App;
 static addEventListener(type, handler)
 ```
 
-Adicione um manipulador de eventos. Eventos com suporte:
+Add an event handler. Supported events:
 
-- `change`: É acionado quando uma propriedade dentro do objeto `Dimensões` muda. O argumento para o manipulador de eventos é um objeto do tipo [`DimensionsValue`] (#dimensionsvalue).
+- `change`: Fires when a property within the `Dimensions` object changes. The argument to the event handler is a [`DimensionsValue`](#dimensionsvalue) type object.
 
 ---
 
@@ -164,17 +164,17 @@ Adicione um manipulador de eventos. Eventos com suporte:
 static get(dim)
 ```
 
-As dimensões iniciais são definidas antes de `RunApplication` ser chamado, portanto, elas devem estar disponíveis antes de qualquer outro requisito ser executado, mas podem ser atualizadas posteriormente.
+Initial dimensions are set before `runApplication` is called so they should be available before any other require's are run, but may be updated later.
 
-Exemplo: `const {height, width} = dimensions.get ('janela'); `
+Example: `const {height, width} = Dimensions.get('window');`
 
-**Parâmetros: **
+**Parameters:**
 
-| Nome                                                               | Tipo   | Descrição                                                                       |
+| Name                                                               | Type   | Description                                                                       |
 | ------------------------------------------------------------------ | ------ | --------------------------------------------------------------------------------- |
-| dim <div className="label basic required two-lines">Required</div> | string | Nome da dimensão conforme definido ao chamar `set`. Retorna o valor da dimensão. |
+| dim <div className="label basic required two-lines">Required</div> | string | Name of dimension as defined when calling `set`. Returns value for the dimension. |
 
-> Para Android, a dimensão `janela` excluirá o tamanho usado pela `barra de status` (se não translúcida) e `barra de navegação inferior`
+> For Android the `window` dimension will exclude the size used by the `status bar` (if not translucent) and `bottom navigation bar`
 
 ---
 
@@ -184,7 +184,7 @@ Exemplo: `const {height, width} = dimensions.get ('janela'); `
 static removeEventListener(type, handler)
 ```
 
-> **Descontinuado.** Use o método `remove () `na assinatura de evento retornada por [`addEventListener ()`] (#addeventlistener).
+> **Deprecated.** Use the `remove()` method on the event subscription returned by [`addEventListener()`](#addeventlistener).
 
 ---
 
@@ -194,36 +194,36 @@ static removeEventListener(type, handler)
 static set(dims)
 ```
 
-Isso só deve ser chamado a partir do código nativo enviando o evento `DidUpdateDimensions`.
+This should only be called from native code by sending the `didUpdateDimensions` event.
 
-**Parâmetros: **
+**Parameters:**
 
-| Nome                                                      | Tipo   | Descrição                               |
+| Name                                                      | Type   | Description                               |
 | --------------------------------------------------------- | ------ | ----------------------------------------- |
-| dims <div className="label basic required">Required</div> | object | Objeto de dimensões com chave de string a ser definido. |
+| dims <div className="label basic required">Required</div> | object | String-keyed object of dimensions to set. |
 
 ---
 
-## Definições de tipo
+## Type Definitions
 
 ### DimensionsValue
 
-**Propriedades: **
+**Properties:**
 
-| Nome   | Tipo                                        | Descrição                             |
+| Name   | Type                                        | Description                             |
 | ------ | ------------------------------------------- | --------------------------------------- |
-| window | [DisplayMetrics](dimensions#displaymetrics) | Tamanho da janela do aplicativo visível. |
-| screen | [DisplayMetrics](dimensions#displaymetrics) | Tamanho da tela do dispositivo.            |
+| window | [DisplayMetrics](dimensions#displaymetrics) | Size of the visible Application window. |
+| screen | [DisplayMetrics](dimensions#displaymetrics) | Size of the device's screen.            |
 
 ### DisplayMetrics
 
-| Tipo   |
+| Type   |
 | ------ |
 | object |
 
-**Propriedades: **
+**Properties:**
 
-| Nome      | Tipo   |
+| Name      | Type   |
 | --------- | ------ |
 | width     | number |
 | height    | number |

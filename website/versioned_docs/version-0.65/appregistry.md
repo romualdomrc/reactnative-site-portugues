@@ -3,14 +3,14 @@ id: appregistry
 title: AppRegistry
 ---
 
-<div className="banner-native-code-required">
-  <h3>Project with Native Code Required</h3>
-  <p>
-    If you are using the managed <code>expo-cli</code> workflow there is only ever one entry component registered with <code>AppRegistry</code> and it is handled automatically, you do not need to use this API.
-  </p>
-</div>
+ <div className="banner-native-code-required"> 
+ <h3> Projeto com código nativo necessário </h3> 
+ <p> 
+ Se você estiver usando o fluxo de trabalho gerenciado <code> expo-cli </code>, há apenas um componente de entrada registrado com <code> AppRegistry </code> e ele é tratado automaticamente, você não precisa usar essa API.
+ </p> 
+ </div> 
 
-`AppRegistry` is the JS entry point to running all React Native apps. App root components should register themselves with `AppRegistry.registerComponent`, then the native system can load the bundle for the app and then actually run the app when it's ready by invoking `AppRegistry.runApplication`.
+`AppRegistry` é o ponto de entrada JS para executar todos os aplicativos React Native. Os componentes raiz do aplicativo devem se registrar com `AppRegistry.registerComponent`, então o sistema nativo pode carregar o pacote para o aplicativo e, em seguida, executar o aplicativo quando ele estiver pronto, invocando `appRegistry.runApplication`.
 
 ```jsx
 import { Text, AppRegistry } from 'react-native';
@@ -24,15 +24,15 @@ const App = (props) => (
 AppRegistry.registerComponent('Appname', () => App);
 ```
 
-To "stop" an application when a view should be destroyed, call `AppRegistry.unmountApplicationComponentAtRootTag` with the tag that was passed into `runApplication`. These should always be used as a pair.
+Para “parar” um aplicativo quando uma visualização deve ser destruída, chame `AppRegistry.UnmountApplicationComponentaTrootTag` com a tag que foi passada para `RunApplication`. Eles sempre devem ser usados como um par.
 
-`AppRegistry` should be required early in the `require` sequence to make sure the JS execution environment is setup before other modules are required.
+O `AppRegistro de aplicação` deve ser necessário no início da sequência `require` para garantir que o ambiente de execução JS esteja configurado antes que outros módulos sejam necessários.
 
 ---
 
-# Reference
+# Referência
 
-## Methods
+## Métodos
 
 ### `cancelHeadlessTask()`
 
@@ -40,14 +40,14 @@ To "stop" an application when a view should be destroyed, call `AppRegistry.unmo
 static cancelHeadlessTask(taskId, taskKey)
 ```
 
-Only called from native code. Cancels a headless task.
+Chamado apenas de código nativo. Cancela uma tarefa sem cabeça.
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                         | Type   | Description                                                                             |
+| Nome                                                         | Tipo   | Descrição                                                                             |
 | ------------------------------------------------------------ | ------ | --------------------------------------------------------------------------------------- |
-| taskId <div className="label basic required">Required</div>  | number | The native id for this task instance that was used when `startHeadlessTask` was called. |
-| taskKey <div className="label basic required">Required</div> | string | The key for the task that was used when `startHeadlessTask` was called.                 |
+| taskId <div className="label basic required">Required</div>  | number | O id nativo dessa instância de tarefa que foi usado quando `StartEadlessTask` foi chamado. |
+| taskKey <div className="label basic required">Required</div> | string | A chave para a tarefa que foi usada quando `StartEadlessTask` foi chamada.                 |
 
 ---
 
@@ -57,9 +57,9 @@ Only called from native code. Cancels a headless task.
 static enableArchitectureIndicator(enabled)
 ```
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                         | Type    |
+| Nome                                                         | Tipo    |
 | ------------------------------------------------------------ | ------- |
 | enabled <div className="label basic required">Required</div> | boolean |
 
@@ -71,7 +71,7 @@ static enableArchitectureIndicator(enabled)
 static getAppKeys()
 ```
 
-Returns an array of strings.
+Retorna uma matriz de strings.
 
 ---
 
@@ -81,7 +81,7 @@ Returns an array of strings.
 static getRegistry()
 ```
 
-Returns a [Registry](appregistry#registry) object.
+Retorna um objeto [Registry] (appregistry #registry).
 
 ---
 
@@ -91,11 +91,11 @@ Returns a [Registry](appregistry#registry) object.
 static getRunnable(appKey)
 ```
 
-Returns a [Runnable](appregistry#runnable) object.
+Retorna um objeto [Runnable] (appregistry #runnable).
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                        | Type   |
+| Nome                                                        | Tipo   |
 | ----------------------------------------------------------- | ------ |
 | appKey <div className="label basic required">Required</div> | string |
 
@@ -107,7 +107,7 @@ Returns a [Runnable](appregistry#runnable) object.
 static getSectionKeys()
 ```
 
-Returns an array of strings.
+Retorna uma matriz de strings.
 
 ---
 
@@ -117,7 +117,7 @@ Returns an array of strings.
 static getSections()
 ```
 
-Returns a [Runnables](appregistry#runnables) object.
+Retorna um objeto [Runnables] (appregistry #runnables).
 
 ---
 
@@ -127,15 +127,15 @@ Returns a [Runnables](appregistry#runnables) object.
 static registerCancellableHeadlessTask(taskKey, taskProvider, taskCancelProvider)
 ```
 
-Register a headless task which can be cancelled. A headless task is a bit of code that runs without a UI.
+Registre uma tarefa sem cabeça que pode ser cancelada. Uma tarefa sem cabeça é um pouco de código que é executado sem uma interface do usuário.
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                                                  | Type                                                 | Description                                                                                                                                                                                                                         |
+| Nome                                                                                  | Tipo                                                 | Descrição                                                                                                                                                                                                                         |
 | ------------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| taskKey<br/><div className="label basic required two-lines">Required</div>            | string                                               | The native id for this task instance that was used when startHeadlessTask was called.                                                                                                                                               |
-| taskProvider<br/><div className="label basic required two-lines">Required</div>       | [TaskProvider](appregistry#taskprovider)             | A promise returning function that takes some data passed from the native side as the only argument. When the promise is resolved or rejected the native side is notified of this event and it may decide to destroy the JS context. |
-| taskCancelProvider<br/><div className="label basic required two-lines">Required</div> | [TaskCancelProvider](appregistry#taskcancelprovider) | a void returning function that takes no arguments; when a cancellation is requested, the function being executed by taskProvider should wrap up and return ASAP.                                                                    |
+| taskKey<br/><div className="label basic required two-lines">Required</div>            | string                                               | O id nativo dessa instância de tarefa que foi usado quando StartEadlessTask foi chamado.                                                                                                                                               |
+| taskProvider<br/><div className="label basic required two-lines">Required</div>       | [TaskProvider](appregistry#taskprovider)             | Uma função de retorno de promessa que usa alguns dados passados do lado nativo como o único argumento. Quando a promessa é resolvida ou rejeitada, o lado nativo é notificado desse evento e pode decidir destruir o contexto JS. |
+| taskCancelProvider<br/><div className="label basic required two-lines">Required</div> | [TaskCancelProvider](appregistry#taskcancelprovider) | uma função de retorno vazio que não aceita argumentos; quando um cancelamento é solicitado, a função que está sendo executada pelo TaskProvider deve encerrar e retornar o mais rápido possível.                                                                    |
 
 ---
 
@@ -145,9 +145,9 @@ Register a headless task which can be cancelled. A headless task is a bit of cod
 static registerComponent(appKey, componentProvider, section?)
 ```
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                                   | Type              |
+| Nome                                                                   | Tipo              |
 | ---------------------------------------------------------------------- | ----------------- |
 | appKey <div className="label basic required">Required</div>            | string            |
 | componentProvider <div className="label basic required">Required</div> | ComponentProvider |
@@ -161,9 +161,9 @@ static registerComponent(appKey, componentProvider, section?)
 static registerConfig(config)
 ```
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                        | Type                               |
+| Nome                                                        | Tipo                               |
 | ----------------------------------------------------------- | ---------------------------------- |
 | config <div className="label basic required">Required</div> | [AppConfig](appregistry#appconfig) |
 
@@ -175,16 +175,16 @@ static registerConfig(config)
 static registerHeadlessTask(taskKey, taskProvider)
 ```
 
-Register a headless task. A headless task is a bit of code that runs without a UI.
+Registre uma tarefa sem cabeça. Uma tarefa sem cabeça é um pouco de código que é executado sem uma interface do usuário.
 
-This is a way to run tasks in JavaScript while your app is in the background. It can be used, for example, to sync fresh data, handle push notifications, or play music.
+Essa é uma forma de executar tarefas em JavaScript enquanto o aplicativo está em segundo plano. Ele pode ser usado, por exemplo, para sincronizar dados novos, lidar com notificações push ou reproduzir música.
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                                        | Type                                     | Description                                                                                                                                                                                                                         |
+| Nome                                                                        | Tipo                                     | Descrição                                                                                                                                                                                                                         |
 | --------------------------------------------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| taskKey <div className="label basic required two-lines">Required</div>      | string                                   | The native id for this task instance that was used when startHeadlessTask was called.                                                                                                                                               |
-| taskProvider <div className="label basic required two-lines">Required</div> | [TaskProvider](appregistry#taskprovider) | A promise returning function that takes some data passed from the native side as the only argument. When the promise is resolved or rejected the native side is notified of this event and it may decide to destroy the JS context. |
+| taskKey <div className="label basic required two-lines">Required</div>      | string                                   | O id nativo dessa instância de tarefa que foi usado quando StartEadlessTask foi chamado.                                                                                                                                               |
+| taskProvider <div className="label basic required two-lines">Required</div> | [TaskProvider](appregistry#taskprovider) | Uma função de retorno de promessa que usa alguns dados passados do lado nativo como o único argumento. Quando a promessa é resolvida ou rejeitada, o lado nativo é notificado desse evento e pode decidir destruir o contexto JS. |
 
 ---
 
@@ -194,9 +194,9 @@ This is a way to run tasks in JavaScript while your app is in the background. It
 static registerRunnable(appKey, run)
 ```
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                        | Type     |
+| Nome                                                        | Tipo     |
 | ----------------------------------------------------------- | -------- |
 | appKey <div className="label basic required">Required</div> | string   |
 | run <div className="label basic required">Required</div>    | function |
@@ -209,9 +209,9 @@ static registerRunnable(appKey, run)
 static registerSection(appKey, component)
 ```
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                           | Type              |
+| Nome                                                           | Tipo              |
 | -------------------------------------------------------------- | ----------------- |
 | appKey <div className="label basic required">Required</div>    | string            |
 | component <div className="label basic required">Required</div> | ComponentProvider |
@@ -224,11 +224,11 @@ static registerSection(appKey, component)
 static runApplication(appKey, appParameters)
 ```
 
-Loads the JavaScript bundle and runs the app.
+Carrega o pacote JavaScript e executa o aplicativo.
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                               | Type   |
+| Nome                                                               | Tipo   |
 | ------------------------------------------------------------------ | ------ |
 | appKey <div className="label basic required">Required</div>        | string |
 | appParameters <div className="label basic required">Required</div> | any    |
@@ -241,20 +241,20 @@ Loads the JavaScript bundle and runs the app.
 static setComponentProviderInstrumentationHook(hook)
 ```
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                      | Type     |
+| Nome                                                      | Tipo     |
 | --------------------------------------------------------- | -------- |
 | hook <div className="label basic required">Required</div> | function |
 
-A valid `hook` function accepts the following as arguments:
+Uma função `hook` válida aceita o seguinte como argumentos:
 
-| Name                                                                         | Type               |
+| Nome                                                                         | Tipo               |
 | ---------------------------------------------------------------------------- | ------------------ |
 | component <div className="label basic required">Required</div>               | ComponentProvider  |
 | scopedPerformanceLogger <div className="label basic required">Required</div> | IPerformanceLogger |
 
-The function must also return a React Component.
+A função também deve retornar um Componente React.
 
 ---
 
@@ -264,9 +264,9 @@ The function must also return a React Component.
 static setWrapperComponentProvider(provider)
 ```
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                          | Type              |
+| Nome                                                          | Tipo              |
 | ------------------------------------------------------------- | ----------------- |
 | provider <div className="label basic required">Required</div> | ComponentProvider |
 
@@ -278,13 +278,13 @@ static setWrapperComponentProvider(provider)
 static startHeadlessTask(taskId, taskKey, data)
 ```
 
-Only called from native code. Starts a headless task.
+Chamado apenas de código nativo. Inicia uma tarefa sem cabeça.
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                         | Type   | Description                                                          |
+| Nome                                                         | Tipo   | Descrição                                                          |
 | ------------------------------------------------------------ | ------ | -------------------------------------------------------------------- |
-| taskId <div className="label basic required">Required</div>  | number | The native id for this task instance to keep track of its execution. |
+| taskId <div className="label basic required">Required</div>  | number | O id nativo dessa instância de tarefa para acompanhar sua execução. |
 | taskKey <div className="label basic required">Required</div> | string | The key for the task to start.                                       |
 | data <div className="label basic required">Required</div>    | any    | The data to pass to the task.                                        |
 
@@ -296,11 +296,11 @@ Only called from native code. Starts a headless task.
 static unmountApplicationComponentAtRootTag(rootTag)
 ```
 
-Stops an application when a view should be destroyed.
+Interrompe um aplicativo quando uma exibição deve ser destruída.
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                         | Type   |
+| Nome                                                         | Tipo   |
 | ------------------------------------------------------------ | ------ |
 | rootTag <div className="label basic required">Required</div> | number |
 
@@ -308,22 +308,22 @@ Stops an application when a view should be destroyed.
 
 ### AppConfig
 
-Application configuration for the `registerConfig` method.
+Configuração do aplicativo para o método `RegisterConfig`.
 
 | Type   |
 | ------ |
 | object |
 
-**Properties:**
+**Propriedades: **
 
-| Name                                                        | Type              |
+| Nome                                                        | Tipo              |
 | ----------------------------------------------------------- | ----------------- |
 | appKey <div className="label basic required">Required</div> | string            |
 | component                                                   | ComponentProvider |
 | run                                                         | function          |
 | section                                                     | boolean           |
 
-> **Note:** Every config is expected to set either `component` or `run` function.
+> **Nota: ** Espera-se que toda configuração defina a função `component` ou` run`.
 
 ### Registry
 
@@ -333,10 +333,10 @@ Application configuration for the `registerConfig` method.
 
 **Properties:**
 
-| Name      | Type                                       |
+| Nome      | Tipo                                       |
 | --------- | ------------------------------------------ |
-| runnables | array of [Runnables](appregistry#runnable) |
-| sections  | array of strings                           |
+| runnables | matriz de [Runnables] (registro de appregistry #runnable) |
+| sections  | matriz de cordas                           |
 
 ### Runnable
 
@@ -344,16 +344,16 @@ Application configuration for the `registerConfig` method.
 | ------ |
 | object |
 
-**Properties:**
+**Propriedades: **
 
-| Name      | Type              |
+| Nome      | Tipo              |
 | --------- | ----------------- |
 | component | ComponentProvider |
 | run       | function          |
 
 ### Runnables
 
-An object with key of `appKey` and value of type of [`Runnable`](appregistry#runnable).
+Um objeto com chave de `AppKey` e valor do tipo de [`Runnable`] (appregistry #runnable).
 
 | Type   |
 | ------ |
@@ -361,7 +361,7 @@ An object with key of `appKey` and value of type of [`Runnable`](appregistry#run
 
 ### Task
 
-A `Task` is a function that accepts any data as argument and returns a Promise that resolves to `undefined`.
+Uma `Tarefa` é uma função que aceita qualquer dado como argumento e retorna uma Promessa que resolve para `indefinido`.
 
 | Type     |
 | -------- |
@@ -369,7 +369,7 @@ A `Task` is a function that accepts any data as argument and returns a Promise t
 
 ### TaskCanceller
 
-A `TaskCanceller` is a function that accepts no argument and returns void.
+Um `TaskCanceller` é uma função que não aceita argumentos e retorna void.
 
 | Type     |
 | -------- |
@@ -377,7 +377,7 @@ A `TaskCanceller` is a function that accepts no argument and returns void.
 
 ### TaskCancelProvider
 
-A valid `TaskCancelProvider` is a function that returns a [`TaskCanceller`](appregistry#taskcanceller).
+Um `TaskCancelProvider` válido é uma função que retorna um [`TaskCanceller`] (appregistry #taskcanceller).
 
 | Type     |
 | -------- |
@@ -385,7 +385,7 @@ A valid `TaskCancelProvider` is a function that returns a [`TaskCanceller`](appr
 
 ### TaskProvider
 
-A valid `TaskProvider` is a function that returns a [`Task`](appregistry#task).
+Um `TaskProvider` válido é uma função que retorna um [`Task`] (appregistry #task).
 
 | Type     |
 | -------- |

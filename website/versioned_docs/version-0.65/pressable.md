@@ -3,235 +3,236 @@ id: pressable
 title: Pressable
 ---
 
-Pressable is a Core Component wrapper that can detect various stages of press interactions on any of its defined children.
+Pressable é um wrapper de Core Component que pode detectar vários estágios de interações de impressão em qualquer um de seus filhos definidos.
 
-```jsx
-<Pressable onPress={onPressFunction}>
-  <Text>I'm pressable!</Text>
+`` `jsx
+<Pressable onPress = {onPressFunction}>
+  <Text> Sou pressionável! </Text>
 </Pressable>
-```
+`` `
 
-## How it works
+## Como funciona
 
-On an element wrapped by `Pressable`:
+Em um elemento envolvido por `Pressable`:
 
-- [`onPressIn`](#onpressin) is called when a press is activated.
-- [`onPressOut`](#onpressout) is called when the press gesture is deactivated.
+- [`onPressIn`] (# onpressin) é chamado quando um pressionamento é ativado.
+- [`onPressOut`] (# onpressout) é chamado quando o gesto de pressionar é desativado.
 
-After pressing [`onPressIn`](#onpressin), one of two things will happen:
+Depois de pressionar [`onPressIn`] (# onpressin), uma de duas coisas acontecerá:
 
-1. The person will remove their finger, triggering [`onPressOut`](#onpressout) followed by [`onPress`](#onpress).
-2. If the person leaves their finger longer than 500 milliseconds before removing it, [`onLongPress`](#onlongpress) is triggered. ([`onPressOut`](#onpressout) will still fire when they remove their finger.)
+1. A pessoa removerá o dedo, acionando [`onPressOut`] (# onpressout) seguido por [` onPress`] (# onpress).
+2. Se a pessoa deixar o dedo por mais de 500 milissegundos antes de removê-lo, [`onLongPress`] (# onlongpress) será acionado. ([`onPressOut`] (# onpressout) ainda irá disparar quando eles removerem o dedo.)
 
-<img src="/docs/assets/d_pressable_pressing.svg" width="1000" alt="Diagram of the onPress events in sequence." />
+<img src = "/ docs / assets / d_pressable_pressing.svg" width = "1000" alt = "Diagrama dos eventos onPress em sequência." />
 
-Fingers are not the most precise instruments, and it is common for users to accidentally activate the wrong element or miss the activation area. To help, `Pressable` has an optional `HitRect` you can use to define how far a touch can register away from the wrapped element. Presses can start anywhere within a `HitRect`.
+Os dedos não são os instrumentos mais precisos e é comum os usuários ativar acidentalmente o elemento errado ou perder a área de ativação. Para ajudar, `Pressable` tem um` HitRect` opcional que você pode usar para definir o quão longe um toque pode ser registrado longe do elemento empacotado. As impressoras podem começar em qualquer lugar dentro de um `HitRect`.
 
-`PressRect` allows presses to move beyond the element and its `HitRect` while maintaining activation and being eligible for a "press"—think of sliding your finger slowly away from a button you're pressing down on.
+`PressRect` permite que os pressionamentos se movam além do elemento e seu` HitRect`, mantendo a ativação e sendo elegível para um "pressionamento" - pense em deslizar o dedo lentamente para longe de um botão que está pressionando.
 
-> The touch area never extends past the parent view bounds and the Z-index of sibling views always takes precedence if a touch hits two overlapping views.
+> A área de toque nunca ultrapassa os limites da visualização pai e o Z-index das visualizações irmãs sempre tem precedência se um toque atingir duas visualizações sobrepostas.
 
-<figure>
-  <img src="/docs/assets/d_pressable_anatomy.svg" width="1000" alt="Diagram of HitRect and PressRect and how they work." />
+<figura>
+  <img src = "/ docs / assets / d_pressable_anatomy.svg" width = "1000" alt = "Diagrama de HitRect e PressRect e como eles funcionam." />
   <figcaption>
-    You can set <code>HitRect</code> with <code>hitSlop</code> and set <code>PressRect</code> with <code>pressRetentionOffset</code>.
+    Você pode definir <code> HitRect </code> com <code> hitSlop </code> e definir <code> PressRect </code> com <code> pressRetentionOffset </code>.
   </figcaption>
 </figure>
 
-> `Pressable` uses React Native's `Pressability` API. For more information around the state machine flow of Pressability and how it works, check out the implementation for [Pressability](https://github.com/facebook/react-native/blob/16ea9ba8133a5340ed6751ec7d49bf03a0d4c5ea/Libraries/Pressability/Pressability.js#L347).
+> `Pressable` usa a API` Pressability` do React Native. Para obter mais informações sobre o fluxo da máquina de estado de Pressability e como ele funciona, verifique a implementação de [Pressability] (https://github.com/facebook/react-native/blob/16ea9ba8133a5340ed6751ec7d49bf03a0d4c5ea/Libraries/Pressability/Pressability.js# L347).
 
-## Example
+## Exemplo
 
-```SnackPlayer name=Pressable
-import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+`` `SnackPlayer name = Pressable
+import React, {useState} de 'react';
+import {Pressable, StyleSheet, Text, View} de 'react-native';
 
 const App = () => {
-  const [timesPressed, setTimesPressed] = useState(0);
+  const [timesPressed, setTimesPressed] = useState (0);
 
   let textLog = '';
-  if (timesPressed > 1) {
+  if (timesPressed> 1) {
     textLog = timesPressed + 'x onPress';
-  } else if (timesPressed > 0) {
+  } else if (timesPressed> 0) {
     textLog = 'onPress';
   }
 
-  return (
-    <View style={styles.container}>
-      <Pressable
-        onPress={() => {
-          setTimesPressed((current) => current + 1);
+  Retorna (
+    <Exibir estilo = {styles.container}>
+      <Pressionável
+        onPress = {() => {
+          setTimesPressed ((atual) => atual + 1);
         }}
-        style={({ pressed }) => [
+        estilo = {({pressionado}) => [
           {
-            backgroundColor: pressed
-              ? 'rgb(210, 230, 255)'
-              : 'white'
+            backgroundColor: pressionado
+              ? 'rgb (210, 230, 255)'
+              : 'Branco'
           },
           styles.wrapperCustom
         ]}>
-        {({ pressed }) => (
-          <Text style={styles.text}>
-            {pressed ? 'Pressed!' : 'Press Me'}
+        {({pressionado}) => (
+          <Estilo do texto = {styles.text}>
+            {pressionado? 'Pressionado!' : 'Pressione-me'}
           </Text>
         )}
       </Pressable>
-      <View style={styles.logBox}>
-        <Text testID="pressable_press_console">{textLog}</Text>
+      <Exibir estilo = {styles.logBox}>
+        <Text testID = "pressable_press_console"> {textLog} </Text>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+estilos const = StyleSheet.create ({
   container: {
     flex: 1,
     justifyContent: "center",
   },
-  text: {
+  texto: {
     fontSize: 16
   },
   wrapperCustom: {
     borderRadius: 8,
-    padding: 6
+    preenchimento: 6
   },
   logBox: {
-    padding: 20,
-    margin: 10,
+    preenchimento: 20,
+    margem: 10,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#f0f0f0',
-    backgroundColor: '#f9f9f9'
+    borderColor: '# f0f0f0',
+    backgroundColor: '# f9f9f9'
   }
 });
 
-export default App;
-```
+exportar aplicativo padrão;
+`` `
 
 ## Props
 
-### `android_disableSound` <div class="label android">Android</div>
+### `android_disableSound` <div class =" label android "> Android </div>
 
-If true, doesn't play Android system sound on press.
+Se verdadeiro, não reproduz o som do sistema Android ao pressionar.
 
-| Type    | Required | Default |
-| ------- | -------- | ------- |
-| boolean | No       | `false` |
+| Tipo | Padrão |
+| ------- | ------- |
+| booleano | `false` |
 
-### `android_ripple` <div class="label android">Android</div>
+### `android_ripple` <div class =" label android "> Android </div>
 
-Enables the Android ripple effect and configures its properties.
+Ativa o efeito cascata do Android e configura suas propriedades.
 
-| Type                                   | Required |
-| -------------------------------------- | -------- |
-| [RippleConfig](pressable#rippleconfig) | No       |
+| Tipo |
+| -------------------------------------- |
+| [RippleConfig] (pressionável # rippleconfig) |
 
-### `children`
+### `crianças`
 
-Either children or a function that receives a boolean reflecting whether the component is currently pressed.
+Filhos ou uma função que recebe um booleano refletindo se o componente está pressionado no momento.
 
-| Type                     | Required |
-| ------------------------ | -------- |
-| [React Node](react-node) | No       |
+| Tipo |
+| ------------------------ |
+| [Nó de reação] (nó de reação) |
 
 ### `unstable_pressDelay`
 
-Duration (in milliseconds) to wait after press down before calling `onPressIn`.
+Duração (em milissegundos) para esperar após pressionar para baixo antes de chamar `onPressIn`.
 
-| Type   | Required |
-| ------ | -------- |
-| number | No       |
+| Tipo |
+| ------ |
+| número |
 
 ### `delayLongPress`
 
-Duration (in milliseconds) from `onPressIn` before `onLongPress` is called.
+Duração (em milissegundos) de `onPressIn` antes de` onLongPress` ser chamado.
 
-| Type   | Required | Default |
-| ------ | -------- | ------- |
-| number | No       | `500`   |
+| Tipo | Padrão |
+| ------ | ------- |
+| número | `500` |
 
 ### `disabled`
 
-Whether the press behavior is disabled.
+Se o comportamento da imprensa está desativado.
 
-| Type    | Required | Default |
-| ------- | -------- | ------- |
-| boolean | No       | `false` |
+| Tipo | Padrão |
+| ------- | ------- |
+| booleano | `false` |
 
 ### `hitSlop`
 
-Sets additional distance outside of element in which a press can be detected.
+Define a distância adicional fora do elemento em que uma pressão pode ser detectada.
 
-| Type                   | Required |
-| ---------------------- | -------- |
-| [Rect](rect) or number | No       |
+| Tipo |
+| ---------------------- |
+| [Rect] (rect) ou número |
 
 ### `onLongPress`
 
-Called if the time after `onPressIn` lasts longer than 500 milliseconds. This time period can be customized with [`delayLongPress`](#delaylongpress).
+Chamado se o tempo após `onPressIn` durar mais de 500 milissegundos. Este período de tempo pode ser personalizado com [`delayLongPress`] (# delaylongpress).
 
-| Type                     | Required |
-| ------------------------ | -------- |
-| [PressEvent](pressevent) | No       |
+| Tipo |
+| -------------------------------------------------- - |
+| ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ### `onPress`
 
-Called after `onPressOut`.
+Chamado após `onPressOut`.
 
-| Type                     | Required |
-| ------------------------ | -------- |
-| [PressEvent](pressevent) | No       |
+| Tipo |
+| -------------------------------------------------- - |
+| ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ### `onPressIn`
 
-Called immediately when a touch is engaged, before `onPressOut` and `onPress`.
+Chamado imediatamente quando um toque é ativado, antes de `onPressOut` e` onPress`.
 
-| Type                     | Required |
-| ------------------------ | -------- |
-| [PressEvent](pressevent) | No       |
+| Tipo |
+| -------------------------------------------------- - |
+| ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ### `onPressOut`
 
-Called when a touch is released.
+Chamado quando um toque é liberado.
 
-| Type                     | Required |
-| ------------------------ | -------- |
-| [PressEvent](pressevent) | No       |
+| Tipo |
+| -------------------------------------------------- - |
+| ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ### `pressRetentionOffset`
 
-Additional distance outside of this view in which a touch is considered a press before `onPressOut` is triggered.
+Distância adicional fora desta vista na qual um toque é considerado uma pressão antes de `onPressOut` ser disparado.
 
-| Type                   | Required | Default                                        |
-| ---------------------- | -------- | ---------------------------------------------- |
-| [Rect](rect) or number | No       | `{ bottom: 30, left: 20, right: 20, top: 20 }` |
+| Tipo | Padrão |
+| ---------------------- | ---------------------------------------------- |
+| [Rect] (rect) ou número | `{inferior: 30, esquerda: 20, direita: 20, superior: 20}` |
 
 ### `style`
 
-Either view styles or a function that receives a boolean reflecting whether the component is currently pressed and returns view styles.
+Estilos de visualização ou uma função que recebe um booleano refletindo se o componente está pressionado no momento e retorna estilos de visualização.
 
-| Type                           | Required |
-| ------------------------------ | -------- |
-| [View Style](view-style-props) | No       |
+| Tipo |
+| ------------------------------ |
+| [Estilo de visualização] (adereços de estilo de visualização) |
 
 ### `testOnly_pressed`
 
-Used only for documentation or testing (e.g. snapshot testing).
+Usado apenas para documentação ou teste (por exemplo, teste de instantâneo).
 
-| Type    | Required | Default |
-| ------- | -------- | ------- |
-| boolean | No       | `false` |
+| Tipo | Padrão |
+| ------- | ------- |
+| booleano | `false` |
 
-## Type Definitions
+## Definições de tipo
 
 ### RippleConfig
 
-Ripple effect configuration for the `android_ripple` property.
+Configuração do efeito ondulação para a propriedade `android_ripple`.
 
-| Type   |
+| Tipo |
 | ------ |
-| object |
+| objeto |
 
-**Properties:**
+**Propriedades:**
+
 
 | Name       | Type            | Required | Description                                         |
 | ---------- | --------------- | -------- | --------------------------------------------------- |

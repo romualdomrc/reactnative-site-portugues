@@ -3,14 +3,13 @@ id: text
 title: Text
 ---
 
-import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
+importar guias de '@ theme / Tabs'; importar TabItem de '@ theme / TabItem'; importar constantes de '@ site / core / TabsConstants';
 
-A React component for displaying text.
+Um componente React para exibir texto.
 
-`Text` supports nesting, styling, and touch handling.
+`Text` oferece suporte a aninhamento, estilo e manipulação de toque.
 
-In the following example, the nested title and body text will inherit the `fontFamily` from `styles.baseText`, but the title provides its own additional styles. The title and body will stack on top of each other on account of the literal newlines:
-
+No exemplo a seguir, o título aninhado e o texto do corpo herdarão `fontFamily` de` styles.baseText`, mas o título fornece seus próprios estilos adicionais. O título e o corpo serão empilhados um sobre o outro devido às novas linhas literais: 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
 
@@ -106,7 +105,7 @@ export default TextInANest;
 
 ## Nested text
 
-Both Android and iOS allow you to display formatted text by annotating ranges of a string with specific formatting like bold or colored text (`NSAttributedString` on iOS, `SpannableString` on Android). In practice, this is very tedious. For React Native, we decided to use web paradigm for this where you can nest text to achieve the same effect.
+Tanto o Android quanto o iOS permitem que você exiba texto formatado anotando intervalos de uma string com formatação específica, como texto em negrito ou colorido (`NSAttributedString` no iOS,` SpannableString` no Android). Na prática, isso é muito tedioso. Para React Native, decidimos usar o paradigma da web para isso, onde você pode aninhar o texto para obter o mesmo efeito. 
 
 ```SnackPlayer name=Nested%20Text%20Example
 import React from 'react';
@@ -143,7 +142,7 @@ Behind the scenes, React Native converts this to a flat `NSAttributedString` or 
 
 ## Containers
 
-The `<Text>` element is unique relative to layout: everything inside is no longer using the Flexbox layout but using text layout. This means that elements inside of a `<Text>` are no longer rectangles, but wrap when they see the end of the line.
+O elemento `<Text>` é único em relação ao layout: tudo dentro não está mais usando o layout Flexbox, mas usando o layout de texto. Isso significa que os elementos dentro de um `<Text>` não são mais retângulos, mas quebram quando veem o final da linha. 
 
 ```jsx
 <Text>
@@ -174,7 +173,7 @@ The `<Text>` element is unique relative to layout: everything inside is no longe
 
 ## Limited Style Inheritance
 
-On the web, the usual way to set a font family and size for the entire document is to take advantage of inherited CSS properties like so:
+O elemento `<Text>` é único em relação ao layout: tudo dentro não está mais usando o layout Flexbox, mas usando o layout de texto. Isso significa que os elementos dentro de um `<Text>` não são mais retângulos, mas quebram quando veem o final da linha. 
 
 ```css
 html {
@@ -184,9 +183,9 @@ html {
 }
 ```
 
-All elements in the document will inherit this font unless they or one of their parents specifies a new rule.
+Todos os elementos do documento herdarão essa fonte, a menos que eles ou um de seus pais especifique uma nova regra.
 
-In React Native, we are more strict about it: **you must wrap all the text nodes inside of a `<Text>` component**. You cannot have a text node directly under a `<View>`.
+No React Native, somos mais rígidos sobre isso: ** você deve envolver todos os nós de texto dentro de um componente `<Text>` **. Você não pode ter um nó de texto diretamente sob um `<View>`. 
 
 ```jsx
 // BAD: will raise exception, can't have a text node as child of a <View>
@@ -202,7 +201,7 @@ In React Native, we are more strict about it: **you must wrap all the text nodes
 </View>
 ```
 
-You also lose the ability to set up a default font for an entire subtree. Meanwhile, `fontFamily` only accepts a single font name, which is different from `font-family` in CSS. The recommended way to use consistent fonts and sizes across your application is to create a component `MyAppText` that includes them and use this component across your app. You can also use this component to make more specific components like `MyAppHeaderText` for other kinds of text.
+Você também perde a capacidade de configurar uma fonte padrão para uma subárvore inteira. Enquanto isso, `fontFamily` só aceita um único nome de fonte, que é diferente de` font-family` em CSS. A maneira recomendada de usar fontes e tamanhos consistentes em seu aplicativo é criar um componente `MyAppText` que os inclui e usar este componente em seu aplicativo. Você também pode usar este componente para criar componentes mais específicos como `MyAppHeaderText` para outros tipos de texto. 
 
 ```jsx
 <View>
@@ -213,7 +212,7 @@ You also lose the ability to set up a default font for an entire subtree. Meanwh
 </View>
 ```
 
-Assuming that `MyAppText` is a component that only renders out its children into a `Text` component with styling, then `MyAppHeaderText` can be defined as follows:
+Supondo que `MyAppText` seja um componente que apenas renderiza seus filhos em um componente` Text` com estilo, então `MyAppHeaderText` pode ser definido da seguinte maneira: 
 
 ```jsx
 class MyAppHeaderText extends Component {
@@ -229,9 +228,9 @@ class MyAppHeaderText extends Component {
 }
 ```
 
-Composing `MyAppText` in this way ensures that we get the styles from a top-level component, but leaves us the ability to add / override them in specific use cases.
+Compor `MyAppText` dessa forma garante que obteremos os estilos de um componente de nível superior, mas nos deixa a capacidade de adicioná-los / sobrescrevê-los em casos de uso específicos.
 
-React Native still has the concept of style inheritance, but limited to text subtrees. In this case, the second part will be both bold and red.
+React Native ainda tem o conceito de herança de estilo, mas limitado a subárvores de texto. Neste caso, a segunda parte estará em negrito e vermelho. 
 
 ```jsx
 <Text style={{ fontWeight: 'bold' }}>
@@ -240,11 +239,11 @@ React Native still has the concept of style inheritance, but limited to text sub
 </Text>
 ```
 
-We believe that this more constrained way to style text will yield better apps:
+Acreditamos que esta forma mais restrita de estilizar o texto resultará em aplicativos melhores:
 
-- (Developer) React components are designed with strong isolation in mind: You should be able to drop a component anywhere in your application, trusting that as long as the props are the same, it will look and behave the same way. Text properties that could inherit from outside of the props would break this isolation.
+- (Desenvolvedor) Os componentes do React são projetados com forte isolamento em mente: Você deve ser capaz de soltar um componente em qualquer lugar em seu aplicativo, confiando que, desde que os adereços sejam os mesmos, ele terá a mesma aparência e se comportará da mesma maneira. As propriedades de texto que poderiam herdar de fora dos adereços quebrariam esse isolamento.
 
-- (Implementor) The implementation of React Native is also simplified. We do not need to have a `fontFamily` field on every single element, and we do not need to potentially traverse the tree up to the root every time we display a text node. The style inheritance is only encoded inside of the native Text component and doesn't leak to other components or the system itself.
+- (Implementador) A implementação do React Native também é simplificada. Não precisamos ter um campo `fontFamily` em cada elemento, e não precisamos potencialmente atravessar a árvore até a raiz cada vez que exibimos um nó de texto. A herança de estilo só é codificada dentro do componente Texto nativo e não vaza para outros componentes ou para o próprio sistema. 
 
 ---
 
@@ -254,7 +253,7 @@ We believe that this more constrained way to style text will yield better apps:
 
 ### `accessibilityHint`
 
-An accessibility hint helps users understand what will happen when they perform an action on the accessibility element when that result is not clear from the accessibility label.
+Uma dica de acessibilidade ajuda os usuários a entender o que acontecerá quando eles executarem uma ação no elemento de acessibilidade quando esse resultado não estiver claro no rótulo de acessibilidade. 
 
 | Type   |
 | ------ |
@@ -264,9 +263,9 @@ An accessibility hint helps users understand what will happen when they perform 
 
 ### `accessibilityLabel`
 
-Overrides the text that's read by the screen reader when the user interacts with the element. By default, the label is constructed by traversing all the children and accumulating all the `Text` nodes separated by space.
+Substitui o texto lido pelo leitor de tela quando o usuário interage com o elemento. Por padrão, o rótulo é construído percorrendo todos os filhos e acumulando todos os nós `Texto` separados por espaço.
 
-| Type   |
+| Tipo |
 | ------ |
 | string |
 
@@ -274,89 +273,89 @@ Overrides the text that's read by the screen reader when the user interacts with
 
 ### `accessibilityRole`
 
-Tells the screen reader to treat the currently focused on element as having a specific role.
+Diz ao leitor de tela para tratar o elemento focado no momento como tendo uma função específica.
 
-On iOS, these roles map to corresponding Accessibility Traits. Image button has the same functionality as if the trait was set to both 'image' and 'button'. See the [Accessibility guide](accessibility.md#accessibilitytraits-ios) for more information.
+No iOS, essas funções são mapeadas para as características de acessibilidade correspondentes. O botão de imagem tem a mesma funcionalidade como se o traço fosse definido para 'imagem' e 'botão'. Consulte o [Guia de acessibilidade] (accessibility.md # accessibilitytraits-ios) para obter mais informações.
 
-On Android, these roles have similar functionality on TalkBack as adding Accessibility Traits does on Voiceover in iOS
+No Android, essas funções têm funcionalidade semelhante no TalkBack, como adicionar características de acessibilidade no Voiceover no iOS
 
-| Type                                                 |
-| ---------------------------------------------------- |
-| [AccessibilityRole](accessibility#accessibilityrole) |
+| Tipo |
+| -------------------------------------------------- - |
+| [AccessibilityRole] (accessibility # accessibilityrole) |
 
 ---
 
 ### `accessibilityState`
 
-Tells the screen reader to treat the currently focused on element as being in a specific state.
+Diz ao leitor de tela para tratar o elemento focado no momento como se estivesse em um estado específico.
 
-You can provide one state, no state, or multiple states. The states must be passed in through an object. Ex: `{selected: true, disabled: true}`.
+Você pode fornecer um estado, nenhum estado ou vários estados. Os estados devem ser transmitidos por meio de um objeto. Ex: `{selected: true, disabled: true}`.
 
-| Type                                                   |
-| ------------------------------------------------------ |
-| [AccessibilityState](accessibility#accessibilitystate) |
+| Tipo |
+| -------------------------------------------------- ---- |
+| [AccessibilityState] (acessibilidade # accessibilitystate) |
 
 ---
 
-### `accessible`
+### `acessível`
 
-When set to `true`, indicates that the view is an accessibility element.
+Quando definido como `true`, indica que a visualização é um elemento de acessibilidade.
 
-See the [Accessibility guide](accessibility#accessible-ios-android) for more information.
+Consulte o [Guia de acessibilidade] (acessibilidade # acessível-ios-android) para obter mais informações.
 
-| Type    | Default |
+| Tipo | Padrão |
 | ------- | ------- |
-| boolean | `true`  |
+| booleano | `true` |
 
 ---
 
 ### `adjustsFontSizeToFit`
 
-Specifies whether fonts should be scaled down automatically to fit given style constraints.
+Especifica se as fontes devem ser reduzidas automaticamente para se ajustar às restrições de estilo fornecidas.
 
-| Type    | Default |
+| Tipo | Padrão |
 | ------- | ------- |
-| boolean | `false` |
+| booleano | `false` |
 
 ---
 
 ### `allowFontScaling`
 
-Specifies whether fonts should scale to respect Text Size accessibility settings.
+Especifica se as fontes devem ser dimensionadas para respeitar as configurações de acessibilidade do tamanho do texto.
 
-| Type    | Default |
+| Tipo | Padrão |
 | ------- | ------- |
-| boolean | `true`  |
+| booleano | `true` |
 
 ---
 
-### `android_hyphenationFrequency` <div class="label android">Android</div>
+### `android_hyphenationFrequency` <div class =" label android "> Android </div>
 
-Sets the frequency of automatic hyphenation to use when determining word breaks on Android API Level 23+.
+Define a frequência de hifenização automática a ser usada ao determinar quebras de palavras na API Android nível 23+.
 
-| Type                                             | Default  |
+| Tipo | Padrão |
 | ------------------------------------------------ | -------- |
-| enum(`'none'`, `'full'`, `'balanced'`, `'high'`) | `'none'` |
+| enum (`'none'`,`' full'`, `'balance'`,`' high'`) | `'none'` |
 
 ---
 
-### `dataDetectorType` <div class="label android">Android</div>
+### `dataDetectorType` <div class =" label android "> Android </div>
 
-Determines the types of data converted to clickable URLs in the text element. By default, no data types are detected.
+Determina os tipos de dados convertidos em URLs clicáveis ​​no elemento de texto. Por padrão, nenhum tipo de dados é detectado.
 
-You can provide only one type.
+Você pode fornecer apenas um tipo.
 
-| Type                                                          | Default  |
-| ------------------------------------------------------------- | -------- |
-| enum(`'phoneNumber'`, `'link'`, `'email'`, `'none'`, `'all'`) | `'none'` |
+| Tipo | Padrão |
+| -------------------------------------------------- ----------- | -------- |
+| enum (`'phoneNumber'`,`' link'`, `'email'`,`' none'`, `'all'`) | `'none'` |
 
 ---
 
-### `disabled` <div class="label android">Android</div>
+### `disabled` <div class =" label android "> Android </div>
 
-Specifies the disabled state of the text view for testing purposes.
+Especifica o estado desativado da visualização de texto para fins de teste.
 
-| Type | Default |
+| Tipo | Padrão |
 | ---- | ------- |
 | bool | `false` |
 
@@ -364,52 +363,52 @@ Specifies the disabled state of the text view for testing purposes.
 
 ### `ellipsizeMode`
 
-When `numberOfLines` is set, this prop defines how the text will be truncated. `numberOfLines` must be set in conjunction with this prop.
+Quando `numberOfLines` é definido, este prop define como o texto será truncado. `numberOfLines` deve ser definido em conjunto com este prop.
 
-This can be one of the following values:
+Pode ser um dos seguintes valores:
 
-- `head` - The line is displayed so that the end fits in the container and the missing text at the beginning of the line is indicated by an ellipsis glyph. e.g., "...wxyz"
-- `middle` - The line is displayed so that the beginning and end fit in the container and the missing text in the middle is indicated by an ellipsis glyph. "ab...yz"
-- `tail` - The line is displayed so that the beginning fits in the container and the missing text at the end of the line is indicated by an ellipsis glyph. e.g., "abcd..."
-- `clip` - Lines are not drawn past the edge of the text container.
+- `head` - A linha é exibida de forma que o final caiba no contêiner e o texto ausente no início da linha é indicado por um glifo de reticências. por exemplo, "... wxyz"
+- `meio` - A linha é exibida de forma que o início e o fim caibam no contêiner e o texto ausente no meio é indicado por um glifo de reticências. "ab ... sim"
+- `cauda` - A linha é exibida de forma que o início se ajuste ao contêiner e o texto ausente no final da linha seja indicado por um glifo de reticências. por exemplo, "abcd ..."
+- `clip` - As linhas não são desenhadas além da borda do contêiner de texto. 
 
-> On Android, when `numberOfLines` is set to a value higher than `1`, only `tail` value will work correctly.
+> No Android, quando `numberOfLines` é definido com um valor superior a` 1`, apenas o valor `tail` funcionará corretamente.
 
-| Type                                           | Default |
+| Tipo | Padrão |
 | ---------------------------------------------- | ------- |
-| enum(`'head'`, `'middle'`, `'tail'`, `'clip'`) | `tail`  |
+| enum (`'head'`,`' middle'`, `'tail'`,`' clip'`) | `tail` |
 
 ---
 
 ### `maxFontSizeMultiplier`
 
-Specifies the largest possible scale a font can reach when `allowFontScaling` is enabled. Possible values:
+Especifica a maior escala possível que uma fonte pode atingir quando `allowFontScaling` está habilitado. Valores possíveis:
 
-- `null/undefined`: inherit from the parent node or the global default (0)
-- `0`: no max, ignore parent/global default
-- `>= 1`: sets the `maxFontSizeMultiplier` of this node to this value
+- `null / undefined`: herdar do nó pai ou do padrão global (0)
+- `0`: sem máx, ignorar padrão pai / global
+- `> = 1`: define o` maxFontSizeMultiplier` deste nó para este valor
 
-| Type   | Default     |
+| Tipo | Padrão |
 | ------ | ----------- |
-| number | `undefined` |
+| número | `undefined` |
 
 ---
 
-### `minimumFontScale` <div class="label ios">iOS</div>
+### `minimumFontScale` <div class =" label ios "> iOS </div>
 
-Specifies the smallest possible scale a font can reach when `adjustsFontSizeToFit` is enabled. (values 0.01-1.0).
+Especifica a menor escala possível que uma fonte pode atingir quando `adjustsFontSizeToFit` está habilitado. (valores 0,01-1,0).
 
-| Type   |
+| Tipo |
 | ------ |
-| number |
+| número |
 
 ---
 
 ### `nativeID`
 
-Used to locate this view from native code.
+Usado para localizar esta visualização do código nativo.
 
-| Type   |
+| Tipo |
 | ------ |
 | string |
 
@@ -417,246 +416,246 @@ Used to locate this view from native code.
 
 ### `numberOfLines`
 
-Used to truncate the text with an ellipsis after computing the text layout, including line wrapping, such that the total number of lines does not exceed this number. Setting this property to `0` will result in unsetting this value, which means that no lines restriction will be applied.
+Usado para truncar o texto com reticências após calcular o layout do texto, incluindo quebra de linha, de forma que o número total de linhas não exceda esse número. Definir essa propriedade como `0` resultará na desconfiguração desse valor, o que significa que nenhuma restrição de linhas será aplicada.
 
-This prop is commonly used with `ellipsizeMode`.
+Este prop é comumente usado com `ellipsizeMode`.
 
-| Type   | Default |
+| Tipo | Padrão |
 | ------ | ------- |
-| number | `0`     |
+| número | `0` |
 
 ---
 
 ### `onLayout`
 
-Invoked on mount and on layout changes.
+Chamado na montagem e nas mudanças de layout.
 
-| Type                                 |
-| ------------------------------------ |
-| ([LayoutEvent](layoutevent)) => void |
+| Tipo |
+| -------------------------------------------------- --- |
+| ({nativeEvent: [LayoutEvent] (layoutevent)}) => void |
 
 ---
 
 ### `onLongPress`
 
-This function is called on long press.
+Esta função é chamada ao pressionar longamente.
 
-| Type                               |
-| ---------------------------------- |
-| ([PressEvent](pressevent)) => void |
+| Tipo |
+| -------------------------------------------------- - |
+| ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ---
 
 ### `onMoveShouldSetResponder`
 
-Does this view want to "claim" touch responsiveness? This is called for every touch move on the `View` when it is not the responder.
+Esta visualização deseja "reivindicar" capacidade de resposta ao toque? Isso é chamado para cada movimento de toque em `View` quando não é o respondedor.
 
-| Type                                  |
-| ------------------------------------- |
-| ([PressEvent](pressevent)) => boolean |
+| Tipo |
+| -------------------------------------------------- ---- |
+| ({nativeEvent: [PressEvent] (pressevent)}) => boolean |
 
 ---
 
 ### `onPress`
 
-This function is called on press.
+Esta função é chamada ao pressionar.
 
-| Type                               |
-| ---------------------------------- |
-| ([PressEvent](pressevent)) => void |
+| Tipo |
+| -------------------------------------------------- - |
+| ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ---
 
 ### `onResponderGrant`
 
-The View is now responding to touch events. This is the time to highlight and show the user what is happening.
+O View agora está respondendo a eventos de toque. Este é o momento de destacar e mostrar ao usuário o que está acontecendo.
 
-| Type                               |
-| ---------------------------------- |
-| ([PressEvent](pressevent)) => void |
+| Tipo |
+| -------------------------------------------------- - |
+| ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ---
 
 ### `onResponderMove`
 
-The user is moving their finger.
+O usuário está movendo o dedo.
 
-| Type                               |
-| ---------------------------------- |
-| ([PressEvent](pressevent)) => void |
+| Tipo |
+| -------------------------------------------------- - |
+| ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ---
 
 ### `onResponderRelease`
 
-Fired at the end of the touch.
+Disparado no final do toque.
 
-| Type                               |
-| ---------------------------------- |
-| ([PressEvent](pressevent)) => void |
+| Tipo |
+| -------------------------------------------------- - |
+| ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ---
 
 ### `onResponderTerminate`
 
-The responder has been taken from the `View`. Might be taken by other views after a call to `onResponderTerminationRequest`, or might be taken by the OS without asking (e.g., happens with control center/ notification center on iOS)
+O respondente foi retirado do `View`. Pode ser levado por outras visualizações após uma chamada para `onResponderTerminationRequest`, ou pode ser levado pelo sistema operacional sem perguntar (por exemplo, acontece com o centro de controle / centro de notificação no iOS) 
 
-| Type                               |
-| ---------------------------------- |
-| ([PressEvent](pressevent)) => void |
+| Type                                                |
+| --------------------------------------------------- |
+| ({ nativeEvent: [PressEvent](pressevent) }) => void |
 
 ---
 
 ### `onResponderTerminationRequest`
 
-Some other `View` wants to become a responder and is asking this `View` to release its responder. Returning `true` allows its release.
+Algum outro `View` deseja se tornar um respondedor e está pedindo a este` View` para liberar seu respondente. Retornar `true` permite sua liberação.
 
-| Type                                  |
-| ------------------------------------- |
-| ([PressEvent](pressevent)) => boolean |
+| Tipo |
+| -------------------------------------------------- ---- |
+| ({nativeEvent: [PressEvent] (pressevent)}) => boolean |
 
 ---
 
 ### `onStartShouldSetResponderCapture`
 
-If a parent `View` wants to prevent a child `View` from becoming a responder on a touch start, it should have this handler which returns `true`.
+Se um `View` pai deseja evitar que um` View` filho se torne um respondedor em uma inicialização por toque, ele deve ter este manipulador que retorna `true`.
 
-| Type                                  |
-| ------------------------------------- |
-| ([PressEvent](pressevent)) => boolean |
+| Tipo |
+| -------------------------------------------------- ---- |
+| ({nativeEvent: [PressEvent] (pressevent)}) => boolean |
 
 ---
 
 ### `onTextLayout`
 
-Invoked on Text layout change.
+Chamado na mudança de layout do texto.
 
-| Type                                                 |
-| ---------------------------------------------------- |
-| ([`TextLayoutEvent`](text#textlayoutevent)) => mixed |
+| Tipo |
+| -------------------------------------------------- - |
+| ([`TextLayoutEvent`] (text # textlayoutevent)) => mixed |
 
 ---
 
 ### `pressRetentionOffset`
 
-When the scroll view is disabled, this defines how far your touch may move off of the button, before deactivating the button. Once deactivated, try moving it back and you'll see that the button is once again reactivated! Move it back and forth several times while the scroll view is disabled. Ensure you pass in a constant to reduce memory allocations.
+Quando a visualização de rolagem está desabilitada, isso define o quão longe o seu toque pode sair do botão, antes de desativar o botão. Uma vez desativado, tente movê-lo para trás e você verá que o botão é reativado novamente! Mova-o para a frente e para trás várias vezes enquanto a visualização de rolagem está desativada. Certifique-se de passar uma constante para reduzir as alocações de memória.
 
-| Type                 |
+| Tipo |
 | -------------------- |
-| [Rect](rect), number |
+| [Rect] (rect), número |
 
 ---
 
-### `selectable`
+### `selecionável`
 
-Lets the user select text, to use the native copy and paste functionality.
+Permite que o usuário selecione o texto, para usar a funcionalidade de copiar e colar nativa.
 
-| Type    | Default |
+| Tipo | Padrão |
 | ------- | ------- |
-| boolean | `false` |
+| booleano | `false` |
 
 ---
 
-### `selectionColor` <div class="label android">Android</div>
+### `selectionColor` <div class =" label android "> Android </div>
 
-The highlight color of the text.
+A cor de destaque do texto.
 
-| Type            |
+| Tipo |
 | --------------- |
-| [color](colors) |
+| [cor] (cores) |
 
 ---
 
 ### `style`
 
-| Type                                                                 |
-| -------------------------------------------------------------------- |
-| [Text Style](text-style-props), [View Style Props](view-style-props) |
+| Tipo |
+| -------------------------------------------------- ------------------ |
+| [Estilo de texto] (adereços de estilo de texto), [Ver adereços de estilo] (ver adereços de estilo) |
 
 ---
 
-### `suppressHighlighting` <div class="label ios">iOS</div>
+### `suppressHighlighting` <div class =" label ios "> iOS </div>
 
-When `true`, no visual change is made when text is pressed down. By default, a gray oval highlights the text on press down.
+Quando `true`, nenhuma mudança visual é feita quando o texto é pressionado. Por padrão, um oval cinza destaca o texto ao pressionar para baixo.
 
-| Type    | Default |
+| Tipo | Padrão |
 | ------- | ------- |
-| boolean | `false` |
+| booleano | `false` |
 
 ---
 
 ### `testID`
 
-Used to locate this view in end-to-end tests.
+Usado para localizar essa visualização em testes de ponta a ponta.
 
-| Type   |
+| Tipo |
 | ------ |
 | string |
 
 ---
 
-### `textBreakStrategy` <div class="label android">Android</div>
+### `textBreakStrategy` <div class =" label android "> Android </div>
 
-Set text break strategy on Android API Level 23+, possible values are `simple`, `highQuality`, `balanced`.
+Defina a estratégia de quebra de texto na API Android Nível 23+, os valores possíveis são `simples`,` altaQualidade`, `equilibrado`.
 
-| Type                                            | Default       |
+| Tipo | Padrão |
 | ----------------------------------------------- | ------------- |
-| enum(`'simple'`, `'highQuality'`, `'balanced'`) | `highQuality` |
+| enum (`'simple'`,`' highQuality'`, `'balance'`) | `highQuality` |
 
-## Type Definitions
+## Definições de tipo
 
 ### TextLayout
 
-`TextLayout` object is a part of [`TextLayoutEvent`](text#textlayoutevent) callback and contains the measurement data for `Text` line.
+O objeto `TextLayout` é uma parte do retorno de chamada [` TextLayoutEvent`] (text # textlayoutevent) e contém os dados de medição para a linha `Text`.
 
-#### Example
+#### Exemplo
 
-```js
+`` `js
 {
     capHeight: 10.496,
     ascender: 14.624,
-    descender: 4,
-    width: 28.224,
-    height: 18.624,
+    descendente: 4,
+    largura: 28,224,
+    altura: 18.624,
     xHeight: 6.048,
     x: 0,
     y: 0
 }
-```
+`` `
 
-#### Properties
+#### Propriedades
 
-| Name      | Type   | Optional | Description                                                         |
-| --------- | ------ | -------- | ------------------------------------------------------------------- |
-| ascender  | number | No       | The line ascender height after the text layout changes.             |
-| capHeight | number | No       | Height of capital letter above the baseline.                        |
-| descender | number | No       | The line descender height after the text layout changes.            |
-| height    | number | No       | Height of the line after the text layout changes.                   |
-| width     | number | No       | Width of the line after the text layout changes.                    |
-| x         | number | No       | Line X coordinate inside the Text component.                        |
-| xHeight   | number | No       | Distance between the baseline and median of the line (corpus size). |
-| y         | number | No       | Line Y coordinate inside the Text component.                        |
+| Nome Tipo | Opcional | Descrição
+| --------- | ------ | -------- | -------------------------------------------------- ----------------- |
+| ascender | número | Não A altura ascendente da linha após as alterações do layout do texto. |
+| capHeight | número | Não Altura da letra maiúscula acima da linha de base. |
+| descender | número | Não A altura descendente da linha após as alterações do layout do texto. |
+| altura | número | Não Altura da linha após as alterações do layout do texto. |
+| largura | número | Não Largura da linha após as alterações do layout do texto. |
+| x | número | Não Coordenada da linha X dentro do componente Texto. |
+| xHeight | número | Não Distância entre a linha de base e a mediana da linha (tamanho do corpo). |
+| y | número | Não Coordenada da linha Y dentro do componente Texto. |
 
 ### TextLayoutEvent
 
-`TextLayoutEvent` object is returned in the callback as a result of a component layout change. It contains a key called `lines` with a value which is an array containing [`TextLayout`](text#textlayout) object corresponded to every rendered text line.
+O objeto `TextLayoutEvent` é retornado no retorno de chamada como resultado de uma mudança no layout do componente. Ele contém uma chave chamada `lines` com um valor que é um array contendo o objeto [` TextLayout`] (text # textlayout) correspondente a cada linha de texto renderizada.
 
-#### Example
+#### Exemplo
 
-```js
+`` `js
 {
-  lines: [
+  linhas: [
     TextLayout,
     TextLayout
     // ...
   ];
-  target: 1127;
+  alvo: 1127;
 }
-```
+`` `
 
-#### Properties
+#### Propriedades
 
-| Name   | Type                                    | Optional | Description                                           |
-| ------ | --------------------------------------- | -------- | ----------------------------------------------------- |
-| lines  | array of [TextLayout](text#textlayout)s | No       | Provides the TextLayout data for every rendered line. |
-| target | number                                  | No       | The node id of the element.                           |
+| Nome Tipo | Opcional | Descrição
+| ------ | --------------------------------------- | -------- | -------------------------------------------------- --- |
+| linhas | matriz de [TextLayout] (text # textlayout) s | Não Fornece os dados TextLayout para cada linha renderizada. |
+| alvo | número | Não O id do nó do elemento. | 

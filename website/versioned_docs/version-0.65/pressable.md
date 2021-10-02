@@ -5,11 +5,7 @@ title: Pressable
 
 Pressable é um wrapper de Core Component que pode detectar vários estágios de interações de impressão em qualquer um de seus filhos definidos.
 
-`` `jsx
-<Pressable onPress = {onPressFunction}>
-  <Text> Sou pressionável! </Text>
-</Pressable>
-`` `
+`` `jsx <Pressable onPress = {onPressFunction}> <Text> Sou pressionável! </Text> </Pressable> `` `
 
 ## Como funciona
 
@@ -31,7 +27,7 @@ Os dedos não são os instrumentos mais precisos e é comum os usuários ativar 
 
 > A área de toque nunca ultrapassa os limites da visualização pai e o Z-index das visualizações irmãs sempre tem precedência se um toque atingir duas visualizações sobrepostas.
 
-<figura>
+<figure>
   <img src = "/ docs / assets / d_pressable_anatomy.svg" width = "1000" alt = "Diagrama de HitRect e PressRect e como eles funcionam." />
   <figcaption>
     Você pode definir <code> HitRect </code> com <code> hitSlop </code> e definir <code> PressRect </code> com <code> pressRetentionOffset </code>.
@@ -47,65 +43,79 @@ import React, {useState} de 'react';
 import {Pressable, StyleSheet, Text, View} de 'react-native';
 
 const App = () => {
-  const [timesPressed, setTimesPressed] = useState (0);
+const [timesPressed, setTimesPressed] = useState (0);
 
-  let textLog = '';
-  if (timesPressed> 1) {
-    textLog = timesPressed + 'x onPress';
-  } else if (timesPressed> 0) {
-    textLog = 'onPress';
-  }
+let textLog = '';
+if (timesPressed> 1) {
+textLog = timesPressed + 'x onPress';
+} else if (timesPressed> 0) {
+textLog = 'onPress';
+}
 
-  Retorna (
-    <Exibir estilo = {styles.container}>
-      <Pressionável
-        onPress = {() => {
-          setTimesPressed ((atual) => atual + 1);
-        }}
-        estilo = {({pressionado}) => [
-          {
-            backgroundColor: pressionado
-              ? 'rgb (210, 230, 255)'
-              : 'Branco'
-          },
-          styles.wrapperCustom
-        ]}>
-        {({pressionado}) => (
-          <Estilo do texto = {styles.text}>
-            {pressionado? 'Pressionado!' : 'Pressione-me'}
-          </Text>
-        )}
-      </Pressable>
-      <Exibir estilo = {styles.logBox}>
-        <Text testID = "pressable_press_console"> {textLog} </Text>
-      </View>
+```SnackPlayer name=Pressable
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+
+const App = () => {
+const [timesPressed, setTimesPressed] = useState(0);
+
+let textLog = '';
+if (timesPressed > 1) {
+  textLog = timesPressed + 'x onPress';
+} else if (timesPressed > 0) {
+  textLog = 'onPress';
+}
+
+return (
+  <View style={styles.container}>
+    <Pressable
+      onPress={() => {
+        setTimesPressed((current) => current + 1);
+      }}
+      style={({ pressed }) => [
+        {
+          backgroundColor: pressed
+            ? 'rgb(210, 230, 255)'
+            : 'white'
+        },
+        styles.wrapperCustom
+      ]}>
+      {({ pressed }) => (
+        <Text style={styles.text}>
+          {pressed ? 'Pressed!' : 'Press Me'}
+        </Text>
+      )}
+    </Pressable>
+    <View style={styles.logBox}>
+      <Text testID="pressable_press_console">{textLog}</Text>
     </View>
-  );
+  </View>
+);
 };
 
-estilos const = StyleSheet.create ({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  texto: {
-    fontSize: 16
-  },
-  wrapperCustom: {
-    borderRadius: 8,
-    preenchimento: 6
-  },
-  logBox: {
-    preenchimento: 20,
-    margem: 10,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '# f0f0f0',
-    backgroundColor: '# f9f9f9'
-  }
+const styles = StyleSheet.create({
+container: {
+  flex: 1,
+  justifyContent: "center",
+},
+text: {
+  fontSize: 16
+},
+wrapperCustom: {
+  borderRadius: 8,
+  padding: 6
+},
+logBox: {
+  padding: 20,
+  margin: 10,
+  borderWidth: StyleSheet.hairlineWidth,
+  borderColor: '#f0f0f0',
+  backgroundColor: '#f9f9f9'
+}
 });
 
-exportar aplicativo padrão;
-`` `
+export default App;
+```
 
 ## Props
 
@@ -113,31 +123,31 @@ exportar aplicativo padrão;
 
 Se verdadeiro, não reproduz o som do sistema Android ao pressionar.
 
-| Tipo | Padrão |
-| ------- | ------- |
+| Tipo     | Padrão  |
+| -------- | ------- |
 | booleano | `false` |
 
 ### `android_ripple` <div class =" label android "> Android </div>
 
 Ativa o efeito cascata do Android e configura suas propriedades.
 
-| Tipo |
-| -------------------------------------- |
+| Tipo                                         |
+| -------------------------------------------- |
 | [RippleConfig] (pressionável # rippleconfig) |
 
 ### `crianças`
 
 Filhos ou uma função que recebe um booleano refletindo se o componente está pressionado no momento.
 
-| Tipo |
-| ------------------------ |
+| Tipo                          |
+| ----------------------------- |
 | [Nó de reação] (nó de reação) |
 
 ### `unstable_pressDelay`
 
 Duração (em milissegundos) para esperar após pressionar para baixo antes de chamar `onPressIn`.
 
-| Tipo |
+| Tipo   |
 | ------ |
 | número |
 
@@ -145,80 +155,80 @@ Duração (em milissegundos) para esperar após pressionar para baixo antes de c
 
 Duração (em milissegundos) de `onPressIn` antes de` onLongPress` ser chamado.
 
-| Tipo | Padrão |
-| ------ | ------- |
-| número | `500` |
+| Tipo   | Padrão |
+| ------ | ------ |
+| número | `500`  |
 
 ### `disabled`
 
 Se o comportamento da imprensa está desativado.
 
-| Tipo | Padrão |
-| ------- | ------- |
+| Tipo     | Padrão  |
+| -------- | ------- |
 | booleano | `false` |
 
 ### `hitSlop`
 
 Define a distância adicional fora do elemento em que uma pressão pode ser detectada.
 
-| Tipo |
-| ---------------------- |
+| Tipo                    |
+| ----------------------- |
 | [Rect] (rect) ou número |
 
 ### `onLongPress`
 
 Chamado se o tempo após `onPressIn` durar mais de 500 milissegundos. Este período de tempo pode ser personalizado com [`delayLongPress`] (# delaylongpress).
 
-| Tipo |
-| -------------------------------------------------- - |
+| Tipo                                               |
+| -------------------------------------------------- |
 | ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ### `onPress`
 
 Chamado após `onPressOut`.
 
-| Tipo |
-| -------------------------------------------------- - |
+| Tipo                                               |
+| -------------------------------------------------- |
 | ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ### `onPressIn`
 
 Chamado imediatamente quando um toque é ativado, antes de `onPressOut` e` onPress`.
 
-| Tipo |
-| -------------------------------------------------- - |
+| Tipo                                               |
+| -------------------------------------------------- |
 | ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ### `onPressOut`
 
 Chamado quando um toque é liberado.
 
-| Tipo |
-| -------------------------------------------------- - |
+| Tipo                                               |
+| -------------------------------------------------- |
 | ({nativeEvent: [PressEvent] (pressevent)}) => void |
 
 ### `pressRetentionOffset`
 
 Distância adicional fora desta vista na qual um toque é considerado uma pressão antes de `onPressOut` ser disparado.
 
-| Tipo | Padrão |
-| ---------------------- | ---------------------------------------------- |
+| Tipo                    | Padrão                                                    |
+| ----------------------- | --------------------------------------------------------- |
 | [Rect] (rect) ou número | `{inferior: 30, esquerda: 20, direita: 20, superior: 20}` |
 
 ### `style`
 
 Estilos de visualização ou uma função que recebe um booleano refletindo se o componente está pressionado no momento e retorna estilos de visualização.
 
-| Tipo |
-| ------------------------------ |
+| Tipo                                                          |
+| ------------------------------------------------------------- |
 | [Estilo de visualização] (adereços de estilo de visualização) |
 
 ### `testOnly_pressed`
 
 Usado apenas para documentação ou teste (por exemplo, teste de instantâneo).
 
-| Tipo | Padrão |
-| ------- | ------- |
+| Tipo     | Padrão  |
+| -------- | ------- |
 | booleano | `false` |
 
 ## Definições de tipo
@@ -227,12 +237,11 @@ Usado apenas para documentação ou teste (por exemplo, teste de instantâneo).
 
 Configuração do efeito ondulação para a propriedade `android_ripple`.
 
-| Tipo |
+| Tipo   |
 | ------ |
 | objeto |
 
 **Propriedades:**
-
 
 | Name       | Type            | Required | Description                                         |
 | ---------- | --------------- | -------- | --------------------------------------------------- |

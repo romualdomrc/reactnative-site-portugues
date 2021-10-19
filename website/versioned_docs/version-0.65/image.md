@@ -5,11 +5,9 @@ title: Image
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-A React component for displaying different types of images, including network images, static resources, temporary local images, and images from local disk, such as the camera roll.
+Um componente do React para exibir diferentes tipos de imagens, incluindo imagens de rede, recursos estáticos, imagens locais temporárias e imagens do disco local, tipo do rolo da câmera
 
-This example shows fetching and displaying an image from local storage as well as one from network and even from data provided in the `'data:'` uri scheme.
-
-> Note that for network and data images, you will need to manually specify the dimensions of your image!
+> Note que pra imagens da rede e data você vai precisar especificar manualmente as dimensões da sua imagem!
 
 ## Examples
 
@@ -110,7 +108,7 @@ export default DisplayAnImage;
 </TabItem>
 </Tabs>
 
-You can also add `style` to an image:
+Você também pode adicionar a `style` numa imagem:
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -180,44 +178,43 @@ export default DisplayAnImageWithStyle;
 </TabItem>
 </Tabs>
 
-## GIF and WebP support on Android
+## Suporte pra GIF e WebP no Android
+Quando desenvolvendo em código nativo, GIF e WebP não são suportados por padrão no Android.
 
-When building your own native code, GIF and WebP are not supported by default on Android.
-
-You will need to add some optional modules in `android/app/build.gradle`, depending on the needs of your app.
+Você vai precisar adicionar alguns módulos opcionais em `android/app/build.gradle`, dependendo da necessidade do seu aplicativo.
 
 ```groovy
 dependencies {
-  // If your app supports Android versions before Ice Cream Sandwich (API level 14)
+   // Se seu app suporta versões do Android anteriores à Ice Cream Sandwich (API level 14)
   implementation 'com.facebook.fresco:animated-base-support:1.3.0'
 
-  // For animated GIF support
+  // Suporte para GIFs animados
   implementation 'com.facebook.fresco:animated-gif:2.0.0'
 
-  // For WebP support, including animated WebP
+  // Suporte para WebP, incluindo WebP animados
   implementation 'com.facebook.fresco:animated-webp:2.1.0'
   implementation 'com.facebook.fresco:webpsupport:2.0.0'
 
-  // For WebP support, without animations
+  // Suporte para WebP, sem animações
   implementation 'com.facebook.fresco:webpsupport:2.0.0'
 }
 ```
 
 ---
 
-# Reference
+# Referência
 
 ## Props
 
 ### [View Props](view.md#props)
 
-Inherits [View Props](view#props).
+Herda [View Props](view#props).
 
 ---
 
 ### `accessible`
 
-When true, indicates the image is an accessibility element.
+Quando verdadeiro, indica que a imagem é um elemento de acessibilidade.
 
 | Type | Default |
 | ---- | ------- |
@@ -227,7 +224,7 @@ When true, indicates the image is an accessibility element.
 
 ### `accessibilityLabel`
 
-The text that's read by the screen reader when the user interacts with the image.
+O texto que é lido pelo leitor de tela quando o usuário interage com a imagem.
 
 | Type   |
 | ------ |
@@ -237,19 +234,19 @@ The text that's read by the screen reader when the user interacts with the image
 
 ### `blurRadius`
 
-blurRadius: the blur radius of the blur filter added to the image.
+O raio de desfoque do filtro de desfoque adicionado na imagem.
 
 | Type   |
 | ------ |
 | number |
 
-> Tip : IOS you will need to increase `blurRadius` more than `5`
+> Dica: no iOS você vai precisar aumentar o `blurRadius` pra mais de `5`
 
 ---
 
 ### `capInsets` <div class="label ios">iOS</div>
 
-When the image is resized, the corners of the size specified by `capInsets` will stay a fixed size, but the center content and borders of the image will be stretched. This is useful for creating resizable rounded buttons, shadows, and other resizable assets. More info in the [official Apple documentation](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImage_Class/index.html#//apple_ref/occ/instm/UIImage/resizableImageWithCapInsets).
+Quando a imagem é redimensionada, as beiradas do tamanho especificado pela `capInsets` vão continuar num tamanho fixo mas o centro do conteúdo e as bordas da imagem vão ser esticadas. Isso é útil para criar botões redondos que são redimensionáveis, sombras e outras paradas. Mais informações estão na [documentação oficial da Apple](https://developer.apple.com/documentation/uikit/uiimage#//apple_ref/occ/instm/UIImage/resizableImageWithCapInsets).
 
 | Type         |
 | ------------ |
@@ -259,19 +256,19 @@ When the image is resized, the corners of the size specified by `capInsets` will
 
 ### `defaultSource`
 
-A static image to display while loading the image source.
+Uma imagem estática que vai ser exibida enquanto a imagem desejada estiver carregando.
 
 | Type                             |
 | -------------------------------- |
 | [ImageSource](image#imagesource) |
 
-> **Note:** On Android, the default source prop is ignored on debug builds.
+> **Nota:** No Android, essa propriedade é ignorada nas builds de debug.
 
 ---
 
 ### `fadeDuration` <div class="label android">Android</div>
 
-Fade animation duration in miliseconds.
+Duração da animação de degradê em milisegundos.
 
 | Type   | Default |
 | ------ | ------- |
@@ -281,7 +278,7 @@ Fade animation duration in miliseconds.
 
 ### `loadingIndicatorSource`
 
-Similarly to `source`, this property represents the resource used to render the loading indicator for the image, displayed until image is ready to be displayed, typically after when it got downloaded from network.
+Parecido com `source`, essa propriedade representa o recurso usado pra renderizar o indicador de carregamento para a imagem, exibido até a imagem estar pronta pra ser mostrada, tipicamente quando o download dela pela rede é terminado.
 
 | Type                                                  |
 | ----------------------------------------------------- |
@@ -291,7 +288,7 @@ Similarly to `source`, this property represents the resource used to render the 
 
 ### `onError`
 
-Invoked on load error.
+Invocado num erro de carregamento.
 
 | Type                                           |
 | ---------------------------------------------- |
@@ -301,7 +298,7 @@ Invoked on load error.
 
 ### `onLayout`
 
-Invoked on mount and on layout changes.
+Invocado na montagem e em mudanças de layout.
 
 | Type                                         |
 | -------------------------------------------- |
@@ -311,7 +308,7 @@ Invoked on mount and on layout changes.
 
 ### `onLoad`
 
-Invoked when load completes successfully.
+Invocado quando o carregamento é completado com sucesso.
 
 | Type                                                     |
 | -------------------------------------------------------- |
@@ -321,7 +318,7 @@ Invoked when load completes successfully.
 
 ### `onLoadEnd`
 
-Invoked when load either succeeds or fails.
+Invocado quando o carregamento é completado com sucesso ou falha
 
 | Type               |
 | ------------------ |
@@ -331,9 +328,9 @@ Invoked when load either succeeds or fails.
 
 ### `onLoadStart`
 
-Invoked on load start.
+Invocado quando o carregamento começa.
 
-**Example:** `onLoadStart={() => this.setState({loading: true})}`
+**Exemplo:** `onLoadStart={() => this.setState({loading: true})}`
 
 | Type               |
 | ------------------ |

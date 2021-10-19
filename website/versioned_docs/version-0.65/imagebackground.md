@@ -3,13 +3,13 @@ id: imagebackground
 title: ImageBackground
 ---
 
-A common feature request from developers familiar with the web is `background-image`. To handle this use case, you can use the `<ImageBackground>` component, which has the same props as `<Image>`, and add whatever children to it you would like to layer on top of it.
+Um pedido comum entre desenvolvedores da web é o `background-image`. Pra dar uma moral pra eles, tem o componente `<ImageBackground>`, que tem as mesmas propriedades do `<Image>` e adiciona quaisquer filhos que você deseja em cima dele.
 
-You might not want to use `<ImageBackground>` in some cases, since the implementation is basic. Refer to `<ImageBackground>`'s [source code](https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageBackground.js) for more insight, and create your own custom component when needed.
+As vezes não é legal usar `<ImageBackground>` porque a implementação dele é básica. Da uma olhada no [código fonte](https://github.com/facebook/react-native/blob/master/Libraries/Image/ImageBackground.js) pra ter uma ideia e crie seu próprio componente quando precisar.
 
-Note that you must specify some width and height style attributes.
+Note que você precisa especificar width e height nos atributos de estilo.
 
-## Example
+## Exemplo
 
 ```SnackPlayer name=ImageBackground
 import React from "react";
@@ -48,13 +48,13 @@ export default App;
 
 ---
 
-# Reference
+# Referência
 
 ## Props
 
 ### [Image Props](image.md#props)
 
-Inherits [Image Props](image.md#props).
+Herda [Image Props](image.md#props).
 
 ---
 
@@ -68,7 +68,7 @@ Inherits [Image Props](image.md#props).
 
 ### `imageRef`
 
-Allows to set a reference to the inner `Image` component
+Permite setar uma referencia pro componente `Image` que está do lado de dentro.
 
 | Type                                                  |
 | ----------------------------------------------------- |

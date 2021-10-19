@@ -3,11 +3,12 @@ id: button
 title: Button
 ---
 
-Um componente básico de botão that should render nicely on any platform. Supports a minimal level of customization.
+# Button
+Um componente básico de botão que deve renderizar de boas em qualquer plataforma. Suporta uma quantidade mínima de customização.
 
-If this button doesn't look right for your app, you can build your own button using [TouchableOpacity](touchableopacity) or [TouchableWithoutFeedback](touchablewithoutfeedback). For inspiration, look at the [source code for this button component](https://github.com/facebook/react-native/blob/master/Libraries/Components/Button.js). Or, take a look at the [wide variety of button components built by the community](https://js.coach/?menu%5Bcollections%5D=React%20Native&page=1&query=button).
+Se o botão não ficar legal no seu app, você pode construir o seu próprio botão usando o TouchableOpacity ou o TouchableWithoutFeedback. Para se inspirar, dê uma olhadinha no [código fonte do componente de botão](https://github.com/facebook/react-native/blob/master/Libraries/Components/Button.js) ou nos [botões criados pela comunidade](https://js.coach/?menu%5Bcollections%5D=React%20Native&page=1&query=button).
 
-```jsx
+```tsx
 <Button
   onPress={onPressLearnMore}
   title="Learn More"
@@ -16,7 +17,7 @@ If this button doesn't look right for your app, you can build your own button us
 />
 ```
 
-## Example
+## Exemplo
 
 ```SnackPlayer name=Button%20Example
 import React from 'react';
@@ -30,7 +31,7 @@ const App = () => (
   <SafeAreaView style={styles.container}>
     <View>
       <Text style={styles.title}>
-        The title and onPress handler are required. It is recommended to set accessibilityLabel to help make your app usable by everyone.
+        The title and onPress handler are Obrigatório. It is recommended to set accessibilityLabel to help make your app usable by everyone.
       </Text>
       <Button
         title="Press me"
@@ -104,13 +105,13 @@ export default App;
 
 ---
 
-# Reference
+# Referência
 
-## Props
+## Propriedades
 
-### <div class="label required basic">Required</div>**`onPress`**
+### <div class="label Obrigatório basic">Obrigatório</div>**`onPress`**
 
-Handler to be called when the user taps the button.
+Handler que é chamado quando o usuário aperta no botão.
 
 | Type                               |
 | ---------------------------------- |
@@ -118,9 +119,9 @@ Handler to be called when the user taps the button.
 
 ---
 
-### <div class="label required basic">Required</div>**`title`**
+### <div class="label Obrigatório basic">Obrigatório</div>**`title`**
 
-Text to display inside the button. On Android the given title will be converted to the uppercased form.
+Texto que vai aparecer dentro do botão. No Android o texto vai ser convertido pra caixa alta.
 
 | Type   |
 | ------ |
@@ -140,7 +141,7 @@ Text to display for blindness accessibility features.
 
 ### `color`
 
-Color of the text (iOS), or background color of the button (Android).
+Cor do texto no iOS ou do fundo do botão no Android.
 
 | Type            | Default                                                                                                                                                                                                                                   |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -150,7 +151,7 @@ Color of the text (iOS), or background color of the button (Android).
 
 ### `disabled`
 
-If `true`, disable all interactions for this component.
+Se `true`, desabilita todas as interações desse componente.
 
 | Type | Default |
 | ---- | ------- |
@@ -160,7 +161,7 @@ If `true`, disable all interactions for this component.
 
 ### `hasTVPreferredFocus` <div class="label tv">TV</div>
 
-TV preferred focus.
+Isso aqui eu acho que é pra ver se tem foco preferido em TVs.
 
 | Type | Default |
 | ---- | ------- |
@@ -170,7 +171,7 @@ TV preferred focus.
 
 ### `nextFocusDown` <div class="label android">Android</div><div class="label tv">TV</div>
 
-Designates the next view to receive focus when the user navigates down. See the [Android documentation](https://developer.android.com/reference/android/view/View.html#attr_android:nextFocusDown).
+Escolhe a próxima view a receber o foco quando o usuário navegar para baixo. [Veja a documentação do Android.](https://developer.android.com/reference/android/view/View.html#attr_android:nextFocusDown).
 
 | Type   |
 | ------ |
@@ -180,7 +181,7 @@ Designates the next view to receive focus when the user navigates down. See the 
 
 ### `nextFocusForward` <div class="label android">Android</div><div class="label tv">TV</div>
 
-Designates the next view to receive focus when the user navigates forward. See the [Android documentation](https://developer.android.com/reference/android/view/View.html#attr_android:nextFocusForward).
+Escolhe a próxima view a receber o foco quando o usuário navegar para frente. [Veja a documentação do Android.](https://developer.android.com/reference/android/view/View.html#attr_android:nextFocusForward).
 
 | Type   |
 | ------ |
@@ -190,7 +191,7 @@ Designates the next view to receive focus when the user navigates forward. See t
 
 ### `nextFocusLeft` <div class="label android">Android</div><div class="label tv">TV</div>
 
-Designates the next view to receive focus when the user navigates left. See the [Android documentation](https://developer.android.com/reference/android/view/View.html#attr_android:nextFocusLeft).
+Escolhe a próxima view a receber o foco quando o usuário navegar para a esquerda. [Veja a documentação do Android.](https://developer.android.com/reference/android/view/View.html#attr_android:nextFocusLeft).
 
 | Type   |
 | ------ |
@@ -200,7 +201,7 @@ Designates the next view to receive focus when the user navigates left. See the 
 
 ### `nextFocusRight` <div class="label android">Android</div><div class="label tv">TV</div>
 
-Designates the next view to receive focus when the user navigates right. See the [Android documentation](https://developer.android.com/reference/android/view/View.html#attr_android:nextFocusRight).
+Escolhe a próxima view a receber o foco quando o usuário navegar para a direita. [Veja a documentação do Android.](https://developer.android.com/reference/android/view/View.html#attr_android:nextFocusRight).
 
 | Type   |
 | ------ |
@@ -210,7 +211,7 @@ Designates the next view to receive focus when the user navigates right. See the
 
 ### `nextFocusUp` <div class="label android">Android</div><div class="label tv">TV</div>
 
-Designates the next view to receive focus when the user navigates up. See the [Android documentation](https://developer.android.com/reference/android/view/View.html#attr_android:nextFocusUp).
+Escolhe a próxima view a receber o foco quando o usuário navegar para cima. [Veja a documentação do Android.](https://developer.android.com/reference/android/view/View.html#attr_android:nextFocusUp).
 
 | Type   |
 | ------ |
@@ -220,7 +221,7 @@ Designates the next view to receive focus when the user navigates up. See the [A
 
 ### `testID`
 
-Used to locate this view in end-to-end tests.
+Usado pra localizar esta view em testes de ponta-a-ponta.
 
 | Type   |
 | ------ |
@@ -230,7 +231,7 @@ Used to locate this view in end-to-end tests.
 
 ### `touchSoundDisabled` <div class="label android">Android</div>
 
-If `true`, doesn't play system sound on touch.
+Se `true`, não toca o som do sistema quando aperta o botão.
 
 | Type    | Default |
 | ------- | ------- |

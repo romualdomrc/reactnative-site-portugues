@@ -5,7 +5,7 @@ title: Modal
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-The Modal component is a basic way to present content above an enclosing view.
+O componente do Modal é uma forma básica de mostrar um conteúdo sobre outro.
 
 ## Example
 
@@ -202,25 +202,25 @@ export default App;
 
 ---
 
-# Reference
+# Referência
 
 ## Props
 
 ### `animated`
 
-> **Deprecated.** Use the [`animationType`](modal.md#animationtype) prop instead.
+> **Obsoleto.** Use a  prop [`animationType`](modal.md#animationtype).
 
 ---
 
 ### `animationType`
 
-The `animationType` prop controls how the modal animates.
+A propriedade `animationType` controla como o modal é animado.
+  
+Valores possíveis:
 
-Possible values:
-
-- `slide` slides in from the bottom,
-- `fade` fades into view,
-- `none` appears without an animation.
+- `slide` escorrega de baixo pra cima,
+- `fade` esmaece na tela,
+- `none` aparece sem animação.
 
 | Type                                | Default |
 | ----------------------------------- | ------- |
@@ -230,7 +230,7 @@ Possible values:
 
 ### `hardwareAccelerated` <div class="label android">Android</div>
 
-The `hardwareAccelerated` prop controls whether to force hardware acceleration for the underlying window.
+A propriedade `hardwareAccelerated` controla quando vai ou não forçar aceleração de hardware na janela que está debaixo do modal.
 
 | Type | Default |
 | ---- | ------- |
@@ -240,7 +240,7 @@ The `hardwareAccelerated` prop controls whether to force hardware acceleration f
 
 ### `onDismiss` <div class="label ios">iOS</div>
 
-The `onDismiss` prop allows passing a function that will be called once the modal has been dismissed.
+A propriedade `onDismiss` permite passar uma função que vai ser disparada quando o modal for fechado.
 
 | Type     |
 | -------- |
@@ -250,7 +250,7 @@ The `onDismiss` prop allows passing a function that will be called once the moda
 
 ### `onOrientationChange` <div class="label ios">iOS</div>
 
-The `onOrientationChange` callback is called when the orientation changes while the modal is being displayed. The orientation provided is only 'portrait' or 'landscape'. This callback is also called on initial render, regardless of the current orientation.
+O callback `onOrientationChange` é chamado quando a orientação é alterada enquanto o modal está na tela. As orientações fornecidas são somente 'portrait' (retrato) ou 'landscape' (paisagem). Esse callback também é chamado na primeira renderização, independente da orientação atual.
 
 | Type     |
 | -------- |
@@ -260,7 +260,7 @@ The `onOrientationChange` callback is called when the orientation changes while 
 
 ### `onRequestClose`
 
-The `onRequestClose` callback is called when the user taps the hardware back button on Android or the menu button on Apple TV. Because of this required prop, be aware that `BackHandler` events will not be emitted as long as the modal is open.
+O callback `onRequestClose` é chamado quando o usuário aperta no botão de voltar do android ou no botão do menu da Apple TV. Note que, no android, essa propriedade é obrigatória, então os eventos `BackHandler` não vão ser disparados se o modal estiver aberto.
 
 | Type                                                                                                                                                                                           |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -270,7 +270,7 @@ The `onRequestClose` callback is called when the user taps the hardware back but
 
 ### `onShow`
 
-The `onShow` prop allows passing a function that will be called once the modal has been shown.
+A propriedade `onShow` permite passar uma função que vai ser chamada quando o modal aparecer.
 
 | Type     |
 | -------- |
@@ -280,14 +280,14 @@ The `onShow` prop allows passing a function that will be called once the modal h
 
 ### `presentationStyle` <div class="label ios">iOS</div>
 
-The `presentationStyle` prop controls how the modal appears (generally on larger devices such as iPad or plus-sized iPhones). See https://developer.apple.com/reference/uikit/uimodalpresentationstyle for details.
+A propriedade `presentationStyle` controla como o modal vai aparecer (geralmente nos aparelhos grandes como iPad ou iPhones Plus). Para mais detalhes da uma olhada aqui: [https://developer.apple.com/reference/uikit/uimodalpresentationstyle](https://developer.apple.com/reference/uikit/uimodalpresentationstyle)
 
-Possible values:
+Valores possíveis:
 
-- `fullScreen` covers the screen completely
-- `pageSheet` covers portrait-width view centered (only on larger devices)
-- `formSheet` covers narrow-width view centered (only on larger devices)
-- `overFullScreen` covers the screen completely, but allows transparency
+- `fullscreen` preenche a tela toda
+- `pageSheet` preenche a largura de retrato centralizada (somente em dispositivos grandes) (nem eu entendi isso aqui)
+- `formSheet` preenche a largura estreita centralizada (somente em dispositivos grandes)
+- `overFullScreen` preenche a tela toda mas permite transparência
 
 | Type                                                                   | Default                                                                             |
 | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -297,7 +297,7 @@ Possible values:
 
 ### `statusBarTranslucent` <div class="label android">Android</div>
 
-The `statusBarTranslucent` prop determines whether your modal should go under the system statusbar.
+A propriedade `statusBarTranslucent` determina quando o seu modal deve ir debaixo da barra de status do sistema.
 
 | Type | Default |
 | ---- | ------- |
@@ -307,9 +307,9 @@ The `statusBarTranslucent` prop determines whether your modal should go under th
 
 ### `supportedOrientations` <div class="label ios">iOS</div>
 
-The `supportedOrientations` prop allows the modal to be rotated to any of the specified orientations. On iOS, the modal is still restricted by what's specified in your app's Info.plist's UISupportedInterfaceOrientations field.
+A propriedade `supportedOrientations` permite qe o modal seja rotacionado para qualquer orientação. No iOS, o modal ainda é restrito pelo o que está especificado no Info.plist do seu aplicativo no campo UISupportedInterfaceOrientations.
 
-> When using `presentationStyle` of `pageSheet` or `formSheet`, this property will be ignored by iOS.
+> Se estiver usando `presentationStyle` com `pageSheet` ou `formSheet`, essa propriedade vai ser ignorada pelo iOS.
 
 | Type                                                                                                           | Default        |
 | -------------------------------------------------------------------------------------------------------------- | -------------- |
@@ -319,7 +319,7 @@ The `supportedOrientations` prop allows the modal to be rotated to any of the sp
 
 ### `transparent`
 
-The `transparent` prop determines whether your modal will fill the entire view. Setting this to `true` will render the modal over a transparent background.
+A propriedade `transparent` determina quando o modal deve preencher toda a tela. Se setar pra `true`, vai renderizar o modal por cima de um fundo transparente.
 
 | Type | Default |
 | ---- | ------- |
@@ -329,7 +329,7 @@ The `transparent` prop determines whether your modal will fill the entire view. 
 
 ### `visible`
 
-The `visible` prop determines whether your modal is visible.
+A propriedade `visible` determina quando o modal vai estar visível.
 
 | Type | Default |
 | ---- | ------- |

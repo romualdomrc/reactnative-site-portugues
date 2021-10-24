@@ -5,32 +5,32 @@ title: PanResponder
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-`PanResponder` reconciles several touches into a single gesture. It makes single-touch gestures resilient to extra touches, and can be used to recognize basic multi-touch gestures.
+`PanResponder` reconcilia vários toques em um único gesto. Ele torna os gestos de toque único resilientes a toques extras e pode ser usado para reconhecer gestos multitoque básicos.
 
-By default, `PanResponder` holds an `InteractionManager` handle to block long-running JS events from interrupting active gestures.
+Por padrão, `PanResponder` mantém um identificador `InteractionManager` para bloquear eventos JS de longa duração de interromper gestos ativos.
 
-It provides a predictable wrapper of the responder handlers provided by the [gesture responder system](gesture-responder-system.md). For each handler, it provides a new `gestureState` object alongside the native event object:
+Ele fornece um invólucro previsível dos manipuladores de resposta fornecidos pelo [sistema de resposta a gestos] (gesture-responder-system.md). Para cada manipulador, ele fornece um novo objeto `GestureState` ao lado do objeto de evento nativo:
 
 ```
 onPanResponderMove: (event, gestureState) => {}
 ```
 
-A native event is a synthetic touch event with form of [PressEvent](pressevent).
+Um evento nativo é um evento de toque sintético com a forma de [PressEvent] (pressevent).
 
-A `gestureState` object has the following:
+Um objeto `GestureState` tem o seguinte:
 
-- `stateID` - ID of the gestureState- persisted as long as there's at least one touch on screen
-- `moveX` - the latest screen coordinates of the recently-moved touch
-- `moveY` - the latest screen coordinates of the recently-moved touch
-- `x0` - the screen coordinates of the responder grant
-- `y0` - the screen coordinates of the responder grant
-- `dx` - accumulated distance of the gesture since the touch started
-- `dy` - accumulated distance of the gesture since the touch started
-- `vx` - current velocity of the gesture
-- `vy` - current velocity of the gesture
-- `numberActiveTouches` - Number of touches currently on screen
+- `StateId` - ID do GestureState - persistiu enquanto houver pelo menos um toque na tela
+- `MOVEX` - as últimas coordenadas de tela do toque movido recentemente
+- `Movey` - as últimas coordenadas de tela do toque movido recentemente
+- `x0` - as coordenadas da tela da concessão do respondente
+- `y0` - as coordenadas da tela da concessão do respondente
+- `dx` - distância acumulada do gesto desde o início do toque
+- `dy` - distância acumulada do gesto desde o início do toque
+- `vx` - velocidade atual do gesto
+- `vy` - velocidade atual do gesto
+- `NumberActiveTouches` - Número de toques atualmente na tela
 
-## Usage Pattern
+## Padrão de uso
 
 ```jsx
 const ExampleComponent = () => {
@@ -76,9 +76,9 @@ const ExampleComponent = () => {
 };
 ```
 
-## Example
+## Exemplo
 
-`PanResponder` works with `Animated` API to help build complex gestures in the UI. The following example contains an animated `View` component which can be dragged freely across the screen
+`PanResponder` funciona com a API `Animated` para ajudar a criar gestos complexos na interface do usuário. O exemplo a seguir contém um componente animado `View` que pode ser arrastado livremente pela tela
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -220,9 +220,9 @@ Try the [PanResponder example in RNTester](https://github.com/facebook/react-nat
 
 ---
 
-# Reference
+# Referência
 
-## Methods
+## Métodos
 
 ### `create()`
 
@@ -230,13 +230,13 @@ Try the [PanResponder example in RNTester](https://github.com/facebook/react-nat
 static create(config)
 ```
 
-**Parameters:**
+**Parâmetros: **
 
-| Name                                                        | Type   | Description |
+| Nome                                                        | Tipo   | Descrição |
 | ----------------------------------------------------------- | ------ | ----------- |
-| config <div className="label basic required">Required</div> | object | Refer below |
+| config <div className="label basic required">Required</div> | object | Consulte abaixo |
 
-The `config` object provides enhanced versions of all of the responder callbacks that provide not only the [`PressEvent`](pressevent), but also the `PanResponder` gesture state, by replacing the word `Responder` with `PanResponder` in each of the typical `onResponder*` callbacks. For example, the `config` object would look like:
+O objeto `config` fornece versões aprimoradas de todos os retornos de chamada do respondente que fornecem não apenas o [`PressEvent`] (pressevent), mas também o estado do gesto `PanResponder`, substituindo a palavra `Responder` por `PanResponder` em cada um dos retornos de chamada `OnResponder*` típicos. Por exemplo, o objeto `config` seria semelhante a:
 
 - `onMoveShouldSetPanResponder: (e, gestureState) => {...}`
 - `onMoveShouldSetPanResponderCapture: (e, gestureState) => {...}`
@@ -252,6 +252,6 @@ The `config` object provides enhanced versions of all of the responder callbacks
 - `onPanResponderTerminationRequest: (e, gestureState) => {...}`
 - `onShouldBlockNativeResponder: (e, gestureState) => {...}`
 
-In general, for events that have capture equivalents, we update the gestureState once in the capture phase and can use it in the bubble phase as well.
+Em geral, para eventos que têm equivalentes de captura, atualizamos o GestureState uma vez na fase de captura e também podemos usá-lo na fase de bolha.
 
-Be careful with `onStartShould*` callbacks. They only reflect updated `gestureState` for start/end events that bubble/capture to the Node. Once the node is the responder, you can rely on every start/end event being processed by the gesture and `gestureState` being updated accordingly. (numberActiveTouches) may not be totally accurate unless you are the responder.
+Tenha cuidado com retornos de chamada `OnStartShould*`. Eles refletem apenas `GestureState` atualizado para eventos de início/fim que fazem bolhas/capturam para o nó. Uma vez que o nó é o respondente, você pode confiar em cada evento inicial/final sendo processado pelo gesto e `GestureState` sendo atualizado de acordo. (NumberActiveTouches) pode não ser totalmente preciso, a menos que você seja o respondente.

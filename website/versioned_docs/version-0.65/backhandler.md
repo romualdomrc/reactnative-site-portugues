@@ -5,16 +5,16 @@ title: BackHandler
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-The Backhandler API detects hardware button presses for back navigation, lets you register event listeners for the system's back action, and lets you control how your application responds. It is Android-only.
+A API Backhandler detecta pressionamentos de botão de hardware para navegação reversa, permite registrar ouvintes de eventos para a ação de retorno do sistema e permite controlar como o aplicativo responde. É apenas para Android.
 
-The event subscriptions are called in reverse order (i.e. the last registered subscription is called first).
+As assinaturas de eventos são chamadas na ordem inversa (ou seja, a última assinatura registrada é chamada primeiro).
 
-- **If one subscription returns true,** then subscriptions registered earlier will not be called.
-- **If no subscription returns true or none are registered,** it programmatically invokes the default back button functionality to exit the app.
+- **Se uma assinatura retornar verdadeira, ** as assinaturas registradas anteriormente não serão chamadas.
+- **Se nenhuma assinatura retornar verdadeira ou nenhuma estiver registrada, ** ela invoca programaticamente a funcionalidade padrão do botão Voltar para sair do aplicativo.
 
-> **Warning for modal users:** If your app shows an opened `Modal`, `BackHandler` will not publish any events ([see `Modal` docs](modal#onrequestclose)).
+> **Aviso para usuários modais: ** Se seu aplicativo mostrar um `Modal` aberto, `BackHandler` não publicará nenhum evento ([veja `Modal` docs] (modal #onrequestclose)).
 
-## Pattern
+## Padrão
 
 ```jsx
 BackHandler.addEventListener('hardwareBackPress', function () {
@@ -41,9 +41,9 @@ BackHandler.addEventListener('hardwareBackPress', function () {
 });
 ```
 
-## Example
+## Exemplo
 
-The following example implements a scenario where you confirm if the user wants to exit the app:
+O exemplo a seguir implementa um cenário em que você confirma se o usuário deseja sair do aplicativo:
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -154,9 +154,9 @@ export default App;
 </TabItem>
 </Tabs>
 
-`BackHandler.addEventListener` creates an event listener & returns a `NativeEventSubscription` object which should be cleared using `NativeEventSubscription.remove` method.
+`BackHandler.addEventListener` cria um ouvinte de eventos e retorna um objeto `NativeEventSubscription` que deve ser limpo usando o método `NativeEventSubscription.remove`.
 
-Additionally `BackHandler.removeEventListener` can also be used to clear the event listener. Ensure the callback has the reference to the same function used in the `addEventListener` call as shown the following example ﹣
+Além disso, `BackHandler.removeEventListener` também pode ser usado para limpar o ouvinte de eventos. Certifique-se de que o retorno de chamada tenha a referência à mesma função usada na chamada `AddEventListener`, conforme mostrado no exemplo a seguir
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -262,9 +262,9 @@ export default App;
 </TabItem>
 </Tabs>
 
-## Usage with React Navigation
+## Uso com o React Navigation
 
-If you are using React Navigation to navigate across different screens, you can follow their guide on [Custom Android back button behaviour](https://reactnavigation.org/docs/custom-android-back-button-handling/)
+Se você estiver usando o React Navigation para navegar por telas diferentes, siga o guia deles em [Comportamento personalizado do botão Voltar do Android] (https://reactnavigation.org/docs/custom-android-back-button-handling/)
 
 ## Backhandler hook
 
@@ -272,9 +272,9 @@ If you are using React Navigation to navigate across different screens, you can 
 
 ---
 
-# Reference
+# Referência
 
-## Methods
+## Métodos
 
 ### `addEventListener()`
 

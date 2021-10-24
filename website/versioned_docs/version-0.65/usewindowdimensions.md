@@ -7,13 +7,13 @@ title: useWindowDimensions
 import { useWindowDimensions } from 'react-native';
 ```
 
-`useWindowDimensions` automatically updates `width` and `height` values when screen size changes. You can get your application window's width and height like so:
+`UseWindowDimensions` atualiza automaticamente os valores de `largura` e `altura` quando o tamanho da tela muda. Você pode obter a largura e a altura da janela do aplicativo da seguinte forma:
 
 ```jsx
 const { height, width } = useWindowDimensions();
 ```
 
-## Example
+## Exemplo
 
 ```SnackPlayer name=useWindowDimensions&supportedPlatforms=ios,android
 import React from "react";
@@ -49,7 +49,7 @@ export default App;
 useWindowDimensions().fontScale;
 ```
 
-The scale of the font currently used. Some operating systems allow users to scale their font sizes larger or smaller for reading comfort. This property will let you know what is in effect.
+A escala da fonte usada atualmente. Alguns sistemas operacionais permitem que os usuários dimensionem seus tamanhos de fonte maiores ou menores para maior conforto de leitura. Esta propriedade permitirá que você saiba o que está em vigor.
 
 ---
 
@@ -59,7 +59,7 @@ The scale of the font currently used. Some operating systems allow users to scal
 useWindowDimensions().height;
 ```
 
-The height in pixels of the window or screen your app occupies.
+A altura em pixels da janela ou da tela que seu aplicativo ocupa.
 
 ---
 
@@ -69,9 +69,9 @@ The height in pixels of the window or screen your app occupies.
 useWindowDimensions().scale;
 ```
 
-The pixel ratio of the device your app is running on.
+A proporção de pixels do dispositivo em que seu aplicativo está sendo executado.
 
-> A value of `1` indicates PPI/DPI of 96 (76 on some platforms). `2` indicates a Retina or high DPI display.
+> Um valor de `1` indica PPI/DPI de 96 (76 em algumas plataformas). `2` indica uma tela Retina ou DPI alto.
 
 ---
 
@@ -81,4 +81,4 @@ The pixel ratio of the device your app is running on.
 useWindowDimensions().width;
 ```
 
-The width in pixels of the window or screen your app occupies.
+A largura, em pixels, da janela ou da tela que o aplicativo ocupa.

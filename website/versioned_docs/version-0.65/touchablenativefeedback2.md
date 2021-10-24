@@ -3,15 +3,15 @@ id: touchablenativefeedback
 title: TouchableNativeFeedback
 ---
 
-> Se você está procurando uma maneira mais abrangente e preparada para o futuro de lidar com a entrada baseada em toque, confira a API [Pressable] (pressable.md).
+> If you're looking for a more extensive and future-proof way to handle touch-based input, check out the [Pressable](pressable.md) API.
 
-Um invólucro para fazer com que as visualizações respondam corretamente aos toques (somente Android). No Android, esse componente usa o drawable de estado nativo para exibir feedback de toque.
+A wrapper for making views respond properly to touches (Android only). On Android this component uses native state drawable to display touch feedback.
 
-No momento, ele só suporta ter uma única instância View como um nó filho, pois é implementado substituindo essa View por outra instância do nó RctView com algumas propriedades adicionais definidas.
+At the moment it only supports having a single View instance as a child node, as it's implemented by replacing that View with another instance of RCTView node with some additional properties set.
 
-O drawable de fundo do feedback nativo tocável pode ser personalizado com a propriedade `background`.
+Background drawable of native feedback touchable can be customized with `background` property.
 
-## Exemplo
+## Example
 
 ```SnackPlayer name=TouchableNativeFeedback%20Android%20Component%20Example&supportedPlatforms=android
 import React, { useState } from "react";
@@ -158,7 +158,7 @@ TV next focus up (see documentation for the View component).
 static SelectableBackground(rippleRadius: ?number)
 ```
 
-Cria um objeto que representa o plano de fundo padrão do tema android para elementos selecionáveis (? Android: ATTR/Fundo de Ítem selecionável). O parâmetro `RippleRadius` controla o raio do efeito cascata.
+Creates an object that represents android theme's default background for selectable elements (?android:attr/selectableItemBackground). `rippleRadius` parameter controls the radius of the ripple effect.
 
 ---
 
@@ -168,7 +168,7 @@ Cria um objeto que representa o plano de fundo padrão do tema android para elem
 static SelectableBackgroundBorderless(rippleRadius: ?number)
 ```
 
-Cria um objeto que representa o plano de fundo padrão do tema android para elementos selecionáveis sem bordas (? Android: ATTR/selecionável em segundo plano (sem borda). Disponível na API android nível 21+. O parâmetro `RippleRadius` controla o raio do efeito cascata.
+Creates an object that represent android theme's default background for borderless selectable elements (?android:attr/selectableItemBackgroundBorderless). Available on android API level 21+. `rippleRadius` parameter controls the radius of the ripple effect.
 
 ---
 
@@ -178,15 +178,15 @@ Cria um objeto que representa o plano de fundo padrão do tema android para elem
 static Ripple(color: string, borderless: boolean, rippleRadius: ?number)
 ```
 
-Cria um objeto que representa desenhável ondulado com cor especificada (como uma string). Se a propriedade `borderless` for avaliada como verdadeira, a ondulação será renderizada fora dos limites da visualização (veja os botões nativos da barra de ação como um exemplo desse comportamento). Esse tipo de plano de fundo está disponível na API do Android nível 21+.
+Creates an object that represents ripple drawable with specified color (as a string). If property `borderless` evaluates to true the ripple will render outside of the view bounds (see native actionbar buttons as an example of that behavior). This background type is available on Android API level 21+.
 
-**Parâmetros: **
+**Parameters:**
 
-| Nome         | Tipo    | Required | Descrição                                 |
+| Name         | Type    | Required | Description                                 |
 | ------------ | ------- | -------- | ------------------------------------------- |
-| color        | string  | Yes      | A cor ondulada                            |
-| borderless   | boolean | Yes      | Se a ondulação puder renderizar fora de seus limites |
-| rippleRadius | ?number | No       | controla o raio do efeito cascata    |
+| color        | string  | Yes      | The ripple color                            |
+| borderless   | boolean | Yes      | If the ripple can render outside its bounds |
+| rippleRadius | ?number | No       | controls the radius of the ripple effect    |
 
 ---
 

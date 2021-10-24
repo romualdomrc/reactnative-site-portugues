@@ -3,9 +3,9 @@ id: actionsheetios
 title: ActionSheetIOS
 ---
 
-Displays native to iOS [Action Sheet](https://developer.apple.com/design/human-interface-guidelines/ios/views/action-sheets/) component.
+Exibe o componente nativo do iOS [Folha de ações] (https://developer.apple.com/design/human-interface-guidelines/ios/views/action-sheets/).
 
-## Example
+## Exemplo
 
 ```SnackPlayer name=ActionSheetIOS&supportedPlatforms=ios
 import React, { useState } from "react";
@@ -65,21 +65,21 @@ export default App;
 static showActionSheetWithOptions(options, callback)
 ```
 
-Display an iOS action sheet. The `options` object must contain one or more of:
+Exibir uma folha de ações do iOS. O objeto `options` deve conter um ou mais dos:
 
-- `options` (array of strings) - a list of button titles (required)
-- `cancelButtonIndex` (int) - index of cancel button in `options`
-- `destructiveButtonIndex` (int or array of ints) - indices of destructive buttons in `options`
-- `title` (string) - a title to show above the action sheet
-- `message` (string) - a message to show below the title
-- `anchor` (number) - the node to which the action sheet should be anchored (used for iPad)
-- `tintColor` (string) - the [color](colors) used for non-destructive button titles
-- `disabledButtonIndices` (array of numbers) - a list of button indices which should be disabled
-- `userInterfaceStyle` (string) - the interface style used for the action sheet, can be set to `light` or `dark`, otherwise the default system style will be used
+- `options` (array de strings) - uma lista de títulos de botões (obrigatório)
+- `cancelButtonIndex` (int) - índice do botão cancelar em `opções`
+- `DestructiveButtonIndex` (int ou array de ints) - índices de botões destrutivos em `opções`
+- `title` (string) - um título para mostrar acima da folha de ação
+- `message` (string) - uma mensagem para mostrar abaixo do título
+- `âncora` (número) - o nó ao qual a folha de ação deve ser ancorada (usado para iPad)
+- `TintColor` (string) - a [cor] (cores) usada para títulos de botões não destrutivos
+- `DisabledButtonIndices` (matriz de números) - uma lista de índices de botões que devem ser desativados
+- `UserInterfaceStyle` (string) - o estilo de interface usado para a folha de ação, pode ser definido como `light` ou` dark`, caso contrário, o estilo padrão do sistema será usado
 
-The 'callback' function takes one parameter, the zero-based index of the selected item.
+A função 'callback' usa um parâmetro, o índice baseado em zero do item selecionado.
 
-Minimal example:
+Exemplo mínimo:
 
 ```jsx
 ActionSheetIOS.showActionSheetWithOptions(
@@ -104,18 +104,18 @@ ActionSheetIOS.showActionSheetWithOptions(
 static showShareActionSheetWithOptions(options, failureCallback, successCallback)
 ```
 
-Display the iOS share sheet. The `options` object should contain one or both of `message` and `url` and can additionally have a `subject` or `excludedActivityTypes`:
+Exiba a planilha de compartilhamento do iOS. O objeto `options` deve conter um ou ambos `message` e `url` e também pode ter um `sujeito` ou` excludedActivityTypes`:
 
-- `url` (string) - a URL to share
-- `message` (string) - a message to share
-- `subject` (string) - a subject for the message
-- `excludedActivityTypes` (array) - the activities to exclude from the ActionSheet
+- `url` (string) - um URL para compartilhar
+- `message` (string) - uma mensagem para compartilhar
+- `subject` (string) - um assunto para a mensagem
+- `ExcludedActivityTypes` (array) - as atividades a serem excluídas da ActionSheet
 
-> **Note:** If `url` points to a local file, or is a base64-encoded uri, the file it points to will be loaded and shared directly. In this way, you can share images, videos, PDF files, etc. If `url` points to a remote file or address it must conform to URL format as described in [RFC 2396](https://www.ietf.org/rfc/rfc2396.txt). For example, a web URL without a proper protocol (HTTP/HTTPS) will not be shared.
+> **Nota: ** Se `url` apontar para um arquivo local, ou for um uri codificado em base64, o arquivo para o qual ele aponta será carregado e compartilhado diretamente. Desta forma, você pode compartilhar imagens, vídeos, arquivos PDF, etc. Se `url` apontar para um arquivo ou endereço remoto, ele deve estar em conformidade com o formato de URL, conforme descrito em [RFC 2396] (https://www.ietf.org/rfc/rfc2396.txt). Por exemplo, um URL da Web sem um protocolo adequado (HTTP/HTTPS) não será compartilhado.
 
-The 'failureCallback' function takes one parameter, an error object. The only property defined on this object is an optional `stack` property of type `string`.
+A função 'FailureCallback' usa um parâmetro, um objeto de erro. A única propriedade definida neste objeto é uma propriedade `stack` opcional do tipo `string`.
 
-The 'successCallback' function takes two parameters:
+A função 'SuccessCallback' usa dois parâmetros:
 
-- a boolean value signifying success or failure
-- a string that, in the case of success, indicates the method of sharing
+- um valor booleano que significa sucesso ou fracasso
+- uma string que, em caso de sucesso, indica o método de compartilhamento

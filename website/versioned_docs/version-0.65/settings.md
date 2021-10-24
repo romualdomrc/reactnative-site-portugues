@@ -3,9 +3,9 @@ id: settings
 title: Settings
 ---
 
-`Settings` serves as a wrapper for [`NSUserDefaults`](https://developer.apple.com/documentation/foundation/nsuserdefaults), a persistent key-value store available only on iOS.
+`Settings` serve como um wrapper para [`NSUserDefaults`] (https://developer.apple.com/documentation/foundation/nsuserdefaults), um armazenamento persistente de chave-valor disponível apenas no iOS.
 
-## Example
+## Exemplo
 
 ```SnackPlayer name=Settings%20Example&supportedPlatforms=ios
 import React, { useState } from "react";
@@ -62,7 +62,7 @@ export default App;
 static clearWatch(watchId: number)
 ```
 
-`watchId` is the number returned by `watchKeys()` when the subscription was originally configured.
+`watchID` é o número retornado por `watchKeys () `quando a assinatura foi configurada originalmente.
 
 ---
 
@@ -72,7 +72,7 @@ static clearWatch(watchId: number)
 static get(key: string): mixed
 ```
 
-Get the current value for a given `key` in `NSUserDefaults`.
+Obtenha o valor atual para uma determinada `chave` em `NSUserDefaults`.
 
 ---
 
@@ -82,7 +82,7 @@ Get the current value for a given `key` in `NSUserDefaults`.
 static set(settings: object)
 ```
 
-Set one or more values in `NSUserDefaults`.
+Defina um ou mais valores em `NSUserDefaults`.
 
 ---
 
@@ -92,6 +92,6 @@ Set one or more values in `NSUserDefaults`.
 static watchKeys(keys: string | array<string>, callback: function): number
 ```
 
-Subscribe to be notified when the value for any of the keys specified by the `keys` parameter has been changed in `NSUserDefaults`. Returns a `watchId` number that may be used with `clearWatch()` to unsubscribe.
+Inscreva-se para ser notificado quando o valor de qualquer uma das chaves especificadas pelo parâmetro `keys` tiver sido alterado em `NSUserDefaults`. Retorna um número `watchId` que pode ser usado com `ClearWatch () `para cancelar a assinatura.
 
-> **Note:** `watchKeys()` by design ignores internal `set()` calls and fires callback only on changes preformed outside of React Native code.
+> **Nota: ** `watchKeys () `por design ignora chamadas internas `set ()` e dispara callback somente em alterações pré-formadas fora do código React Native.

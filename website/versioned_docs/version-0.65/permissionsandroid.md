@@ -5,20 +5,20 @@ title: PermissionsAndroid
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-<div className="banner-native-code-required">
-  <h3>Project with Native Code Required</h3>
-  <p>
-    The following section only applies to projects with native code exposed. If you are using the managed <code>expo-cli</code> workflow, see the guide on <a href="https://docs.expo.io/versions/latest/sdk/permissions/">Permissions</a> in the Expo documentation for the appropriate alternative.
-  </p>
-</div>
+ <div className="banner-native-code-required"> 
+ <h3> Projeto com código nativo necessário </h3> 
+ <p> 
+ A seção a seguir só se aplica a projetos com código nativo exposto. Se você estiver usando o fluxo de trabalho gerenciado <code> expo-cli </code>, consulte o guia sobre <a href="https://docs.expo.io/versions/latest/sdk/permissions/"> Permissões </a> na documentação da Expo para obter a alternativa apropriada.
+ </p> 
+ </div> 
 
-`PermissionsAndroid` provides access to Android M's new permissions model. The so-called "normal" permissions are granted by default when the application is installed as long as they appear in `AndroidManifest.xml`. However, "dangerous" permissions require a dialog prompt. You should use this module for those permissions.
+`permissionsAndroid` fornece acesso ao novo modelo de permissões do Android M. As chamadas permissões “normais” são concedidas por padrão quando o aplicativo é instalado, desde que apareçam em `AndroidManifest.xml`. No entanto, permissões “perigosas” exigem um prompt de diálogo. Você deve usar este módulo para essas permissões.
 
-On devices before SDK version 23, the permissions are automatically granted if they appear in the manifest, so `check` should always result to `true` and `request` should always resolve to `PermissionsAndroid.RESULTS.GRANTED`.
+Em dispositivos antes do SDK versão 23, as permissões são concedidas automaticamente se aparecerem no manifesto, então `check` sempre deve resultar em `true` e `request` deve sempre resolver para `permissionsAndroid.results.granted`.
 
-If a user has previously turned off a permission that you prompt for, the OS will advise your app to show a rationale for needing the permission. The optional `rationale` argument will show a dialog prompt only if necessary - otherwise the normal permission prompt will appear.
+Se um usuário tiver desativado anteriormente uma permissão solicitada por você, o sistema operacional aconselhará seu aplicativo a mostrar uma justificativa para precisar da permissão. O argumento opcional `rationale` mostrará um prompt de diálogo somente se necessário - caso contrário, o prompt de permissão normal aparecerá.
 
-### Example
+### Exemplo
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -141,9 +141,9 @@ export default App;
 </TabItem>
 </Tabs>
 
-### Permissions that require prompting the user
+### Permissões que exigem a solicitação do usuário
 
-Available as constants under `PermissionsAndroid.PERMISSIONS`:
+Disponível como constantes em `permissionsAndroid.permissions`:
 
 - `READ_CALENDAR`: 'android.permission.READ_CALENDAR'
 - `WRITE_CALENDAR`: 'android.permission.WRITE_CALENDAR'
@@ -170,9 +170,9 @@ Available as constants under `PermissionsAndroid.PERMISSIONS`:
 - `READ_EXTERNAL_STORAGE`: 'android.permission.READ_EXTERNAL_STORAGE'
 - `WRITE_EXTERNAL_STORAGE`: 'android.permission.WRITE_EXTERNAL_STORAGE'
 
-### Result strings for requesting permissions
+### Strings de resultado para solicitar permissões
 
-Available as constants under `PermissionsAndroid.RESULTS`:
+Disponível como constantes em `permissionsAndroid.results`:
 
 - `GRANTED`: 'granted'
 - `DENIED`: 'denied'
@@ -180,9 +180,9 @@ Available as constants under `PermissionsAndroid.RESULTS`:
 
 ---
 
-# Reference
+# Referência
 
-## Methods
+## Métodos
 
 ### `constructor()`
 
@@ -198,13 +198,13 @@ constructor();
 check(permission);
 ```
 
-Returns a promise resolving to a boolean value as to whether the specified permissions has been granted.
+Retorna uma promessa resolvendo para um valor booleano se as permissões especificadas foram concedidas.
 
-**Parameters:**
+**Parâmetros: **
 
-| Name       | Type   | Required | Description                  |
+| Nome       | Tipo   | Obrigatório | Descrição                  |
 | ---------- | ------ | -------- | ---------------------------- |
-| permission | string | Yes      | The permission to check for. |
+| permission | string | sim      | A permissão para verificar. |
 
 ---
 
@@ -214,26 +214,26 @@ Returns a promise resolving to a boolean value as to whether the specified permi
 request(permission, [rationale]);
 ```
 
-Prompts the user to enable a permission and returns a promise resolving to a string value (see result strings above) indicating whether the user allowed or denied the request or does not want to be asked again.
+Solicita que o usuário ative uma permissão e retorna uma promessa resolvendo para um valor de string (consulte as cadeias de resultados acima) indicando se o usuário permitiu ou negou a solicitação ou não deseja ser solicitado novamente.
 
-If `rationale` is provided, this function checks with the OS whether it is necessary to show a dialog explaining why the permission is needed (https://developer.android.com/training/permissions/requesting.html#explain) and then shows the system permission dialog.
+Se `rationale` for fornecido, esta função verifica com o SO se é necessário mostrar uma caixa de diálogo explicando por que a permissão é necessária (https://developer.android.com/training/permissions/requesting.html#explain) e, em seguida, mostra a caixa de diálogo de permissão do sistema.
 
-**Parameters:**
+**Parâmetros: **
 
-| Name       | Type   | Required | Description                |
+| Nome       | Tipo   | Obrigatório | Descrição                |
 | ---------- | ------ | -------- | -------------------------- |
-| permission | string | Yes      | The permission to request. |
-| rationale  | object | No       | See `rationale` below.     |
+| permission | string | sim      | A permissão para solicitar. |
+| rationale  | object | Não       | Veja `rationale` abaixo.     |
 
-**Rationale:**
+**Racional: **
 
-| Name           | Type   | Required | Description                      |
+| Nome           | Tipo   | Obrigatório | Descrição                      |
 | -------------- | ------ | -------- | -------------------------------- |
-| title          | string | Yes      | The title of the dialog.         |
-| message        | string | Yes      | The message of the dialog.       |
-| buttonPositive | string | Yes      | The text of the positive button. |
-| buttonNegative | string | No       | The text of the negative button. |
-| buttonNeutral  | string | No       | The text of the neutral button.  |
+| title          | string | Yes      | O título da caixa de diálogo.         |
+| message        | string | Yes      | A mensagem da caixa de diálogo.       |
+| buttonPositive | string | Yes      | O texto do botão positivo. |
+| buttonNegative | string | No       | O texto do botão negativo. |
+| buttonNeutral  | string | No       | O texto do botão neutro.  |
 
 ---
 
@@ -243,10 +243,10 @@ If `rationale` is provided, this function checks with the OS whether it is neces
 requestMultiple(permissions);
 ```
 
-Prompts the user to enable multiple permissions in the same dialog and returns an object with the permissions as keys and strings as values (see result strings above) indicating whether the user allowed or denied the request or does not want to be asked again.
+Solicita que o usuário habilite várias permissões na mesma caixa de diálogo e retorna um objeto com as permissões como chaves e strings como valores (consulte as cadeias de resultados acima) indicando se o usuário permitiu ou negou a solicitação ou não deseja ser solicitado novamente.
 
-**Parameters:**
+**Parâmetros: **
 
-| Name        | Type  | Required | Description                      |
+| Nome        | Tipo  | Obrigatório | Descrição                      |
 | ----------- | ----- | -------- | -------------------------------- |
-| permissions | array | Yes      | Array of permissions to request. |
+| permissions | array | sim      | Matriz de permissões a serem solicitadas. |

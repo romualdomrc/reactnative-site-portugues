@@ -5,11 +5,11 @@ title: LayoutAnimation
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-Automatically animates views to their new positions when the next layout happens.
+Anima automaticamente as visualizações para as novas posições quando o próximo layout acontecer.
 
-A common way to use this API is to call it before updating the state hook in functional components and calling `setState` in class components.
+Uma maneira comum de usar essa API é chamá-la antes de atualizar o gancho de estado em componentes funcionais e chamar `setState` em componentes de classe.
 
-Note that in order to get this to work on **Android** you need to set the following flags via `UIManager`:
+Observe que, para que isso funcione em**Android**, você precisa definir os seguintes sinalizadores via `UIManager`:
 
 ```js
 if (Platform.OS === 'android') {
@@ -19,7 +19,7 @@ if (Platform.OS === 'android') {
 }
 ```
 
-## Example
+## Exemplo
 
 ```SnackPlayer name=LayoutAnimation&supportedPlatforms=android,ios
 import React, { useState } from "react";
@@ -82,28 +82,28 @@ export default App;
 static configureNext(config, onAnimationDidEnd?, onAnimationDidFail?)
 ```
 
-Schedules an animation to happen on the next layout.
+Agenda uma animação para acontecer no próximo layout.
 
-#### Parameters:
+#### Parâmetros:
 
-| Name               | Type     | Required | Description                         |
+| Nome               | Tipo     | Obrigatório | Descrição                         |
 | ------------------ | -------- | -------- | ----------------------------------- |
-| config             | object   | Yes      | See config description below.       |
-| onAnimationDidEnd  | function | No       | Called when the animation finished. |
-| onAnimationDidFail | function | No       | Called when the animation failed.   |
+| config             | object   | sim      | Veja a descrição da configuração abaixo.       |
+| onAnimationDidEnd  | function | Não       | Chamado quando a animação terminou. |
+| onAnimationDidFail | function | Não       | Chamado quando a animação falhou.   |
 
-The `config` parameter is an object with the keys below. [`create`](layoutanimation.md#create) returns a valid object for `config`, and the [`Presets`](layoutanimation.md#presets) objects can also all be passed as the `config`.
+O parâmetro `config` é um objeto com as chaves abaixo. [`create`] (layoutanimation.md #create) retorna um objeto válido para `config`, e os objetos [`Presets`] (layoutanimation.md #presets) também podem ser passados como `config`.
 
-- `duration` in milliseconds
-- `create`, optional config for animating in new views
-- `update`, optional config for animating views that have been updated
-- `delete`, optional config for animating views as they are removed
+- `duração` em milissegundos
+- `create`, configuração opcional para animação em novas visualizações
+- `update`, configuração opcional para animar exibições que foram atualizadas
+- `delete`, configuração opcional para animar visualizações à medida que elas são removidas
 
-The config that's passed to `create`, `update`, or `delete` has the following keys:
+A configuração que é passada para `create`, `update` ou `delete` tem as seguintes chaves:
 
-- `type`, the [animation type](layoutanimation.md#types) to use
-- `property`, the [layout property](layoutanimation.md#properties) to animate (optional, but recommended for `create` and `delete`)
-- `springDamping` (number, optional and only for use with `type: Type.spring`)
+- `type`, o [tipo de animação] (layoutanimation.md #types) para usar
+- `propriedade`, a [propriedade de layout] (layoutanimation.md #properties) para animar (opcional, mas recomendado para `create` e `delete`)
+- `SpringDamping` (número, opcional e apenas para uso com `type: Type.spring`)
 - `initialVelocity` (number, optional)
 - `delay` (number, optional)
 - `duration` (number, optional)
@@ -116,9 +116,9 @@ The config that's passed to `create`, `update`, or `delete` has the following ke
 static create(duration, type, creationProp)
 ```
 
-Helper that creates an object (with `create`, `update`, and `delete` fields) to pass into [`configureNext`](layoutanimation.md#configurenext). The `type` parameter is an [animation type](layoutanimation.md#types), and the `creationProp` parameter is a [layout property](layoutanimation.md#properties).
+Auxiliar que cria um objeto (com os campos `create`, `update` e `delete`) para passar para [`ConfigureNext`] (layoutanimation.md #configurenext). O parâmetro `type` é um [tipo de animação] (layoutanimation.md #types), e o parâmetro `CreationProp` é uma [propriedade de layout] (layoutanimation.md #properties).
 
-**Example:**
+**Exemplo: **
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -282,9 +282,9 @@ export default App;
 
 ### Types
 
-An enumeration of animation types to be used in the [`create`](layoutanimation.md#create) method, or in the `create`/`update`/`delete` configs for [`configureNext`](layoutanimation.md#configurenext). (example usage: `LayoutAnimation.Types.easeIn`)
+Uma enumeração de tipos de animação a serem usados no método [`create`] (layoutanimation.md #create), ou nas configurações `create`/`update`/`delete` para [`configureNext`] (layoutanimation.md #configurenext). (exemplo de uso: `LayoutAnimation.types.easein`)
 
-| Types         |
+| Tipos         |
 | ------------- |
 | spring        |
 | linear        |
@@ -295,11 +295,11 @@ An enumeration of animation types to be used in the [`create`](layoutanimation.m
 
 ---
 
-### Properties
+### Propriedades
 
-An enumeration of layout properties to be animated to be used in the [`create`](layoutanimation.md#create) method, or in the `create`/`update`/`delete` configs for [`configureNext`](layoutanimation.md#configurenext). (example usage: `LayoutAnimation.Properties.opacity`)
+Uma enumeração de propriedades de layout a serem animadas para serem usadas no método [`create`] (layoutanimation.md #create), ou nas configurações `create`/`update`/`delete` para [`configureNext`] (layoutanimation.md #configurenext). (exemplo de uso: `LayoutAnimation.properties.opacity`)
 
-| Properties |
+| Propriedades |
 | ---------- |
 | opacity    |
 | scaleX     |
@@ -310,7 +310,7 @@ An enumeration of layout properties to be animated to be used in the [`create`](
 
 ### Presets
 
-A set of predefined animation configs to pass into [`configureNext`](layoutanimation.md#configurenext).
+Um conjunto de configurações de animação predefinidas para passar para [`ConfigureNext`] (layoutanimation.md #configurenext).
 
 | Presets       | Value                                                                                                                                                                 |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -334,9 +334,9 @@ Calls `configureNext()` with `Presets.linear`.
 
 ### `spring`
 
-Calls `configureNext()` with `Presets.spring`.
+Chama `configureNext () `com `Presets.spring`.
 
-**Example:**
+**Exemplo: **
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">

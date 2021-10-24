@@ -3,9 +3,9 @@ id: drawerlayoutandroid
 title: DrawerLayoutAndroid
 ---
 
-Componente React que envolve a plataforma `DrawerLayout` (somente Android). A gaveta (normalmente usada para navegação) é renderizada com `RenderNavigationView` e os filhos diretos são a exibição principal (para onde vai seu conteúdo). A visualização de navegação inicialmente não é visível na tela, mas pode ser puxada do lado da janela especificada pela propriedade `DrawerPosition` e sua largura pode ser definida pela propriedade `DrawerWidth`.
+React component that wraps the platform `DrawerLayout` (Android only). The Drawer (typically used for navigation) is rendered with `renderNavigationView` and direct children are the main view (where your content goes). The navigation view is initially not visible on the screen, but can be pulled in from the side of the window specified by the `drawerPosition` prop and its width can be set by the `drawerWidth` prop.
 
-## Exemplo
+## Example
 
 ```SnackPlayer name=DrawerLayoutAndroid%20Component%20Example&supportedPlatforms=android
 import React, { useRef, useState } from "react";
@@ -101,7 +101,7 @@ return (
 );
 ```
 
-| Tipo               | Obrigatório |
+| Type               | Required |
 | ------------------ | -------- |
 | [color](colors.md) | No       |
 
@@ -109,13 +109,13 @@ return (
 
 ### `drawerLockMode`
 
-Especifica o modo de bloqueio da gaveta. A gaveta pode ser trancada em 3 estados:
+Specifies the lock mode of the drawer. The drawer can be locked in 3 states:
 
-- desbloqueado (padrão), o que significa que a gaveta responderá (abrir/fechar) aos gestos de toque.
-- trancado fechado, o que significa que a gaveta permanecerá fechada e não responderá aos gestos.
-- trancado aberto, o que significa que a gaveta permanecerá aberta e não responderá aos gestos. A gaveta ainda pode ser aberta e fechada programaticamente (`OpenDrawer`/`Closedrawer`).
+- unlocked (default), meaning that the drawer will respond (open/close) to touch gestures.
+- locked-closed, meaning that the drawer will stay closed and not respond to gestures.
+- locked-open, meaning that the drawer will stay opened and not respond to gestures. The drawer may still be opened and closed programmatically (`openDrawer`/`closeDrawer`).
 
-| Tipo                                             | Obrigatório |
+| Type                                             | Required |
 | ------------------------------------------------ | -------- |
 | enum('unlocked', 'locked-closed', 'locked-open') | No       |
 
@@ -123,9 +123,9 @@ Especifica o modo de bloqueio da gaveta. A gaveta pode ser trancada em 3 estados
 
 ### `drawerPosition`
 
-Especifica o lado da tela a partir do qual a gaveta deslizará. Por padrão, ele está definido como `esquerda`.
+Specifies the side of the screen from which the drawer will slide in. By default it is set to `left`.
 
-| Tipo                  | Obrigatório |
+| Type                  | Required |
 | --------------------- | -------- |
 | enum('left', 'right') | No       |
 
@@ -133,9 +133,9 @@ Especifica o lado da tela a partir do qual a gaveta deslizará. Por padrão, ele
 
 ### `drawerWidth`
 
-Especifica a largura da gaveta, mais precisamente a largura da vista que será puxada da borda da janela.
+Specifies the width of the drawer, more precisely the width of the view that be pulled in from the edge of the window.
 
-| Tipo   | Obrigatório |
+| Type   | Required |
 | ------ | -------- |
 | number | No       |
 
@@ -143,12 +143,12 @@ Especifica a largura da gaveta, mais precisamente a largura da vista que será p
 
 ### `keyboardDismissMode`
 
-Determina se o teclado é descartado em resposta a um arrasto.
+Determines whether the keyboard gets dismissed in response to a drag.
 
-- 'nenhum' (o padrão), os arrastos não descartam o teclado.
-- 'on-drag', o teclado é descartado quando um arrasto começa.
+- 'none' (the default), drags do not dismiss the keyboard.
+- 'on-drag', the keyboard is dismissed when a drag begins.
 
-| Tipo                    | Obrigatório |
+| Type                    | Required |
 | ----------------------- | -------- |
 | enum('none', 'on-drag') | No       |
 
@@ -156,9 +156,9 @@ Determina se o teclado é descartado em resposta a um arrasto.
 
 ### `onDrawerClose`
 
-Função chamada sempre que a visualização de navegação for fechada.
+Function called whenever the navigation view has been closed.
 
-| Tipo     | Obrigatório |
+| Type     | Required |
 | -------- | -------- |
 | function | No       |
 
@@ -166,9 +166,9 @@ Função chamada sempre que a visualização de navegação for fechada.
 
 ### `onDrawerOpen`
 
-Função chamada sempre que a visualização de navegação for aberta.
+Function called whenever the navigation view has been opened.
 
-| Tipo     | Obrigatório |
+| Type     | Required |
 | -------- | -------- |
 | function | No       |
 
@@ -176,9 +176,9 @@ Função chamada sempre que a visualização de navegação for aberta.
 
 ### `onDrawerSlide`
 
-Função chamada sempre que houver uma interação com a visualização de navegação.
+Function called whenever there is an interaction with the navigation view.
 
-| Tipo     | Obrigatório |
+| Type     | Required |
 | -------- | -------- |
 | function | No       |
 
@@ -186,13 +186,13 @@ Função chamada sempre que houver uma interação com a visualização de naveg
 
 ### `onDrawerStateChanged`
 
-Função chamada quando o estado da gaveta mudou. A gaveta pode estar em 3 estados:
+Function called when the drawer state has changed. The drawer can be in 3 states:
 
-- ocioso, o que significa que não há interação com a visualização de navegação acontecendo no momento
-- arrastando, o que significa que há atualmente uma interação com a visualização de navegação
-- assentamento, o que significa que houve uma interação com a visualização de navegação, e a visualização de navegação agora está terminando sua animação de fechamento ou abertura
+- idle, meaning there is no interaction with the navigation view happening at the time
+- dragging, meaning there is currently an interaction with the navigation view
+- settling, meaning that there was an interaction with the navigation view, and the navigation view is now finishing its closing or opening animation
 
-| Tipo     | Obrigatório |
+| Type     | Required |
 | -------- | -------- |
 | function | No       |
 
@@ -200,9 +200,9 @@ Função chamada quando o estado da gaveta mudou. A gaveta pode estar em 3 estad
 
 ### `renderNavigationView`
 
-A visualização de navegação que será renderizada ao lado da tela e pode ser puxada.
+The navigation view that will be rendered to the side of the screen and can be pulled in.
 
-| Tipo     | Obrigatório |
+| Type     | Required |
 | -------- | -------- |
 | function | Yes      |
 
@@ -210,13 +210,13 @@ A visualização de navegação que será renderizada ao lado da tela e pode ser
 
 ### `statusBarBackgroundColor`
 
-Faça com que a gaveta pegue a tela inteira e desenhe o plano de fundo da barra de status para permitir que ela abra sobre a barra de status. Isso só terá efeito na API 21+.
+Make the drawer take the entire screen and draw the background of the status bar to allow it to open over the status bar. It will only have an effect on API 21+.
 
-| Tipo               | Obrigatório |
+| Type               | Required |
 | ------------------ | -------- |
 | [color](colors.md) | No       |
 
-## Métodos
+## Methods
 
 ### `closeDrawer()`
 
@@ -224,7 +224,7 @@ Faça com que a gaveta pegue a tela inteira e desenhe o plano de fundo da barra 
 closeDrawer();
 ```
 
-Fecha a gaveta.
+Closes the drawer.
 
 ---
 
@@ -234,4 +234,4 @@ Fecha a gaveta.
 openDrawer();
 ```
 
-Abre a gaveta.
+Opens the drawer.

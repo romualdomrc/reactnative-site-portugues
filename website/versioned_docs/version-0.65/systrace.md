@@ -5,11 +5,11 @@ title: Systrace
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-`Systrace` is a standard Android marker-based profiling tool (and is installed when you install the Android platform-tools package). Profiled code blocks are surrounded by start/end markers which are then visualized in a colorful chart format. Both the Android SDK and React Native framework provide standard markers that you can visualize.
+`Systrace` é uma ferramenta padrão de criação de perfil baseada em marcadores do Android (e é instalada quando você instala o pacote de ferramentas da plataforma Android). Os blocos de código perfilados são cercados por marcadores de início/fim que são visualizados em um formato de gráfico colorido. Tanto o SDK do Android quanto o framework React Native fornecem marcadores padrão que você pode visualizar.
 
-## Example
+## Exemplo
 
-`Systrace` allows you to mark JavaScript (JS) events with a tag and an integer value. Capture the non-Timed JS events in EasyProfiler.
+`Systrace` permite que você marque eventos JavaScript (JS) com uma tag e um valor inteiro. Capture os eventos JS não cronometrados no EasyProfiler.
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -136,9 +136,9 @@ export default App;
 
 ---
 
-# Reference
+# Referência
 
-## Methods
+## Métodos
 
 ### `installReactHook()`
 
@@ -170,7 +170,7 @@ static isEnabled()
 static beginEvent(profileName?, args?)
 ```
 
-beginEvent/endEvent for starting and then ending a profile within the same call stack frame.
+BeginEvent/endEvent para iniciar e depois terminar um perfil dentro do mesmo quadro de pilha de chamadas.
 
 ---
 
@@ -188,7 +188,7 @@ static endEvent()
 static beginAsyncEvent(profileName?)
 ```
 
-beginAsyncEvent/endAsyncEvent for starting and then ending a profile where the end can either occur on another thread or out of the current stack frame, eg await the returned cookie variable should be used as input into the endAsyncEvent call to end the profile.
+BeginAsyncEvent/endAsyncEvent para iniciar e terminar um perfil onde o fim pode ocorrer em outro thread ou fora do quadro de pilha atual, por exemplo, aguardar a variável de cookie retornada deve ser usada como entrada na chamada endAsyncEvent para encerrar o perfil.
 
 ---
 
@@ -206,4 +206,4 @@ static endAsyncEvent(profileName?, cookie?)
 static counterEvent(profileName?, value?)
 ```
 
-Register the value to the profileName on the systrace timeline.
+Registre o valor no ProfileName na linha do tempo do systrace.

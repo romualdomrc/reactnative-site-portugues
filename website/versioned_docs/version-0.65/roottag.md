@@ -5,25 +5,25 @@ title: RootTag
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-`RootTag` is an opaque identifier assigned to the native root view of your React Native surface — i.e. the `ReactRootView` or `RCTRootView` instance for Android or iOS respectively. In short, it is a surface identifier.
+`RootTag` é um identificador opaco atribuído à visualização raiz nativa da sua superfície React Native - ou seja, a instância `ReactRootView` ou `RCTRootView` para Android ou iOS, respectivamente. Resumindo, é um identificador de superfície.
 
-## When to use a RootTag?
+## Quando usar um RootTag?
 
-For most React Native developers, you likely won’t need to deal with `RootTag`s.
+Para a maioria dos desenvolvedores React Native, você provavelmente não precisará lidar com `Roottag`s.
 
-`RootTag`s are useful for when an app renders **multiple React Native root views** and you need to handle native API calls differently depending on the surface. An example of this is when an app is using native navigation and each screen is a separate React Native root view.
+`Roottag`s são úteis para quando um aplicativo renderiza o**várias visualizações raiz do React Native** e você precisa lidar com chamadas de API nativas de maneira diferente, dependendo da superfície. Um exemplo disso é quando um aplicativo está usando navegação nativa e cada tela é uma visualização raiz do React Native separada.
 
-In native navigation, every React Native root view is rendered in a platform’s navigation view (e.g., `Activity` for Android, `UINavigationViewController` for iOS). By this, you are able to leverage the navigation paradigms of the platform such as native look and feel and navigation transitions. The functionality to interact with the native navigation APIs can be exposed to React Native via a [native module](https://reactnative.dev/docs/next/native-modules-intro).
+Na navegação nativa, cada visualização raiz do React Native é renderizada na visualização de navegação de uma plataforma (por exemplo, `Activity` para Android, `UINavigationViewController` para iOS). Com isso, você é capaz de alavancar os paradigmas de navegação da plataforma, como aparência nativa e transições de navegação. A funcionalidade para interagir com as APIs de navegação nativas pode ser exposta ao React Native por meio de um [módulo nativo] (https://reactnative.dev/docs/next/native-modules-intro).
 
-For example, to update the title bar of a screen, you would call the navigation module’s API `setTitle("Updated Title")`, but it would need to know which screen in the stack to update. A `RootTag` is necessary here to identify the root view and its hosting container.
+Por exemplo, para atualizar a barra de título de uma tela, você chamaria a API do módulo de navegação `setTitle (“Título atualizado”) `, mas ele precisaria saber qual tela da pilha atualizar. Uma `RootTag` é necessária aqui para identificar a visualização raiz e seu contêiner de hospedagem.
 
-Another use case for `RootTag` is when your app needs to attribute a certain JavaScript call to native based on its originating root view. A `RootTag` is necessary to differentiate the source of the call from different surfaces.
+Outro caso de uso para `RootTag` é quando seu aplicativo precisa atribuir uma determinada chamada JavaScript ao nativo com base em sua visualização raiz de origem. Uma `RootTag` é necessária para diferenciar a fonte da chamada de diferentes superfícies.
 
-## How to access the RootTag... if you need it
+## Como acessar o RootTag... se você precisar
 
-In versions 0.65 and below, RootTag is accessed via a [legacy context](https://github.com/facebook/react-native/blob/v0.64.1/Libraries/ReactNative/AppContainer.js#L56). To prepare React Native for Concurrent features coming in React 18 and beyond, we are migrating to the latest [Context API](https://reactjs.org/docs/context.html#api) via `RootTagContext` in 0.66. Version 0.65 supports both the legacy context and the recommended `RootTagContext` to allow developers time to migrate their call-sites. See the breaking changes summary.
+Nas versões 0.65 e abaixo, o RootTag é acessado por meio de um [contexto legado] (https://github.com/facebook/react-native/blob/v0.64.1/Libraries/ReactNative/AppContainer.js#L56). Para preparar os recursos do React Native for Concurrent que chegam no React 18 e além, estamos migrando para a mais recente [API de contexto] (https://reactjs.org/docs/context.html#api) via `RootTagContext` em 0.66. A versão 0.65 suporta o contexto legado e o `RootTagContext` recomendado para permitir que os desenvolvedores tenham tempo para migrar seus sites de chamada. Veja o resumo das mudanças mais recentes.
 
-How to access `RootTag` via the `RootTagContext`.
+Como acessar `RootTag` através do `RootTagContext`.
 
 ```js
 import { RootTagContext } from 'react-native';
@@ -59,16 +59,16 @@ class ScreenB extends React.Component {
 }
 ```
 
-Learn more about the Context API for [classes](https://reactjs.org/docs/context.html#classcontexttype) and [hooks](https://reactjs.org/docs/hooks-reference.html#usecontext) from the React docs.
+Saiba mais sobre a API de contexto para [classes] (https://reactjs.org/docs/context.html#classcontexttype) e [hooks] (https://reactjs.org/docs/hooks-reference.html#usecontext) nos documentos do React.
 
-### Breaking Change in 0.65
+### Quebrando a mudança em 0,65
 
-`RootTagContext` was formerly named `unstable_RootTagContext` and changed to `RootTagContext` in 0.65. Please update any usages of `unstable_RootTagContext` in your codebase.
+`RootTagContext` foi anteriormente chamado de `unstable_roottagContext` e alterado para `roottagContext` em 0.65. Atualize todos os usos de `Unstable_roottagContext` em sua base de código.
 
-### Breaking Change in 0.66
+### Quebrando a mudança em 0,66
 
-The legacy context access to `RootTag` will be removed and replaced by `RootTagContext`. Beginning in 0.65, we encourage developers to proactively migrate `RootTag` accesses to `RootTagContext`.
+O acesso de contexto legado a `RootTag` será removido e substituído por `RootTagContext`. A partir de 0.65, incentivamos os desenvolvedores a migrar proativamente os acessos `RootTag` para `RootTagContext`.
 
-## Future Plans
+## Planos futuros
 
-With the new React Native architecture progressing, there will be future iterations to `RootTag`, with the intention to keep the `RootTag` type opaque and prevent thrash in React Native codebases. Please do not rely on the fact that RootTag currently aliases to a number! If your app relies on RootTags, keep an eye on our version change logs, which you can find [here](https://github.com/react-native-community/releases/blob/master/CHANGELOG.md).
+Com a nova arquitetura React Native progredindo, haverá futuras iterações para `RootTag`, com a intenção de manter o tipo `RootTag` opaco e evitar thrash nas bases de código React Native. Por favor, não confie no fato de que o RootTag atualmente é um alias para um número! Se seu aplicativo depende de RootTags, fique de olho em nossos registros de alteração de versão, que você pode encontrar [aqui] (https://github.com/react-native-community/releases/blob/master/CHANGELOG.md).

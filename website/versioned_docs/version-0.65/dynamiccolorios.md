@@ -5,7 +5,7 @@ title: DynamicColorIOS
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-The `DynamicColorIOS` function is a platform color type specific to iOS.
+A função `DynamicColorios` é um tipo de cor de plataforma específico para iOS.
 
 ```jsx
 DynamicColorIOS({
@@ -16,27 +16,27 @@ DynamicColorIOS({
 });
 ```
 
-`DynamicColorIOS` takes a single argument as an object with two mandatory keys: `dark` and `light`, and two optional keys `highContrastLight` and `highContrastDark`. These correspond to the colors you want to use for "light mode" and "dark mode" on iOS, and when high contrast accessibility mode is enabled, high contrast version of them.
+`DynamicColorios` recebe um único argumento como um objeto com duas chaves obrigatórias: `dark` e `light`, e duas teclas opcionais `HighContrastLight` e `HighContrastDark`. Eles correspondem às cores que você deseja usar para “modo claro” e “modo escuro” no iOS, e quando o modo de acessibilidade de alto contraste está ativado, a versão de alto contraste delas.
 
-At runtime, the system will choose which of the colors to display depending on the current system appearance and accessibility settings. Dynamic colors are useful for branding colors or other app specific colors that still respond automatically to system setting changes.
+Em tempo de execução, o sistema escolherá qual das cores exibir, dependendo da aparência atual do sistema e das configurações de acessibilidade. As cores dinâmicas são úteis para cores de marca ou outras cores específicas do aplicativo que ainda respondem automaticamente às alterações nas configurações do sistema.
 
-#### Developer notes
+#### Notas do desenvolvedor
 
 <Tabs groupId="guide" defaultValue="web" values={constants.getDevNotesTabs(["ios", "web"])}>
 
 <TabItem value="web">
 
-> If you’re familiar with `@media (prefers-color-scheme: dark)` in CSS, this is similar! Only instead of defining all the colors in a media query, you define which color to use under what circumstances right there where you're using it. Neat!
+> Se você estiver familiarizado com `@media (prefere-color-scheme: dark)` em CSS, isso é semelhante! Somente em vez de definir todas as cores em uma consulta de mídia, você define qual cor usar em que circunstâncias exatamente onde você está usando. arrumado!
 
 </TabItem>
 <TabItem value="ios">
 
-> The `DynamicColorIOS` function is similar to the iOS native methods [`UIColor colorWithDynamicProvider:`](https://developer.apple.com/documentation/uikit/uicolor/3238040-colorwithdynamicprovider)
+> A função `DynamicColorios` é semelhante aos métodos nativos do iOS [`UIColor ColorWithDynamicProvider: `] (https://developer.apple.com/documentation/uikit/uicolor/3238040-colorwithdynamicprovider)
 
 </TabItem>
 </Tabs>
 
-## Example
+## Exemplo
 
 ```jsx
 import { DynamicColorIOS } from 'react-native';

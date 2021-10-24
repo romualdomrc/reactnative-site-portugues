@@ -3,7 +3,7 @@ id: stylesheet
 title: StyleSheet
 ---
 
-A StyleSheet is an abstraction similar to CSS StyleSheets
+Uma folha de estilo é uma abstração semelhante ao CSS StyleSheets.
 
 ```SnackPlayer name=StyleSheet
 import React from "react";
@@ -55,7 +55,7 @@ Code quality tips:
 static compose(style1: object, style2: object): object | array<object>
 ```
 
-Combines two styles such that `style2` will override any styles in `style1`. If either style is falsy, the other one is returned without allocating an array, saving allocations and maintaining reference equality for PureComponent checks.
+Combina dois estilos de modo que `style2` substituirá qualquer estilo em `style1`. Se um dos estilos for falso, o outro será retornado sem alocar uma matriz, salvando alocações e mantendo a igualdade de referência para verificações de PureComponent.
 
 ```SnackPlayer name=Compose
 import React from 'react';
@@ -104,7 +104,7 @@ export default App;
 static create(obj: object): object
 ```
 
-Creates a StyleSheet style reference from the given object.
+Cria uma referência de estilo StyleSheet a partir do objeto fornecido.
 
 ---
 
@@ -114,9 +114,9 @@ Creates a StyleSheet style reference from the given object.
 static flatten(style: array<object>): object
 ```
 
-Flattens an array of style objects, into one aggregated style object. Alternatively, this method can be used to lookup IDs, returned by `StyleSheet.register`.
+Aplana uma matriz de objetos de estilo, em um objeto de estilo agregado. Como alternativa, esse método pode ser usado para pesquisar IDs, retornados por `StyleSheet.register`.
 
-> **NOTE:** Exercise caution as abusing this can tax you in terms of optimizations. IDs enable optimizations through the bridge and memory in general. Referring to style objects directly will deprive you of these optimizations.
+> **NOTA: ** Tenha cuidado, pois abusar disso pode tributar você em termos de otimizações. Os IDs permitem otimizações por meio da ponte e da memória em geral. Referir-se diretamente a objetos de estilo o privará dessas otimizações.
 
 ```SnackPlayer name=Flatten
 import React from "react";
@@ -180,15 +180,15 @@ This method internally uses `StyleSheetRegistry.getStyleByID(style)` to resolve 
 static setStyleAttributePreprocessor(property: string, process: (propValue: any) => any)
 ```
 
-Sets a function to use to pre-process a style property value. This is used internally to process color and transform values. You should not use this unless you really know what you are doing and have exhausted other options.
+Define uma função a ser usada para pré-processar um valor de propriedade de estilo. Isso é usado internamente para processar cores e transformar valores. Você não deve usar isso, a menos que realmente saiba o que está fazendo e tenha esgotado outras opções.
 
-## Properties
+## Propriedades
 
 ---
 
 ### `absoluteFill`
 
-A very common pattern is to create overlays with position absolute and zero positioning (`position: 'absolute', left: 0, right: 0, top: 0, bottom: 0`), so `absoluteFill` can be used for convenience and to reduce duplication of these repeated styles. If you want, absoluteFill can be used to create a customized entry in a StyleSheet, e.g.:
+Um padrão muito comum é criar sobreposições com posição absoluta e posicionamento zero (`position: 'absolute', left: 0, right: 0, top: 0, bottom: 0`), então `AbsoluteFill` pode ser usado por conveniência e para reduzir a duplicação desses estilos repetidos. Se desejar, o AbsoluteFill pode ser usado para criar uma entrada personalizada em uma Folha de Estilo, por exemplo:
 
 ```SnackPlayer name=absoluteFill
 import React from 'react';
@@ -243,72 +243,72 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
----
+—
 
-### `absoluteFillObject`
+### `Objetos de preenchimento absoluto`
 
-Sometimes you may want `absoluteFill` but with a couple tweaks - `absoluteFillObject` can be used to create a customized entry in a `StyleSheet`, e.g.:
+Às vezes, você pode querer `AbsoluteFill`, mas com alguns ajustes - `AbsoluteFillObject` pode ser usado para criar uma entrada personalizada em uma `StyleSheet`, por exemplo:
 
-```SnackPlayer name=absoluteFillObject
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+```SnackPlayer Name=AbsoluteFillObject
+importar React de 'react';
+import {StyleSheet, Texto, View} de 'react-native';
 
 const App = () => (
-  <View style={styles.container}>
-    <View style={styles.box1}>
-      <Text style={styles.text}>1</Text>
-    </View>
-    <View style={styles.box2}>
-      <Text style={styles.text}>2</Text>
-    </View>
-    <View style={styles.box3}>
-      <Text style={styles.text}>3</Text>
-    </View>
-  </View>
+ <View style={styles.container}> 
+ <View style={styles.box1}> 
+ <Text style={styles.text}> 1 </Text> 
+ </View> 
+ <View style={styles.box2}> 
+ <Text style={styles.text}> 2 </Text> 
+ </View> 
+ <View style={styles.box3}> 
+ <Text style={styles.text}> 3 </Text> 
+ </View> 
+ </View> 
 );
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  box1: {
-    position: 'absolute',
-    top: 40,
-    left: 40,
-    width: 100,
-    height: 100,
-    backgroundColor: 'red'
-  },
-  box2: {
-    ...StyleSheet.absoluteFill,
-    top: 120,
-    left: 50,
-    width: 100,
-    height: 100,
-    backgroundColor: 'blue'
-  },
-  box3: {
-    ...StyleSheet.absoluteFillObject,
-    top: 120,
-    left: 120,
-    width: 100,
-    height: 100,
-    backgroundColor: 'green'
-  },
-  text: {
-    color: '#FFF',
-    fontSize: 80
-  }
+const styles = StyleSheet.create ({
+ recipiente: {
+ flex: 1
+ },
+ caixa 1: {
+ position: 'absoluto',
+ topo: 40,
+ esquerda: 40,
+ largura: 100,
+ altura: 100,
+ Cor de fundo: 'vermelho'
+ },
+ caixa 2: {
+ ... folha de estilo. Preenchimento absoluto,
+ topo: 120,
+ esquerda: 50,
+ largura: 100,
+ altura: 100,
+ Cor de fundo: 'azul'
+ },
+ caixa 3: {
+ ... folha de estilo. Objeto de preenchimento absoluto,
+ topo: 120,
+ esquerda: 120,
+ largura: 100,
+ altura: 100,
+ Cor de fundo: 'verde'
+ },
+ texto: {
+ cor: '#FFF',
+ Tamanho da fonte: 80
+ }
 });
 
-export default App;
+exportar aplicativo padrão;
 ```
 
 ---
 
 ### `hairlineWidth`
 
-This is defined as the width of a thin line on the platform. It can be used as the thickness of a border or division between two elements. Example:
+Isso é definido como a largura de uma linha fina na plataforma. Ele pode ser usado como a espessura de uma borda ou divisão entre dois elementos. Exemplo:
 
 ```SnackPlayer name=hairlineWidth
 import React from "react";
@@ -336,12 +336,12 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-This constant will always be a round number of pixels (so a line defined by it can look crisp) and will try to match the standard width of a thin line on the underlying platform. However, you should not rely on it being a constant size, because on different platforms and screen densities its value may be calculated differently.
+Essa constante sempre será um número redondo de pixels (portanto, uma linha definida por ela pode parecer nítida) e tentará corresponder à largura padrão de uma linha fina na plataforma subjacente. No entanto, você não deve confiar que ele seja um tamanho constante, porque em diferentes plataformas e densidades de tela seu valor pode ser calculado de forma diferente.
 
-A line with hairline width may not be visible if your simulator is downscaled.
+Uma linha com a largura da linha do cabelo pode não estar visível se o simulador for reduzido.
 
 ---
 
 ## `absoluteFill` vs. `absoluteFillObject`
 
-Currently, there is no difference between using `absoluteFill` vs. `absoluteFillObject`.
+Atualmente, não há diferença entre usar `AbsoluteFill` vs. `AbsoluteFillObject`.

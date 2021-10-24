@@ -7,19 +7,19 @@ title: useColorScheme
 import { useColorScheme } from 'react-native';
 ```
 
-The `useColorScheme` React hook provides and subscribes to color scheme updates from the [`Appearance`](appearance) module. The return value indicates the current user preferred color scheme. The value may be updated later, either through direct user action (e.g. theme selection in device settings) or on a schedule (e.g. light and dark themes that follow the day/night cycle).
+O gancho React `UseColorScheme` fornece e assina atualizações de esquema de cores do módulo [`Appearance`] (aparência). O valor de retorno indica o esquema de cores preferido pelo usuário atual. O valor pode ser atualizado posteriormente, seja por meio de ação direta do usuário (por exemplo, seleção de temas nas configurações do dispositivo) ou em uma programação (por exemplo, temas claros e escuros que seguem o ciclo dia/noite).
 
-### Supported color schemes
+### Esquemas de cores compatíveis
 
-- `"light"`: The user prefers a light color theme.
-- `"dark"`: The user prefers a dark color theme.
-- `null`: The user has not indicated a preferred color theme.
+- `"light"`: O usuário prefere um tema de cores claras.
+- `"dark"`: O usuário prefere um tema de cores escuras.
+- `null`: O usuário não indicou um tema de cores preferido.
 
-> **Note:** Currently due to technical constraints, when the Chrome debugger is enabled, this hook will _always_ return `"light"`.
+> **Nota: ** Atualmente devido a restrições técnicas, quando o depurador do Chrome estiver ativado, esse gancho _sempre_ retornará `"light"`.
 
 ---
 
-## Example
+## Exemplo
 
 ```SnackPlayer
 import React from 'react';
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-You can find a complete example that demonstrates the use of this hook alongside a React context to add support for light and dark themes to your application in [`AppearanceExample.js`](https://github.com/facebook/react-native/blob/master/packages/rn-tester/js/examples/Appearance/AppearanceExample.js).
+Você pode encontrar um exemplo completo que demonstra o uso desse gancho junto com um contexto React para adicionar suporte para temas claros e escuros ao seu aplicativo em [`AppearanceExample.js`] (https://github.com/facebook/react-native/blob/master/packages/rn-tester/js/examples/Appearance/AppearanceExample.js).

@@ -3,11 +3,11 @@ id: pixelratio
 title: PixelRatio
 ---
 
-`PixelRatio` gives you access to the device's pixel density and font scale.
+`PixelRatio` dá acesso à densidade de pixels e à escala de fonte do dispositivo.
 
-## Fetching a correctly sized image
+## Obtendo uma imagem com o tamanho correto
 
-You should get a higher resolution image if you are on a high pixel density device. A good rule of thumb is to multiply the size of the image you display by the pixel ratio.
+Você deve obter uma imagem de resolução mais alta se estiver em um dispositivo de alta densidade de pixels. Uma boa regra é multiplicar o tamanho da imagem exibida pela proporção de pixels.
 
 ```jsx
 var image = getImage({
@@ -17,17 +17,17 @@ var image = getImage({
 <Image source={image} style={{ width: 200, height: 100 }} />;
 ```
 
-## Pixel grid snapping
+## Ajuste de grade de pixels
 
-In iOS, you can specify positions and dimensions for elements with arbitrary precision, for example 29.674825. But, ultimately the physical display only have a fixed number of pixels, for example 640×1136 for iPhone SE (1st generation) or 828×1792 for iPhone 11. iOS tries to be as faithful as possible to the user value by spreading one original pixel into multiple ones to trick the eye. The downside of this technique is that it makes the resulting element look blurry.
+No iOS, você pode especificar posições e dimensões para elementos com precisão arbitrária, por exemplo, 29.674825. Mas, em última análise, a tela física tem apenas um número fixo de pixels, por exemplo 640 × 1136 para iPhone SE (1ª geração) ou 828 × 1792 para iPhone 11. O iOS tenta ser o mais fiel possível ao valor do usuário espalhando um pixel original em vários para enganar o olho. A desvantagem dessa técnica é que ela faz com que o elemento resultante pareça desfocado.
 
-In practice, we found out that developers do not want this feature and they have to work around it by doing manual rounding in order to avoid having blurry elements. In React Native, we are rounding all the pixels automatically.
+Na prática, descobrimos que os desenvolvedores não querem esse recurso e precisam contornar isso fazendo o arredondamento manual para evitar elementos borrados. No React Native, estamos arredondando todos os pixels automaticamente.
 
-We have to be careful when to do this rounding. You never want to work with rounded and unrounded values at the same time as you're going to accumulate rounding errors. Having even one rounding error is deadly because a one pixel border may vanish or be twice as big.
+Temos que ter cuidado quando fazer esse arredondamento. Você nunca quer trabalhar com valores arredondados e não arredondados ao mesmo tempo em que acumulará erros de arredondamento. Ter um erro de arredondamento é mortal porque uma borda de um pixel pode desaparecer ou ser duas vezes maior.
 
-In React Native, everything in JavaScript and within the layout engine works with arbitrary precision numbers. It's only when we set the position and dimensions of the native element on the main thread that we round. Also, rounding is done relative to the root rather than the parent, again to avoid accumulating rounding errors.
+No React Native, tudo em JavaScript e dentro do mecanismo de layout funciona com números de precisão arbitrários. É somente quando definimos a posição e as dimensões do elemento nativo no segmento principal que arredondamos. Além disso, o arredondamento é feito em relação à raiz e não ao pai, novamente para evitar o acúmulo de erros de arredondamento.
 
-## Example
+## Exemplo
 
 ```SnackPlayer name=PixelRatio%20Example
 import React from "react";
@@ -103,7 +103,7 @@ export default App;
 static get()
 ```
 
-Returns the device pixel density. Some examples:
+Retorna a densidade de pixels do dispositivo. Alguns exemplos:
 
 - `PixelRatio.get() === 1`
   - [mdpi Android devices](https://material.io/tools/devices/)
@@ -133,12 +133,12 @@ Returns the device pixel density. Some examples:
 static getFontScale(): number
 ```
 
-Returns the scaling factor for font sizes. This is the ratio that is used to calculate the absolute font size, so any elements that heavily depend on that should use this to do calculations.
+Retorna o fator de escala para tamanhos de fonte. Essa é a proporção usada para calcular o tamanho absoluto da fonte, portanto, qualquer elemento que dependa muito disso deve usar isso para fazer cálculos.
 
-- on Android value reflects the user preference set in **Settings > Display > Font size**
-- on iOS value reflects the user preference set in **Settings > Display & Brightness > Text Size**, value can also be updated in **Settings > Accessibility > Display & Text Size > Larger Text**
+- no valor do Android reflete a preferência do usuário definida em**Configurações > Exibição > Tamanho da font**
+- no iOS, o valor reflete a preferência do usuário definida em**Configurações > Tela e brilho > Tamanho do texto**, o valor também pode ser atualizado em**Configurações > Acessibilidade > Tamanho da tela e do texto > Texto maior**
 
-If a font scale is not set, this returns the device pixel ratio.
+Se uma escala de fonte não estiver definida, isso retornará a proporção de pixels do dispositivo.
 
 ---
 
@@ -148,9 +148,9 @@ If a font scale is not set, this returns the device pixel ratio.
 static getPixelSizeForLayoutSize(layoutSize: number): number
 ```
 
-Converts a layout size (dp) to pixel size (px).
+Converte um tamanho de layout (dp) em tamanho de pixel (px).
 
-Guaranteed to return an integer number.
+Garantido para retornar um número inteiro.
 
 ---
 
@@ -160,4 +160,4 @@ Guaranteed to return an integer number.
 static roundToNearestPixel(layoutSize: number): number
 ```
 
-Rounds a layout size (dp) to the nearest layout size that corresponds to an integer number of pixels. For example, on a device with a PixelRatio of 3, `PixelRatio.roundToNearestPixel(8.4) = 8.33`, which corresponds to exactly (8.33 \* 3) = 25 pixels.
+Arredonda um tamanho de layout (dp) para o tamanho de layout mais próximo que corresponde a um número inteiro de pixels. Por exemplo, em um dispositivo com um PixelRatio de 3, `PixelRatio.RoundTonearestPixel (8,4) = 8,33`, o que corresponde exatamente a (8,33\ * 3) = 25 pixels.

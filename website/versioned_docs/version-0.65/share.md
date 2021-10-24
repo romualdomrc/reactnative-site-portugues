@@ -5,7 +5,7 @@ title: Share
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-## Example
+## Exemplo
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -88,9 +88,9 @@ export default ShareExample;
 </TabItem>
 </Tabs>
 
-# Reference
+# Referência
 
-## Methods
+## Métodos
 
 ### `share()`
 
@@ -98,22 +98,22 @@ export default ShareExample;
 static share(content, options)
 ```
 
-Open a dialog to share text content.
+Abra uma caixa de diálogo para compartilhar conteúdo de texto.
 
-In iOS, returns a Promise which will be invoked with an object containing `action` and `activityType`. If the user dismissed the dialog, the Promise will still be resolved with action being `Share.dismissedAction` and all the other keys being undefined. Note that some share options will not appear or work on the iOS simulator.
+No iOS, retorna uma Promise que será invocada com um objeto contendo `action` e `ActivityType`. Se o usuário ignorar a caixa de diálogo, a Promise ainda será resolvida com a ação `share.dismissedAction` e todas as outras chaves sendo indefinidas. Observe que algumas opções de compartilhamento não aparecerão ou funcionarão no simulador do iOS.
 
-In Android, returns a Promise which will always be resolved with action being `Share.sharedAction`.
+No Android, retorna uma Promise que sempre será resolvida com a ação sendo `sharedAction`.
 
-**Properties:**
+**Propriedades: **
 
-| Name                                                         | Type   | Description                                                                                                                                                                                                                                        |
+| Nome                                                         | Tipo   | Descrição                                                                                                                                                                                                                                        |
 | ------------------------------------------------------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| content <div className="label basic required">Required</div> | object | `message` - a message to share<br/>`url` - a URL to share <div class="label ios">iOS</div><br/>`title` - title of the message <div class="label android">Android</div><hr/>At least one of `url` and `message` is required.                        |
+| content <div className="label basic required">Required</div> | object | `message` - uma mensagem para compartilhar <br/> `url` - um URL para compartilhar <div class="label ios"> iOS </div> <br/> `title` - título da mensagem <div class="label android"> Android </div> <hr/> Pelo menos um dos `url` e `message` é necessário.                        |
 | options                                                      | object | `dialogTitle` <div class="label android">Android</div><br/>`excludedActivityTypes` <div class="label ios">iOS</div><br/>`subject` - a subject to share via email <div class="label ios">iOS</div><br/>`tintColor` <div class="label ios">iOS</div> |
 
 ---
 
-## Properties
+## Propriedades
 
 ### `sharedAction`
 
@@ -121,7 +121,7 @@ In Android, returns a Promise which will always be resolved with action being `S
 static sharedAction
 ```
 
-The content was successfully shared.
+O conteúdo foi compartilhado com sucesso.
 
 ---
 
@@ -131,4 +131,4 @@ The content was successfully shared.
 static dismissedAction
 ```
 
-The dialog has been dismissed.
+A caixa de diálogo foi descartada.

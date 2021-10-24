@@ -5,9 +5,9 @@ title: Transforms
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import constants from '@site/core/TabsConstants';
 
-Transforms are style properties that will help you modify the appearance and position of your components using 2D or 3D transformations. However, once you apply transforms, the layouts remain the same around the transformed component hence it might overlap with the nearby components. You can apply margin to the transformed component, the nearby components or padding to the container to prevent such overlaps.
+Transformações são propriedades de estilo que ajudarão você a modificar a aparência e a posição de seus componentes usando transformações 2D ou 3D. No entanto, depois de aplicar transformações, os layouts permanecem os mesmos em torno do componente transformado, portanto, ele pode se sobrepor aos componentes próximos. Você pode aplicar margem ao componente transformado, aos componentes próximos ou ao preenchimento ao contêiner para evitar tais sobreposições.
 
-## Example
+## Exemplo
 
 <Tabs groupId="syntax" defaultValue={constants.defaultSyntax} values={constants.syntax}>
 <TabItem value="functional">
@@ -264,27 +264,27 @@ export default App;
 
 ---
 
-# Reference
+# Referência
 
-## Methods
+## Métodos
 
 ### `transform()`
 
-`transform` accepts an array of transformation objects. Each object specifies the property that will be transformed as the key, and the value to use in the transformation. Objects should not be combined. Use a single key/value pair per object.
+`transform` aceita uma matriz de objetos de transformação. Cada objeto especifica a propriedade que será transformada como a chave e o valor a ser usado na transformação. Os objetos não devem ser combinados. Use um único par chave/valor por objeto.
 
-The rotate transformations require a string so that the transform may be expressed in degrees (deg) or radians (rad). For example:
+As transformações de rotação requerem uma string para que a transformação possa ser expressa em graus (deg) ou radianos (rad). Por exemplo:
 
 ```js
 transform([{ rotateX: '45deg' }, { rotateZ: '0.785398rad' }]);
 ```
 
-The skew transformations require a string so that the transform may be expressed in degrees (deg). For example:
+As transformações distorcidas requerem uma string para que a transformação possa ser expressa em graus (deg). Por exemplo:
 
 ```js
 transform([{ skewX: '45deg' }]);
 ```
 
-| Type                                                                                                                                                                                                                                                                      | Required |
+| Tipo                                                                                                                                                                                                                                                                      | Obrigatório |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | array of objects: {matrix: number[]}, {perspective: number}, {rotate: string}, {rotateX: string}, {rotateY: string}, {rotateZ: string}, {scale: number}, {scaleX: number}, {scaleY: number}, {translateX: number}, {translateY: number}, {skewX: string}, {skewY: string} | No       |
 
@@ -292,4 +292,4 @@ transform([{ skewX: '45deg' }]);
 
 ### `decomposedMatrix`, `rotation`, `scaleX`, `scaleY`, `transformMatrix`, `translateX`, `translateY`
 
-> **Deprecated.** Use the [`transform`](transforms#transform) prop instead.
+> **Descontinuado.** Use a prop [`transform`] (transforma #transform) em vez disso.
